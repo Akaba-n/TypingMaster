@@ -1,0 +1,104 @@
+下記４の(1)～(6)について，調査の上解答せよ．
+
+１．キーワード選定
+卒業研究で実施したい内容（作りたい物，調べてみたい事）に関するキーワード1つと，そのキーワードの周辺に位置するキーワード4つの計5個のキーワードを決める
+
+２．キーワード毎に検索
+5個のキーワードについて，それぞれgoogleで検索
+※必ず検索結果の2ページ目まで，すべてのリンクを確認すること
+
+３．参考になるサイトを選出
+確認した20個のリンク先の中から，3つの参考になるサイトを選出し，その「選定理由」を一言メモしておく
+
+４．キーワード毎の調査結果を纏める
+googleの検索結果20件分から把握した，キーワードに関する分野で「よく利用される手法・技術」や「頻出単語」について箇条書きで書き出す
+また，キーワードに関する分野が「ブルーオーシャン」なのか「レッドオーシャン」なのかを自分なりに判定
+
+５．レポート作成
+(1)キーワード
+→主キーワード×1，周辺のキーワード×4
+
+(2)参考になるサイト
+→キーワード毎に3つ，合計5キーワード×3サイト＝15サイト
+
+(3)参考になるサイトについての自分なりのコメント
+→説明が分かりやすい，サンプルプログラムが豊富，等
+
+(4)キーワードに関する分野でよく利用される手法・技術
+→機械学習，Python，並列処理，等
+
+(5)キーワードに関する分野の頻出単語
+→アフォーダンス，IoT，AI，等
+
+(6)キーワードに関する分野の競争の熾烈さ判定
+→レッドオーシャン，ブルーオーシャンのどちらか？
+
+
+(1)キーワード
+・オンラインゲーム制作
+・ゲームエンジン
+・サーバー言語
+・webアプリケーション
+・Laravel
+
+(2)参考になるサイト
+(3)参考になるサイトについての自分なりのコメント
+オンラインゲーム制作
+・https://qiita.com/MTSL/items/c3158e08e59ddda3020c
+	オンラインゲームに必要な大まかな技術が分かる。
+・https://proengineer.internous.co.jp/content/columnfeature/13439
+	ゲーム開発の基礎となるゲームエンジン、プログラミング言語について
+・https://uinyan.com/unity_7days_kusoge_challenge/
+	実際に簡易的にオンライン実装している行程が分かる
+ゲームエンジン
+・https://rightcode.co.jp/blog/become-engineer/game-engine
+	ゲームエンジン5選
+・https://jp.gamesindustry.biz/article/2001/20012203/
+	各ゲームエンジンの利点、欠点
+・https://qiita.com/lriki/items/3385457986934d3ec694
+	ゲームエンジン自作者の経験談
+サーバ言語
+・http://webeg.info/for-employment/server-side-programming/
+	LL、非LLまで含めて各言語の特徴を説明
+・https://www.threenext.com/server-side-programing-compare/
+	非LLの中で各言語の特徴を詳し目に説明
+・https://www.kagoya.jp/howto/webhomepage/webapplication/
+	webアプリケーションについて
+webアプリケーション
+・https://www.kagoya.jp/howto/webhomepage/webapplication/
+	webアプリケーションについて
+・https://www.sejuku.net/blog/113914
+	有名な物の紹介と、工数例
+・https://hnavi.co.jp/knowledge/blog/python-web-application/
+	Pythonでのwebアプリケーション
+Laravel
+・https://qiita.com/nunulk/items/78d70ac809948b470bbc
+	Laravelの利点を経験談で
+・https://codezine.jp/article/detail/11231?p=2
+	Laravelの扱い方基礎から
+・https://proengineer.internous.co.jp/content/columnfeature/13814
+	Laravelの特徴
+
+(4)キーワードに関する分野でよく利用される手法・技術
+・サーバ
+・通信エンジン、Photon
+・ruby on rails(ruby)
+・Laravel(PHP)
+・ゲームエンジン
+・ライブラリ
+・Unity(C#)
+
+(5)キーワードに関する分野の頻出単語
+・Unity
+・Photon
+・ニフティ
+・サーバ
+・webアプリケーション
+・通信エンジン
+・ゲームエンジン
+
+(6)キーワードに関する分野の競争の熾烈さ判定
+【レッドオーシャン？】
+個人製作という意味ではブルーオーシャンよりの分野なのかもしれないと感じた。
+書籍や実際に作ってみたというような記事も多いのでレッドオーシャンだとは思うが、
+技術の幅もあり通信エンジンを使用しての制作も多い。

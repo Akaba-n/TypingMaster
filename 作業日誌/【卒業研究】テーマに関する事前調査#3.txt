@@ -1,0 +1,26 @@
+﻿(1)キーワード
+【オンラインゲーム制作】
+・Unity
+・node.js
+・サーバ
+・AWS
+・WebSocket
+
+(2)参考になるサイト
+(3)参考になるサイトについて自分なりのコメント
+・UnityからNode.jsサーバにWebSocketを使ってデータ送信 - Qiita
+	https://qiita.com/nmxi/items/d3a0e787ca67e27ffd17
+	Unityに必要ライブラリの入れ方から実際に動かす所まで
+・Unity+Node.jsで１対１の簡単なオンラインシューティングゲームを作った話　Node.js編 - Qiita
+	https://qiita.com/KyoheiOkawa/items/58ffd8bfcd8c11a693e4
+	実際にNode.jsを使ってSTGを制作している。サーバが動いていればサンプルも遊べる
+・Unityで使うランキング表示用サーバーをNode.js+MySQLで作る | 洋梨日記
+	https://younaship.com/2019/04/28/node-jsmysql%E3%81%A7%E3%83%A9%E3%83%B3%E3%82%AD%E3%83%B3%E3%82%B0%E8%A1%A8%E7%A4%BA%E7%94%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E4%BD%9C%E3%82%8B%E3%81%BE%E3%81%A71/
+	テスト環境としてxamppを使っている
+
+(4)主キーワードに関する分野でよく利用される手法・技術
+・WebSocket
+
+(5)主キーワードに関する分野の頻出単語
+
+(6)主キーワードに関する分野の競争の熾烈さ判定
