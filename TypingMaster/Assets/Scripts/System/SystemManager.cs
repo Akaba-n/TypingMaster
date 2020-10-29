@@ -9,10 +9,11 @@ public class SystemManager : AppDefine {
     public static SystemManager instance;
 
     // 各システム管理系オブジェクト(増やすたびに追加)
-    public SoundManager soundManager   = null;
-    public EffectManager effectManager = null;
-    public FadeManager fadeManager     = null;
-    public DebugManager debugManager   = null;
+    public SoundManager soundManager     = null;
+    public EffectManager effectManager   = null;
+    public FadeManager fadeManager       = null;
+    public DebugManager debugManager     = null;
+    public NetworkManager networkManager = null;
 
     void Awake() {
         // 既に存在しているなら削除

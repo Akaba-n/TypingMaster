@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // シーンの切り替え等
 
-/* TitleSceneでの基本動作クラス */
+/// <summary>
+/// TitleSceneでの基本動作クラス
+/// </summary>
 public class TitleMain : MainBase {
 
     // Scene切り替え時実行
