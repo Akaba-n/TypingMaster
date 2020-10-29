@@ -74,6 +74,8 @@
 (2)今回実行した作業
 以前詰まった部分が分からなくなっているので前回作成したクラス図を元に
 
+売り：相手の通信状況によってストレスが溜まるという事が無いような構造にしたい(安定性？)
+
 (3)使用サイトURL
 ----- UnityでHTTP関連 -----
 UnityでHTTPに接続する
@@ -82,12 +84,16 @@ UnityでHTTP通信してみる
 https://qiita.com/shun-shun123/items/10c7711b129f8d2b7559
 UnityWebRequestで簡単HTTP(POST)通信
 https://beyondjapan.com/blog/2020/05/unitywebrequest/
+UnityからサーバへHTTPリクエストを送り、レスポンスを受け取る
+http://matudozer.blog.fc2.com/blog-entry-31.html
 
 ----- コルーチン関連 -----
 古来よりUnity非同期を実現していたコルーチンとは何者か？
 https://qiita.com/4_mio_11/items/3030f9a39f59cd68f705
 
-(4)問題点：
+(4)気になるポイント
+・HTTP通信にWWWクラスを使っている物とUnityWebRequestを使っている物の差？
 
-(5)やる事
-売りを何にするかを考える
+(5)問題点：
+
+(6)次回までにやる事

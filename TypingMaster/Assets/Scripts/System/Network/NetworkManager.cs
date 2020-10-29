@@ -9,8 +9,30 @@ using UnityEngine.Networking;
 public class NetworkManager : AppDefine {
 
     // 接続先のURL
-    private const string URL = "http://ec2-18-181-251-215.ap-northeast-1.compute.amazonaws.com";
+    private const string URL = "http://ec2-18-181-251-215.ap-northeast-1.compute.amazonaws.com/test/test.php";
     //private const string URL = "http://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060";
+    // サーバへリクエストするデータ
+    string userId = "0";
+    string userName = "waka";
+    string userData = "abc";
+
+    // タイムアウト時間
+    float timeoutsec = 5f;
+
+    private void Start() {
+
+        // サーバ送信データこねこね
+        // POST
+        Dictionary<string, string> dic = new Dictionary<string, string>();
+        dic.Add("id", userId);
+        dic.Add("name", userName);
+        dic.Add("data", userData);
+        StartCoroutine(POSTSend(URL, dic));     // POST送信
+
+        // GET
+        string get_param = "?id=" + userId + "&name=" + userName + "&data=" + userData;
+        StartCoroutine(GETSend(URL + get_param));
+    }
 
     /// <summary>
     /// HTTPにGET接続するコルーチン
@@ -19,21 +41,19 @@ public class NetworkManager : AppDefine {
     /// <returns>GET通信処理</returns>
     IEnumerator GETSend(string url) {
 
-        // URLをGETで用意
-        UnityWebRequest webRequest = UnityWebRequest.Get(url);
-        // URLに接続して結果が戻ってくるまで待機
-        yield return webRequest.SendWebRequest();
+        WWW www = new WWW(url);
 
-        // エラーが出ていないかチェック
-        if (webRequest.isNetworkError) {
+        // CheckTimeOut()の終了を待つ。5秒過ぎたらタイムアウト
+        yield return StartCoroutine(CheckTimeOut(www, timeoutsec));
 
-            // 通信失敗時処理
-            Debug.Log(webRequest.error);
+        if (www.error != null) {
+
+            Debug.Log("GETError : " + www.error);
         }
-        else {
+        else if (www.isDone) {
 
-            // 通信成功時処理
-            Debug.Log(webRequest.downloadHandler.text);
+            // サーバからのレスポンスを表示
+            Debug.Log("GETSuccess : " + www.text);
         }
     }
 
@@ -42,28 +62,50 @@ public class NetworkManager : AppDefine {
     /// </summary>
     /// <param name="url">接続先URL</param>
     /// <returns>POST通信処理</returns>
-    IEnumerator POSTSend(string url) {
+    IEnumerator POSTSend(string url, Dictionary<string, string> post) {
 
         WWWForm form = new WWWForm();
-        form.AddField("zipcode", 1000001);
+        foreach(KeyValuePair<string, string> post_arg in post) {
 
-        // URLをPOSTで用意
-        UnityWebRequest webRequest = UnityWebRequest.Post(url, form);
-        // UnityWebRequestにバッファをセット
-        webRequest.downloadHandler = new DownloadHandlerBuffer();
-        // URLに接続して結果が戻ってくるまで待機
-        yield return webRequest.SendWebRequest();
+            form.AddField(post_arg.Key, post_arg.Value);
+        }
+
+        WWW www = new WWW(url, form);
+
+        // CheckTimeOut()の終了を待つ。5秒を過ぎたらタイムアウト
+        yield return StartCoroutine(CheckTimeOut(www, timeoutsec));
 
         // エラーが出ていないかチェック
-        if (webRequest.isNetworkError) {
+        if (www.error != null) {
 
             // 通信失敗時処理
-            Debug.Log(webRequest.error);
+            Debug.Log("POSTError : " + www.error);
         }
-        else {
+        else if (www.isDone) {
 
             // 通信成功時処理
-            Debug.Log(webRequest.downloadHandler.text);
+            Debug.Log("POSTSuccess : " + www.text);
         }
+    }
+
+    IEnumerator CheckTimeOut(WWW www, float timeout) {
+
+        // 要求時の時間の取得
+        float requestTime = Time.time;
+
+        while (!www.isDone) {   // 通信完了まで
+
+            if (Time.time - requestTime < timeout) {    // 時間計測
+
+                yield return null;
+            }
+            else {
+
+                Debug.Log("TimeOut");   // タイムアウト
+                break;
+            }
+        }
+
+        yield return null;
     }
 }
