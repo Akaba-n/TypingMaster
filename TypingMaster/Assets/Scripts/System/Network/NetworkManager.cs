@@ -12,17 +12,21 @@ public class NetworkManager : AppDefine {
     [SerializeField] private HttpGet httpGet;
     [SerializeField] private HttpPost httpPost;
 
+    // 接続状況確認用
+    public static NETWORK_STATE networkState;
+
     // 接続先のURL
     private const string URL = "http://ec2-18-181-251-215.ap-northeast-1.compute.amazonaws.com/test/test.php";
     //private const string URL = "http://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060";
-    // サーバへリクエストするデータ
+    
+    // サーバへリクエストするデータ(仮)
     private string userId = "0";
     private string userName = "waka";
     private string userData = "abc";
 
     private void Start() {
 
-        // サーバ送信データこねこね
+        // サーバ送信データこねこね(仮)
         // POST
         Dictionary<string, string> dic = new Dictionary<string, string>();
         dic.Add("id", userId);

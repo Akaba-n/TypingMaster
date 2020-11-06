@@ -2,6 +2,15 @@
 【研究内容】HTTP通信と何かで通信速度の比較？
 			UnityWebRequestと別の何かとか？
 
+【売り】相手の通信状況によってストレスが溜まるという事が無いような構造にしたい(安定性？)
+		情報処理学科の視点からゲームエンジンのクラスの比較などを逐一行いゲーム制作の手伝いになるような(?)研究
+
+		制作＋比較・研究
+		気になったことは逐一比較しつつ制作を進める
+			・Unityのオブジェクトの比較
+				→情報処理学科からの視点で
+
+
 (1)作業項目毎の進捗状況と評価：
 －－－－－＋－－－＋－－－＋－－－－－－－－－－－－－－－－－－－－－－－－－－
 作業項目　　〆切　　進捗　　補足説明
@@ -73,47 +82,31 @@
 －－－－－＋－－－＋－－－＋－－－－－－－－－－－－－－－－－－－－－－－－－－
 
 (2)今回実行した作業
-以前詰まった部分が分からなくなっているので前回作成したクラス図を元に
 
-売り：相手の通信状況によってストレスが溜まるという事が無いような構造にしたい(安定性？)
 
 (3)使用サイトURL
------ UnityでHTTP関連 -----
-UnityでHTTPに接続する
-https://qiita.com/ponchan/items/65aeb43e8fea8da0bcac
-UnityでHTTP通信してみる
-https://qiita.com/shun-shun123/items/10c7711b129f8d2b7559
-UnityWebRequestで簡単HTTP(POST)通信
-https://beyondjapan.com/blog/2020/05/unitywebrequest/
-UnityからサーバへHTTPリクエストを送り、レスポンスを受け取る
-http://matudozer.blog.fc2.com/blog-entry-31.html
-
------ コルーチン関連 -----
-古来よりUnity非同期を実現していたコルーチンとは何者か？
-https://qiita.com/4_mio_11/items/3030f9a39f59cd68f705
-
------ ローカルにデータの保管 -----
-Unityでユーザーデータをローカルにファイルとして保存する
-https://qiita.com/tricrow/items/ff51bce01ae2139a6fcd
-
------ AWS関連 -----
-チュートリアル: Amazon Linux 2 に LAMP ウェブサーバーをインストールする
-https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-lamp-amazon-linux-2.html
-
------ LINUX関連 -----
-ｖｉエディタの使い方
-https://prev.net-newbie.com/linux/commands/vi.html
-逆引きUNIXコマンド/viでタブ幅を設定する方法
-https://linux.just4fun.biz/?%E9%80%86%E5%BC%95%E3%81%8DUNIX%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/vi%E3%81%A7%E3%82%BF%E3%83%96%E5%B9%85%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95#y59285fb
+----- ファイル操作関連 -----
+C#でファイルの読み込みと書き込み
+https://gametukurikata.com/csharp/readwritefile
 
 (4)気になるポイント
 ・HTTP通信にWWWクラスを使っている物とUnityWebRequestを使っている物の差
 	→今回はWWWクラスを使ったけどUnityWebRequestを使った方が柔軟性高くなりそう？
-	　一旦このまま
 
-(5)問題点：
-これで良いのかが分からない事
+
+(5)問題点
+
 
 (6)次回までにやる事
-タイピングゲーム部分の作成
-ユーザー情報が絡んでくる部分の設計の詰め
+・タイピングゲーム部分の作成
+	・問題文の作成
+		→CSVファイルの形式で日本語文とひらがな文が入っている形式の物
+	・問題文の表示
+・ユーザー情報が絡んでくる部分の設計の詰め
+・UnityWebRequestとWWWクラスの比較
+
+
+(7)メモ
+・問題文データセットは初期サンプルを除いてオンラインからダウンロードする形式
+	ページから追加も出来る。
+・時間毎のKPMのグラフ化

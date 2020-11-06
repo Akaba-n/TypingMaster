@@ -16,6 +16,12 @@ public class AppDefine : MonoBehaviour
         CHANGE_WAIT
     };
 
+    // サーバ接続状況
+    public enum NETWORK_STATE {
+        OFFLINE,
+        ONLINE
+    };
+
     // サウンドの種類
     public enum SOUND_TYPE {
         BGM,
