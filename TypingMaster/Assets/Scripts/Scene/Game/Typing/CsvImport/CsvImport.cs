@@ -13,20 +13,19 @@ public class CsvImport : MonoBehaviour {
     /// <summary>
     /// 問題文データセットのCSVファイルを読み込みListの形で返すメソッド
     /// </summary>
-    /// <param name="dataSetName">取得データセット名</param>
+    /// <param name="datasetName">取得データセット名</param>
     /// <returns>問題文データセット</returns>
-    public List<(string jp, string h)> dataSetImport(string dataSetName) {
+    public List<(string jp, string h)> datasetImport(string datasetName) {
 
         var tmpList = new List<(string jp, string h)>();
 
         // ResourceフォルダからCSVファイルの読み込み
-        csvFile = Resources.Load("Sentences/" + dataSetName) as TextAsset;
+        csvFile = Resources.Load("Sentences/" + datasetName) as TextAsset;
         StringReader reader = new StringReader(csvFile.text);
 
         // "," で分割しつつ一行ずつ読み込み
         // リストに追加
-        while (reader.Peek() != -1)
-        {
+        while (reader.Peek() != -1) {
 
             string line = reader.ReadLine();    // 一行ずつ読み込み
             var tmp = line.Split(',');          // "," 区切り(配列の形)

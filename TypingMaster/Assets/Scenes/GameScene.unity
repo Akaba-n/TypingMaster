@@ -841,8 +841,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1399382122}
+  - component: {fileID: 1399382123}
   m_Layer: 0
-  m_Name: Sentence
+  m_Name: TypingManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -865,6 +866,23 @@ Transform:
   m_Father: {fileID: 1398367926}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1399382123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399382121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3e110cfcb137f4aacb85bf12db8b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  csvImport: {fileID: 935599728}
+  htoRClass: {fileID: 1908094543}
+  JpText: {fileID: 1614961554}
+  HrText: {fileID: 15722594}
+  RmText: {fileID: 1875882286}
 --- !u!1 &1614961552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,6 +1123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1908094542}
   - component: {fileID: 1908094543}
+  - component: {fileID: 1908094544}
   m_Layer: 0
   m_Name: HiraToRom
   m_TagString: Untagged
@@ -1136,6 +1155,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07823e58b0b9b94479d9c1a22f1832c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  htoRMap: {fileID: 0}
+--- !u!114 &1908094544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908094541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed4459d22a0fde40b63bf4f80a01b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2145730570

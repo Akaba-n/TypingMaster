@@ -12,10 +12,11 @@ using UnityEngine;
 /// <summary>
 /// ひらがな文をローマ字文に変換する用のクラス
 /// </summary>
-public class HtoRClass : MonoBehaviour {
+public class HtoRClass : HtoRMap {
 
     // ひらがな→ローマ字Map呼び出し
-    private Dictionary<string, string[]> mp = HtoRMap.HR_MAP;
+    [SerializeField] private HtoRMap htoRMap;
+    private Dictionary<string, string[]> mp = HR_MAP;
 
     /// <summary>
     /// ひらがな文をローマ字に変換するメソッド
