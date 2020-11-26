@@ -63,8 +63,6 @@ public class TypingManager : GameDefine {
     }
     // 経過時間
     public static double TotalTypingTime;
-    // 正解済み問題数
-    private int tasksCompleted;
 
     //// ゲーム内使用変数
     // 問題数
@@ -156,7 +154,6 @@ public class TypingManager : GameDefine {
         TotalTypingTime = 0f;
         Kpm = 0f;
         Accuracy = 0f;
-        tasksCompleted = 0;
         isRecMistype = false;
         MisTypeDictionary = new Dictionary<string, int>();
         keyQueue.Clear();
@@ -409,22 +406,27 @@ public class TypingManager : GameDefine {
     private void CompleteTask() {
 
         // 完了済み問題数の追加
-        tasksCompleted++;
+        CorrectTaskNum++;
         double currentTime = Time.realtimeSinceStartup; // 完了時間の保存
         // KPMの計算
         KeyPerMinute(currentTime);
         keyQueue.Clear();
 
         // 終了処理
-        if(tasksCompleted >= Tasks) {
+        if(CorrectTaskNum >= Tasks) {
 
             finished();
+        }
+        else {
+
+            NextSentence();
         }
     }
 
     private void finished() {
 
         // リザルト表示
+        Debug.Log("FINISH");
     }
 
     /// <summary>
@@ -636,12 +638,12 @@ public class TypingManager : GameDefine {
         double ret;
         if (Math.Abs(firstCharInputTime - lastUpdateTime) <= INTERVAL) {
 
-            Debug.Log(tasksCompleted.ToString() + " -> time:" + (currentTime - firstCharInputTime).ToString());
+            Debug.Log(CorrectTaskNum.ToString() + " -> time:" + (currentTime - firstCharInputTime).ToString());
             ret = currentTime - firstCharInputTime;
         }
         else {
 
-            Debug.Log(tasksCompleted.ToString() + " -> time(late):" + (currentTime - (lastUpdateTime + INTERVAL)).ToString());
+            Debug.Log(CorrectTaskNum.ToString() + " -> time:" + (currentTime - firstCharInputTime).ToString());
             ret = currentTime - (lastUpdateTime + INTERVAL);
         }
         return ret;
