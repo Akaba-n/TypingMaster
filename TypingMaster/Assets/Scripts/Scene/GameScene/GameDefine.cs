@@ -5,12 +5,13 @@ using UnityEngine;
 /// <summary>
 /// ゲームの基底クラス
 /// </summary>
-public class GameDefine : AppDefine {
+public class GameDefine : MainBase {
     
     public enum GAME_STATE {   // ゲームシーンの状態(仮のSCENEのような物)
-        CONFIG,
-        MAIN,
-        RESULT
+        //CONFIG,   // 設定はモード選択画面で行う
+        COUNTDOWN,      // カウントダウン
+        TYPING,     // タイピング部分
+        RESULT      // リザルト部分
     };
     public enum GAME_MODE {     // ゲームモード
         SOLO,

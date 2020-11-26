@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisplaySentence : MonoBehaviour {
-
+public class TypingDefine : GameDefine {
     
 
-    
-
-    
 }

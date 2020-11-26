@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // シーンの切り替え等
 
-public class GameMain : MainBase {
+public class GameMain : GameDefine {
 
     [SerializeField] Camera mainCamera = null;
+
+    // タイピング部分の状態遷移管理
+    public static GAME_STATE gState;
 
     //// Scene遷移時動作 ////
     protected override void Start(){
@@ -40,17 +43,13 @@ public class GameMain : MainBase {
             // シーン中動作
             case SCENE_STATE.PLAY:
 
-                // Zキーを押したとき
-                if (Input.GetKeyDown(KeyCode.Z)) {
-
-                    effectManager.CreateEffect("ef001", Vector3.zero);
-                }
-
-                // スペースキーを押したとき
-                if (Input.GetKeyDown(KeyCode.Space)) {
-
-                    soundManager.Play(SOUND_TYPE.BGM, "bgm101");    // ファンファーレ的なものなのでループ無し
-                    status = SCENE_STATE.CLEAR;
+                switch (gState) {
+                    case GAME_STATE.COUNTDOWN:
+                        break;
+                    case GAME_STATE.TYPING:
+                        break;
+                    case GAME_STATE.RESULT:
+                        break;
                 }
                 break;
 

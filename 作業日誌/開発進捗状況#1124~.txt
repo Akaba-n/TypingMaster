@@ -101,6 +101,11 @@ https://gametukurikata.com/csharp/readwritefile
 	→今回はWWWクラスを使ったけどUnityWebRequestを使った方が柔軟性高くなりそう？
 
 
+世の中の認識と通信規格の実態が合っているかどうかの比較
+小論文10枚程度
+	技術要素を入れる
+	何故その技術を使ったのか
+
 (5)問題点
 
 
