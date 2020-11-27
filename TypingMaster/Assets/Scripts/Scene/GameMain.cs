@@ -5,7 +5,14 @@ using UnityEngine.SceneManagement;  // シーンの切り替え等
 
 public class GameMain : MainBase {
 
-    [SerializeField] Camera mainCamera = null;
+    // ゲームシーンの状態
+    public enum GAME_STATE {
+
+        COUNTDOWN,
+        TYPING,
+        RESULT
+    };
+    public static GAME_STATE gState;
 
     //// Scene遷移時動作 ////
     protected override void Start(){
@@ -13,15 +20,18 @@ public class GameMain : MainBase {
         // 全Scene共通部分
         base.Start();
 
+        // タイピングシーンの状態初期化
+        gState = GAME_STATE.COUNTDOWN;
+
         // エフェクトのロード
-        effectManager.Load("ef001");
+        //effectManager.Load("ef001");
 
         // サウンドのロード
-        soundManager.Load(SOUND_TYPE.BGM, "bgm002");
-        soundManager.Load(SOUND_TYPE.BGM, "bgm101");
+        //soundManager.Load(SOUND_TYPE.BGM, "bgm002");
+        //soundManager.Load(SOUND_TYPE.BGM, "bgm101");
 
         // サウンドの再生
-        soundManager.Play(SOUND_TYPE.BGM, "bgm002", true);
+        //soundManager.Play(SOUND_TYPE.BGM, "bgm002", true);
     }
 
     void Update() {
@@ -40,17 +50,15 @@ public class GameMain : MainBase {
             // シーン中動作
             case SCENE_STATE.PLAY:
 
-                // Zキーを押したとき
-                if (Input.GetKeyDown(KeyCode.Z)) {
+                switch (gState) {
 
-                    effectManager.CreateEffect("ef001", Vector3.zero);
-                }
-
-                // スペースキーを押したとき
-                if (Input.GetKeyDown(KeyCode.Space)) {
-
-                    soundManager.Play(SOUND_TYPE.BGM, "bgm101");    // ファンファーレ的なものなのでループ無し
-                    status = SCENE_STATE.CLEAR;
+                    case GAME_STATE.COUNTDOWN:
+                        break;
+                    case GAME_STATE.TYPING:
+                        break;
+                    case GAME_STATE.RESULT:
+                        status = SCENE_STATE.CLEAR;
+                        break;
                 }
                 break;
 

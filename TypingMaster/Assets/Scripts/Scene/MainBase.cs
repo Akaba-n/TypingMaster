@@ -7,10 +7,10 @@ public class MainBase : AppDefine {
 
     // システムマネージャーのインスタンスの格納
     //public SystemManager    systemManager   = null;
-    public SoundManager     soundManager    = null;
-    public FadeManager      fadeManager     = null;
-    public EffectManager    effectManager   = null;
-    public DebugManager     debugManager    = null;
+    public static SoundManager     soundManager    = null;
+    public static FadeManager      fadeManager     = null;
+    public static EffectManager    effectManager   = null;
+    public static DebugManager     debugManager    = null;
 
     public SCENE_STATE status = SCENE_STATE.START;
 
