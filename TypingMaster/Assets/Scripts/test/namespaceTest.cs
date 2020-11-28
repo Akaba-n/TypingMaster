@@ -15,8 +15,11 @@ public class namespaceTest : MonoBehaviour {
     // Start is called before the first frame update
     private void Start() {
 
-        pData.enteredSentence = "aaa";
-        eData.enteredSentence = "bbb";
+        PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_ID, "00000001");
+        PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_NAME, "Sample");
+
+        pData.enteredSentence = PlayerPrefsKey.PLAYER_ID;
+        eData.enteredSentence = PlayerPrefsKey.PLAYER_NAME;
 
         playerRmText.text = pData.enteredSentence;
         enemyRmText.text = eData.enteredSentence;
