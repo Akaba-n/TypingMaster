@@ -13,7 +13,7 @@ public class PlayerActionDirector : TypingData {
     public Queue<KeyCode> keyQueue = new Queue<KeyCode>();   // キーコードの格納   
     public Queue<double> timeQueue = new Queue<double>();    // 入力タイミングの格納
     // 入力された際に発生する情報
-    public static double lastJudgeTime;     // 最後に判定が起こった時刻
+    public double lastJudgeTime;     // 最後に判定が起こった時刻
     // 問題文データセット格納List
     public List<(string jp, string h, List<List<string>> rm)> qSen = new List<(string jp, string h, List<List<string>> rm)>();  // 実際に出題する問題の格納List
     public List<List<string>> sentenceTyping = new List<List<string>>();    // ローマ字入力候補
