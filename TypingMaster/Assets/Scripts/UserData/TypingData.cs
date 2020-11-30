@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Game;
 
 /// <summary>
 /// Game中情報クラス

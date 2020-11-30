@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Game;
 
 /// <summary>
 /// プレイヤー情報クラス
 /// </summary>
-public class UserData : GameDefine {
+public class UserData : MonoBehaviour {
 
     /*----- Player情報関連 -----*/
     public string playerId;      // PlayerID

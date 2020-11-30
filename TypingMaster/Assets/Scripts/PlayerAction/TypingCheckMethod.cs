@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Game;
 
-public class TypingCheckMethod : PlayerTyping {
+public class TypingCheckMethod : PlayerActionManager {
     
     /// <summary>
     /// keyQueueにKeyCodeが格納されているかでタイピングチェックするメソッド
@@ -30,8 +29,6 @@ public class TypingCheckMethod : PlayerTyping {
                 return;
             }
         }
-
-        
     }
 
     private void MisTypeCheck(KeyCode kc) {
