@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game {
+namespace Data {
 
     /// <summary>
     /// PlayerPrefsで扱うPlayerID,PlayerName,その他configのキー名の保管クラス

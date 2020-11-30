@@ -7,7 +7,7 @@ using Game;
 /// <summary>
 /// Game中情報クラス
 /// </summary>
-public class TypingData : PlayerData {
+public class TypingData : UserData {
 
     /*----- Game中情報関連 -----*/
     public string enteredSentence;      // 入力済み文字列(灰色表示部分)

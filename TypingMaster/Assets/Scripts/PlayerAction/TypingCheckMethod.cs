@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game;
 
-public class TypingCheckMethod : TypingDirector {
+public class TypingCheckMethod : PlayerTyping {
     
     /// <summary>
     /// keyQueueにKeyCodeが格納されているかでタイピングチェックするメソッド

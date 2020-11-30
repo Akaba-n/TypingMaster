@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game;
 
-public class OnGuiMethod : TypingDirector {
+public class OnGuiMethod : PlayerActionDirector {
 
     /// <summary>
     /// キー入力判定をし、入力したキーをキューに格納(キー入力の回数に合わせて1f当たりに複数回実行)

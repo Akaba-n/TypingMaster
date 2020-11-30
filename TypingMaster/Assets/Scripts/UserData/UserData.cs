@@ -6,7 +6,7 @@ using Game;
 /// <summary>
 /// プレイヤー情報クラス
 /// </summary>
-public class PlayerData : GameDefine {
+public class UserData : GameDefine {
 
     /*----- Player情報関連 -----*/
     public string playerId;      // PlayerID
