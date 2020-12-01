@@ -12,6 +12,8 @@ public class PlayerActionDirector : TypingData {
     // 入力されたキーの情報格納キュー
     public Queue<KeyCode> keyQueue = new Queue<KeyCode>();   // キーコードの格納   
     public Queue<double> timeQueue = new Queue<double>();    // 入力タイミングの格納
+    // 入力されたキーを格納するList
+    public List<KeyCode> keyList = new List<KeyCode>();     // そのフレームの入力キーを入力順に格納
     // 入力された際に発生する情報
     public double lastJudgeTime;     // 最後に判定が起こった時刻
     // 問題文データセット格納List
@@ -22,6 +24,11 @@ public class PlayerActionDirector : TypingData {
     public List<List<int>> indexAdd = new List<List<int>>();         // 追加する文字数(1f中に何回もキータイプがあった時用)
     public List<List<int>> sentenceIndex = new List<List<int>>();    // 各入力候補の文字数
     public List<List<bool>> sentenceValid;                           // 各入力候補の可否判定
+    // 例外処理判定関連
+    public bool acceptSingleN;      // "ん"のn1回可否判定
+    // ミスタイプ判定関連
+    public bool isRecMistype;       // ミスタイプ中か判定
+    public Dictionary<string, int> MisTypeDictionary;    // 苦手キーDict
 }
 
 
