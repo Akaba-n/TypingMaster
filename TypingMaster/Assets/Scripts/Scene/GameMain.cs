@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;  // シーンの切り替え等
 
 public class GameMain : MainBase {
 
-    [SerializeField] private PlayerActionManager pa;
+    [SerializeField] private GameActionManager ga;
 
     // ゲームシーンの状態
     public enum GAME_STATE {
@@ -57,12 +57,12 @@ public class GameMain : MainBase {
                     case GAME_STATE.COUNTDOWN:
 
                         // 遷移処理
-                        pa.isInputValid = true;
+                        ga.isInputValid = true;
                         gState = GAME_STATE.TYPING;
                         break;
                     case GAME_STATE.TYPING:
 
-                        pa.GameSceneTypingCheck();
+                        ga.GameSceneTypingCheck();
                         break;
                     case GAME_STATE.RESULT:
 

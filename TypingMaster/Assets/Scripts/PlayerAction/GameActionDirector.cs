@@ -5,17 +5,8 @@ using UnityEngine;
 /// <summary>
 /// タイピング動作関連基底クラス(Playerにしか関係ない)
 /// </summary>
-public class PlayerActionDirector : TypingData {
+public class GameActionDirector : PlayerActionBase {
 
-    // 入力可否判定
-    public bool isInputValid;
-    // 入力されたキーの情報格納キュー
-    public Queue<KeyCode> keyQueue = new Queue<KeyCode>();   // キーコードの格納   
-    public Queue<double> timeQueue = new Queue<double>();    // 入力タイミングの格納
-    // 入力されたキーを格納するList
-    public List<KeyCode> keyList = new List<KeyCode>();     // そのフレームの入力キーを入力順に格納
-    // 入力された際に発生する情報
-    public double lastJudgeTime;     // 最後に判定が起こった時刻
     // 問題文データセット格納List
     public List<(string jp, string h, List<List<string>> rm)> qSen = new List<(string jp, string h, List<List<string>> rm)>();  // 実際に出題する問題の格納List
     public List<List<string>> sentenceTyping = new List<List<string>>();    // ローマ字入力候補
@@ -28,7 +19,6 @@ public class PlayerActionDirector : TypingData {
     public bool acceptSingleN;      // "ん"のn1回可否判定
     // ミスタイプ判定関連
     public bool isRecMistype;       // ミスタイプ中か判定
-    public Dictionary<string, int> MisTypeDictionary;    // 苦手キーDict
 }
 
 

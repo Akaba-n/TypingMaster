@@ -2,32 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TypingCheckMethod : MonoBehaviour {
+
+public class GameTypingCheckMethod : MonoBehaviour {
 
     /*---------- オブジェクトのインスタンス作成 ----------*/
-    [SerializeField] private PlayerActionManager pa;
+    [SerializeField] private GameActionManager ga;
     [SerializeField] private CorrectMethod cr;
-    
+
     /// <summary>
-    /// keyQueueにKeyCodeが格納されているかでタイピングチェックするメソッド
+    /// keyQueueにKeyCodeが格納されているかでタイピングチェックするメソッド(全シーン共通)
     /// </summary>
-    public List<KeyCode> TypingCheck() {
+    public List<KeyCode> GameTypingCheck() {
 
         // 返す値の初期化
         var ret = new List<KeyCode>();
 
         // keyQueueに情報が入っている時
-        while(pa.keyQueue.Count > 0) {
+        while (ga.keyQueue.Count > 0) {
 
             // keyQueueに入っているKeyCodeの取得(Queue.Peek()で取得、Dequeue()で取り出し)
-            KeyCode kc = pa.keyQueue.Peek();
-            pa.keyQueue.Dequeue();
+            KeyCode kc = ga.keyQueue.Peek();
+            ga.keyQueue.Dequeue();
             // キー入力時刻の取得
-            double keyDownTime = pa.timeQueue.Peek();
-            pa.timeQueue.Dequeue();
+            double keyDownTime = ga.timeQueue.Peek();
+            ga.timeQueue.Dequeue();
 
             // timeQueueに入っている時刻が最後に判定があった時刻より早かったら整合性が無いのでスキップ
-            if (keyDownTime <= pa.lastJudgeTime) { continue; }
+            if (keyDownTime <= ga.lastJudgeTime) { continue; }
             // 入力キーの確認(デバッグ用)
             Debug.Log(kc);
 
@@ -35,6 +36,7 @@ public class TypingCheckMethod : MonoBehaviour {
         }
         return ret;
     }
+
 
     /// <summary>
     /// escキーが押された場合に目―ニュー画面を開くメソッド
@@ -63,39 +65,39 @@ public class TypingCheckMethod : MonoBehaviour {
         string str = "";
 
         // 全てのvalid(有効)なセンテンスに対してチェックする
-        for (var i = 0; i < pa.sentenceTyping[pa.index].Count; ++i) {
+        for (var i = 0; i < ga.sentenceTyping[ga.index].Count; ++i) {
 
             // validの場合
-            if (pa.sentenceValid[pa.index][i]) {
+            if (ga.sentenceValid[ga.index][i]) {
 
-                int j = pa.sentenceIndex[pa.index][i];
-                KeyCode nextKC = GetKeyCode(pa.sentenceTyping[pa.index][i][j]);
+                int j = ga.sentenceIndex[ga.index][i];
+                KeyCode nextKC = GetKeyCode(ga.sentenceTyping[ga.index][i][j]);
             
                 // "ん"の処理処理(n1個でもokの時に2個目のnが来た時の例外処理)
-                if(pa.acceptSingleN && KeyCode.N == kc) {
+                if(ga.acceptSingleN && KeyCode.N == kc) {
 
                     isMistype = false;
-                    pa.indexAdd[pa.index][i] = 0;
+                    ga.indexAdd[ga.index][i] = 0;
                     str = "n";
                 }
                 // 正解タイピング時
                 else if(kc == nextKC) {
 
                     isMistype = false;
-                    pa.indexAdd[pa.index][i] = 1;
-                    str = pa.sentenceTyping[pa.index][i][j].ToString();
+                    ga.indexAdd[ga.index][i] = 1;
+                    str = ga.sentenceTyping[ga.index][i][j].ToString();
                 }
                 // 不正解タイピング時
                 else {
 
-                    pa.indexAdd[pa.index][i] = 0;
+                    ga.indexAdd[ga.index][i] = 0;
                 }
             }
 
             if (!isMistype) {
 
                 ///// 正解タイプ時処理 /////
-                //cr.Correct(str, );
+                cr.Correct(str, ga.acceptSingleN);
             }
             else {
 

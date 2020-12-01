@@ -18,6 +18,7 @@ public class TypingData : UserData {
     public double TotalTypingTime;  // 総合経過時間
     public double Kpm;              // KPM
     public double Accuracy;         // 正答率
+    public Dictionary<string, int> MisTypeDictionary;    // 苦手キーDict
 
     /*----- 記録計算関連 -----*/
     /// <summary>

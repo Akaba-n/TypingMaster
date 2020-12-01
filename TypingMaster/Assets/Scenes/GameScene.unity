@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: 0
-  pa: {fileID: 2084916061}
+  ga: {fileID: 0}
   gState: 0
 --- !u!4 &48910873
 Transform:
@@ -202,7 +202,7 @@ Transform:
   - {fileID: 1240586353}
   - {fileID: 984793035}
   m_Father: {fileID: 2084916060}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &262926732
 MonoBehaviour:
@@ -213,10 +213,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 262926730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d7448d206b988d4791094b3e9986822, type: 3}
+  m_Script: {fileID: 11500000, guid: d6524bbd18b7988449b2a4e9ed12b7d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pa: {fileID: 2084916061}
+  ga: {fileID: 2084916061}
+  cr: {fileID: 0}
 --- !u!1 &268144541
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,50 +635,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643994639}
   m_CullTransparentMesh: 0
---- !u!1 &656356186
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 656356187}
-  - component: {fileID: 656356188}
-  m_Layer: 0
-  m_Name: OnGuiMethod
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &656356187
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656356186}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2084916060}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &656356188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656356186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37996ef6d346535409ad6c845412f7a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pa: {fileID: 2084916061}
 --- !u!1 &865584680
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,6 +909,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1240586353}
+  - component: {fileID: 1240586354}
   m_Layer: 0
   m_Name: Correct
   m_TagString: Untagged
@@ -973,6 +931,20 @@ Transform:
   m_Father: {fileID: 262926731}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1240586354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240586352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df75382b2958f4648b4f57e0e84a262f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ptd: {fileID: 1479703122}
+  ga: {fileID: 2084916061}
 --- !u!1 &1292531161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,6 +1031,7 @@ GameObject:
   - component: {fileID: 1479703120}
   - component: {fileID: 1479703119}
   - component: {fileID: 1479703121}
+  - component: {fileID: 1479703122}
   m_Layer: 5
   m_Name: PlayerPanel
   m_TagString: Untagged
@@ -1140,6 +1113,28 @@ MonoBehaviour:
   _jpText: {fileID: 1946622929}
   _hrText: {fileID: 268144543}
   _rmText: {fileID: 2104468022}
+--- !u!114 &1479703122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479703117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a329110d7cf9fb948a140624137c8ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerId: 
+  playerName: 
+  enteredSentence: 
+  notEnteredSentence: 
+  CorrectTypeNum: 0
+  MisTypeNum: 0
+  CorrectTaskNum: 0
+  TotalTypingTime: 0
+  Kpm: 0
+  Accuracy: 0
 --- !u!1 &1870378758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,7 +1319,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 656356187}
   - {fileID: 262926731}
   m_Father: {fileID: 48910873}
   m_RootOrder: 2
@@ -1341,22 +1335,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0308d9c14b621a4eabd7b136c510336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 
-  playerName: 
-  enteredSentence: 
-  notEnteredSentence: 
-  CorrectTypeNum: 0
-  MisTypeNum: 0
-  CorrectTaskNum: 0
-  TotalTypingTime: 0
-  Kpm: 0
-  Accuracy: 0
+  tc: {fileID: 0}
   isInputValid: 0
   keyList: 
   lastJudgeTime: 0
   index: 0
   acceptSingleN: 0
-  tc: {fileID: 262926732}
+  isRecMistype: 0
 --- !u!1 &2104468020
 GameObject:
   m_ObjectHideFlags: 0
