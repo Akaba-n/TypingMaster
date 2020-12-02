@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// CSVファイルから問題文を呼び出すクラス
 /// </summary>
-public class CsvImport : MonoBehaviour {
+public class CsvImport {
     
     TextAsset csvFile;  //　CSVファイル
 

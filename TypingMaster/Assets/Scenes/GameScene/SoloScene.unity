@@ -151,10 +151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: 0
-  ga: {fileID: 2084916061}
   gc: {fileID: 674426537}
+  ig: {fileID: 1486316198}
+  ga: {fileID: 2084916061}
+  td: {fileID: 1419018896}
   tUI: {fileID: 1510218053}
-  playerInit: {fileID: 1486316198}
   gState: 0
   tState: 0
 --- !u!4 &48910873
@@ -171,6 +172,7 @@ Transform:
   - {fileID: 1025959039}
   - {fileID: 2145730572}
   - {fileID: 674426536}
+  - {fileID: 1419018895}
   - {fileID: 1486316197}
   - {fileID: 1918370058}
   - {fileID: 1510918685}
@@ -927,7 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df75382b2958f4648b4f57e0e84a262f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ptd: {fileID: 0}
+  td: {fileID: 1419018896}
   ga: {fileID: 2084916061}
 --- !u!1 &1292531161
 GameObject:
@@ -1028,13 +1030,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419018894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -191.65108, z: -598.5968}
-  m_LocalScale: {x: 6.6510754, y: 6.6510754, z: 6.6510754}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1143373799}
-  - {fileID: 1555903174}
-  m_Father: {fileID: 1479703118}
-  m_RootOrder: 4
+  m_Father: {fileID: 48910873}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1419018896
 MonoBehaviour:
@@ -1050,6 +1051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerId: 
   playerName: 
+  ur: {fileID: 1143373800}
   enteredSentence: 
   notEnteredSentence: 
   CorrectTypeNum: 0
@@ -1091,7 +1093,6 @@ RectTransform:
   - {fileID: 268144542}
   - {fileID: 2104468021}
   - {fileID: 1510218052}
-  - {fileID: 1419018895}
   m_Father: {fileID: 353648279}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1167,7 +1168,7 @@ Transform:
   m_Children:
   - {fileID: 1969916944}
   m_Father: {fileID: 48910873}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1486316198
 MonoBehaviour:
@@ -1260,53 +1261,8 @@ Transform:
   - {fileID: 2084916060}
   - {fileID: 353648279}
   m_Father: {fileID: 48910873}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1555903173
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1555903174}
-  - component: {fileID: 1555903175}
-  m_Layer: 0
-  m_Name: UpdatePlayerNewSentence
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1555903174
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555903173}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1419018895}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1555903175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555903173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5edfa37a49ae7f84baa57edd44e75023, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ga: {fileID: 2084916061}
-  td: {fileID: 1419018896}
 --- !u!1 &1843740563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,7 +1336,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 48910873}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1946622927
 GameObject:
@@ -1532,7 +1488,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 48910873}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2084916059
 GameObject:
@@ -1585,9 +1541,9 @@ MonoBehaviour:
   acceptSingleN: 0
   isRecMistype: 0
   tc: {fileID: 380120112}
-  ur: {fileID: 0}
-  tUI: {fileID: 0}
-  td: {fileID: 0}
+  tUI: {fileID: 1510218053}
+  td: {fileID: 1419018896}
+  ig: {fileID: 1486316198}
 --- !u!1 &2104468020
 GameObject:
   m_ObjectHideFlags: 0

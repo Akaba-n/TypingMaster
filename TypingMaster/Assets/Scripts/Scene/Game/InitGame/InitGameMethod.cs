@@ -12,7 +12,6 @@ public class InitGameMethod : MonoBehaviour {
     [SerializeField] private GameConfig gc;
     [SerializeField] private InitTypingDataMethod pid;  // PlayerのTypingData
     
-    
     /// <summary>
     /// GameSceneの初期化メソッド(SOLOモード用)
     /// </summary>
@@ -31,6 +30,7 @@ public class InitGameMethod : MonoBehaviour {
         pid.InitTypingData();
         ///// サーバから問題データを取得する処理 /////
     }
+
     /// <summary>
     /// GameConfig関連初期化メソッド
     /// </summary>
@@ -40,14 +40,23 @@ public class InitGameMethod : MonoBehaviour {
         gc.Tasks = PlayerPrefs.GetInt(~~, 0);*/
     }
     /// <summary>
-    /// GameAction関連初期化メソッド
+    /// GameAction関連の初期化処理
     /// </summary>
     public void InitGameAction() {
 
         ga.keyQueue.Clear();        // キー格納キュー初期化
         ga.timeQueue.Clear();       // 時間格納キュー初期化
         ga.isRecMistype = false;    // ミスタイプ判定
-        ga.isInputValid = true;     // 入力可否判定(可能にする)
+        ga.index = 0;
+        ga.acceptSingleN = false;
+    }
+    /// <summary>
+    /// Typing開始時の初期化処理
+    /// </summary>
+    public void InitTypingStart() {
+
+        InitGameAction();
+        ga.isInputValid = true;
     }
     /// <summary>
     /// 問題文初期化メソッド(マルチの時はサーバ上で行う)
@@ -77,5 +86,6 @@ public class InitGameMethod : MonoBehaviour {
                 i -= 1;
             }
         }
+        ga.sentenceTyping = ga.qSen[0].rm;
     }
 }

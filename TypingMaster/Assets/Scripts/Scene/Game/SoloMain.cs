@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // シーンの切り替え等
 
-public class GameMain : MainBase {
+public class SoloMain : MainBase {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
-    [SerializeField] private GameActionManager ga;
     [SerializeField] private GameConfig gc;
-    [SerializeField] private TypingUiManager tUI;
-    [SerializeField] private InitGameMethod playerInit;    // PlayerInitGame(Player初期化処理)
+    [SerializeField] private InitGameMethod ig;     // PlayerInitGame(Player初期化処理)
+    [SerializeField] private GameActionManager ga;          // Playerの動作に対する挙動
+    [SerializeField] private TypingDataManager td;          // データの操作
+    [SerializeField] private TypingUiManager tUI;           // UIに対する挙動
 
     // ゲームシーンの状態
     public enum GAME_STATE {
@@ -74,25 +75,9 @@ public class GameMain : MainBase {
                     // 初期化処理
                     case GAME_STATE.INIT:
 
-                        if(gc.gMode == GameConfig.GAME_MODE.SOLO) {
-
-                            playerInit.InitSoloGame();
-                            gState = GAME_STATE.COUNTDOWN;
-                        }
-                        else if (gc.gMode == GameConfig.GAME_MODE.MULTI) {
-
-                            playerInit.InitMultiGame();
-
-                            ///// 対戦相手の準備待ち /////
-                            
-                            gState = GAME_STATE.COUNTDOWN;
-                        }
-                        else {  // 大会モード(実装出来たら)
-
-                            ///// 対戦相手の準備待ち /////
-
-                            gState = GAME_STATE.COUNTDOWN;
-                        }
+                        ig.InitSoloGame();
+                        gState = GAME_STATE.COUNTDOWN;
+                        
                         break;
                     case GAME_STATE.COUNTDOWN:
 
@@ -106,16 +91,24 @@ public class GameMain : MainBase {
                         switch (tState) {
 
                             case TYPING_STATE.START:
-                                // GameAction関連の初期化
-                                playerInit.InitGameAction();
-                                ///// ローマ字入力候補の初期化 /////
-                                ///// UIに表示 /////
+                                ///// 初期化処理 /////
+                                ig.InitTypingStart();
+
+                                ///// データ正規化 /////
+                                //td.UpdatePlayerNewSentence();   // ローマ字入力候補の更新
+                                td.UpdateEnteredSentence();
+
+                                ///// UIへの表示 /////
+                                tUI.DisplayPlayerNewText(ga.qSen[ga.index].jp, ga.qSen[ga.index].h, td.notEnteredSentence);     // プレイヤーUIの表示
 
                                 tState = TYPING_STATE.ING;
                                 break;
 
                             case TYPING_STATE.ING:
+                                ///// プレイヤーの動作に対する挙動 /////
                                 ga.GameSceneTypingCheck();
+                                ///// データの正規化 /////
+                                ///// UIへの表示 /////
                                 break;
 
                             case TYPING_STATE.FINISH:

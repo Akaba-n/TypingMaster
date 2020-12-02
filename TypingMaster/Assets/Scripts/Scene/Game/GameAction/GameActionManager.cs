@@ -9,9 +9,9 @@ using Data;
 public class GameActionManager : GameActionDirector {
 
     [SerializeField] private GameTypingCheckMethod tc;
-    [SerializeField] private UpdatePlayerRomSentence ur;
     [SerializeField] private TypingUiManager tUI;
-    [SerializeField] private TypingData td;
+    [SerializeField] private TypingDataManager td;
+    [SerializeField] private InitGameMethod ig;
 
     /// <summary>
     /// プレイヤー動作時に作動
@@ -35,10 +35,8 @@ public class GameActionManager : GameActionDirector {
             // タイピング成否判定
             tc.MisTypeCheck(keyList[i]);
             // ローマ字入力候補更新
-            ur.UpdatePlayerSentence();
+            td.UpdateEnteredSentence();
             tUI.DisplayRmText(td.enteredSentence, td.notEnteredSentence, isRecMistype);
         }
     }
-
-    
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;  // これはメモリ管理の観点から見ると重いらしい...?
 
-public class HiraToRom : MonoBehaviour {
+public class HiraToRom {
 
     // 平仮名->ローマ字マッピングのDictionary
     private Dictionary<string, string[]> mp = new Dictionary<string, string[]> {

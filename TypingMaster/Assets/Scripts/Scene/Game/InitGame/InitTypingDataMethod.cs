@@ -8,7 +8,7 @@ using UnityEngine;
 public class InitTypingDataMethod : MonoBehaviour {
 
     /*----------  ----------*/
-    [SerializeField] private TypingData td;
+    [SerializeField] private TypingDataManager td;
 
     /// <summary>
     /// TypingData関連初期化メソッド

@@ -14,7 +14,7 @@ public class GameActionDirector : PlayerActionBase {
     public int index;                                                // ひらがなで何文字目(ローマ字入力候補の何枠目)か
     public List<List<int>> indexAdd = new List<List<int>>();         // 追加する文字数(1f中に何回もキータイプがあった時用)
     public List<List<int>> sentenceIndex = new List<List<int>>();    // 各入力候補の文字数
-    public List<List<bool>> sentenceValid;                           // 各入力候補の可否判定
+    public List<List<bool>> sentenceValid = new List<List<bool>>();                           // 各入力候補の可否判定
     // 例外処理判定関連
     public bool acceptSingleN;      // "ん"のn1回可否判定
     // ミスタイプ判定関連

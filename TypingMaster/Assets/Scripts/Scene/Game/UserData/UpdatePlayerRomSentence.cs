@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UpdatePlayerRomSentence : MonoBehaviour {
 
-    [SerializeField] private TypingData td;
+    [SerializeField] private TypingDataManager td;
     [SerializeField] private GameActionManager ga;
 
     /// <summary>
@@ -37,7 +37,7 @@ public class UpdatePlayerRomSentence : MonoBehaviour {
             for(var j = 0; j < ga.sentenceTyping[i].Count; ++j) {
 
                 // 入力中の文字の無効な文字列は飛ばす
-                if (ga.index == i && !ga.sentenceValid[ga.index][i]) {
+                if (ga.index == i && !ga.sentenceValid[ga.index][j]) {
 
                     continue;
                 }
@@ -68,6 +68,20 @@ public class UpdatePlayerRomSentence : MonoBehaviour {
                         td.notEnteredSentence += ga.sentenceTyping[i][j][k];
                     }
                 }
+            }
+        }
+    }
+
+    /// <summary>
+    /// 新しい文章を格納するメソッド
+    /// </summary>
+    public void UpdatePlayerNewSentence() {
+
+        td.enteredSentence = "";
+        for (var i = 0; i < ga.sentenceTyping.Count; i++) {
+            for(var j = 0; j < ga.sentenceTyping[i].Count; j++) {
+                
+                td.notEnteredSentence += ga.sentenceTyping[i][0].ToString();
             }
         }
     }

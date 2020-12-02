@@ -6,7 +6,10 @@ using UnityEngine;
 /// <summary>
 /// Game中情報クラス
 /// </summary>
-public class TypingData : UserData {
+public class TypingDataManager : UserData {
+
+    /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
+    [SerializeField] private UpdatePlayerRomSentence ur;
 
     /*----- Game中情報関連 -----*/
     public string enteredSentence;      // 入力済み文字列(灰色表示部分)
@@ -20,7 +23,30 @@ public class TypingData : UserData {
     public double Accuracy;         // 正答率
     public Dictionary<string, int> MisTypeDictionary;    // 苦手キーDict
 
+    /*----- 文章更新関連 -----*/
+    /// <summary>
+    /// EnteredSentenceの更新(新しい文章になる時)
+    /// </summary>
+    public void UpdatePlayerNewSentence() {
+
+        ur.UpdatePlayerNewSentence();
+    }
+    /// <summary>
+    /// EnteredSentenceの更新
+    /// </summary>
+    public void UpdateEnteredSentence() {
+
+        ur.UpdatePlayerSentence();
+    }
+
     /*----- 記録計算関連 -----*/
+    /// <summary>
+    /// 各種記録の計算を纏めて行うメソッド
+    /// </summary>
+    public void CalcurateRecords() {
+
+        CorrectAnswerRate();
+    }
     /// <summary>
     /// 正解率計算メソッド
     /// </summary>
@@ -28,27 +54,4 @@ public class TypingData : UserData {
 
         Accuracy = 100f * CorrectTaskNum / (CorrectTaskNum + MisTypeNum);
     }
-    /*
-    /// <summary>
-    /// 実際の経過時間の算出メソッド
-    /// </summary>
-    /// <param name="currentTime"></param>
-    /// <returns></returns>
-    public double GetSentenceTypeTime(double currentTime) {
-
-        // 返す値の初期化
-        double ret;
-        if (Math.Abs(firstCharInputTime - lastUpdateTime) <= INTERVAL) {
-
-            Debug.Log(CorrectTaskNum.ToString() + " -> time:" + (currentTime - firstCharInputTime).ToString());
-            ret = currentTime - firstCharInputTime;
-        }
-        else {
-
-            Debug.Log(CorrectTaskNum.ToString() + " -> time:" + (currentTime - firstCharInputTime).ToString());
-            ret = currentTime - (lastUpdateTime + INTERVAL);
-        }
-        return ret;
-    }
-    */
 }

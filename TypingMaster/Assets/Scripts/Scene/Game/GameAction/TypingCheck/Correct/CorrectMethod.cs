@@ -8,7 +8,7 @@ using UnityEngine;
 public class CorrectMethod : MonoBehaviour {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
-    [SerializeField] private TypingData ptd;    // PlayerTypingData
+    [SerializeField] private TypingDataManager td;    // PlayerTypingData
     [SerializeField] private GameActionManager ga;
 
     /// <summary>
@@ -18,9 +18,9 @@ public class CorrectMethod : MonoBehaviour {
     public void Correct(string str, bool singleN) {
 
         // 正解タイプ数を増やす
-        ptd.CorrectTypeNum++;
+        td.CorrectTypeNum++;
         // 正解率の計算
-        ptd.CorrectAnswerRate();
+        td.CorrectAnswerRate();
         // ミスタイプがあった場合に苦手キーに追加
         MisTypeAdd(str);
         ga.isRecMistype = false;
@@ -50,14 +50,14 @@ public class CorrectMethod : MonoBehaviour {
         if (ga.isRecMistype) {
 
             // 苦手キーDictに追加済みの時
-            if (ptd.MisTypeDictionary.ContainsKey(str)) {
+            if (td.MisTypeDictionary.ContainsKey(str)) {
 
-                ptd.MisTypeDictionary[str]++;
+                td.MisTypeDictionary[str]++;
             }
             // 苦手キーDictに未追加の時
             else {
 
-                ptd.MisTypeDictionary.Add(str, 1);
+                td.MisTypeDictionary.Add(str, 1);
             }
         }
     }
@@ -87,7 +87,7 @@ public class CorrectMethod : MonoBehaviour {
                 ga.sentenceValid[ga.index][i] = false;
             }
             // "っ"の例外処理
-            else if (ga.qSen[ptd.CorrectTaskNum].h[ga.index].Equals("っ")         // "っ"の時
+            else if (ga.qSen[td.CorrectTaskNum].h[ga.index].Equals("っ")         // "っ"の時
                 && ga.index + 1 < ga.sentenceTyping.Count                        // 次の文字がある時
                 && ga.sentenceTyping[ga.index][i].Length == 1                    // 次の文字が母音の時
                 && str.Equals(ga.sentenceTyping[ga.index][i][0].ToString())) {   // 次の文字の頭文字と同じ時
