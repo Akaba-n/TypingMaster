@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Data;
 
+/// <summary>
+/// GameScene中のPlayerのアクションに対するレスポンスの管理クラス
+/// </summary>
 public class GameActionManager : GameActionDirector {
 
     [SerializeField] private GameTypingCheckMethod tc;
+    [SerializeField] private UpdatePlayerRomSentence ur;
+    [SerializeField] private TypingUiManager tUI;
+    [SerializeField] private TypingData td;
 
     /// <summary>
     /// プレイヤー動作時に作動
@@ -26,12 +32,13 @@ public class GameActionManager : GameActionDirector {
         // キー入力があった時の処理
         for(var i = 0; keyList.Count < i; i++) {
 
-            // タイピング成功判定
+            // タイピング成否判定
             tc.MisTypeCheck(keyList[i]);
             // ローマ字入力候補更新
-            
+            ur.UpdatePlayerSentence();
+            tUI.DisplayRmText(td.enteredSentence, td.notEnteredSentence, isRecMistype);
         }
     }
 
-
+    
 }

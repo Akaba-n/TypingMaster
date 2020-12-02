@@ -8,6 +8,7 @@ public class GameMain : MainBase {
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GameActionManager ga;
     [SerializeField] private GameConfig gc;
+    [SerializeField] private TypingUiManager tUI;
     [SerializeField] private InitGameMethod playerInit;    // PlayerInitGame(Player初期化処理)
 
     // ゲームシーンの状態
@@ -19,6 +20,14 @@ public class GameMain : MainBase {
         RESULT      // 結果画面
     };
     public GAME_STATE gState;
+    // タイピング時の状態
+    public enum TYPING_STATE {
+
+        START,      // 開始時間記録の初期化を行う
+        ING,        // 
+        FINISH      // 終了処理(オンライン時は全員終了まで待機する)
+    }
+    public TYPING_STATE tState;
 
     //// Scene遷移時動作 ////
     protected override void Start(){
@@ -28,6 +37,10 @@ public class GameMain : MainBase {
 
         // タイピングシーンの状態初期化
         gState = GAME_STATE.INIT;
+        tState = TYPING_STATE.START;
+
+        // シーン開始時はキー入力禁止
+        ga.isInputValid = false;    // 入力可否判定
 
         // エフェクトのロード
         //effectManager.Load("ef001");
@@ -86,12 +99,28 @@ public class GameMain : MainBase {
                         ///// カウントダウン処理 /////
                         
                         // 遷移処理
-                        ga.isInputValid = true;
                         gState = GAME_STATE.TYPING;
                         break;
                     case GAME_STATE.TYPING:
 
-                        ga.GameSceneTypingCheck();
+                        switch (tState) {
+
+                            case TYPING_STATE.START:
+                                // GameAction関連の初期化
+                                playerInit.InitGameAction();
+                                ///// ローマ字入力候補の初期化 /////
+                                ///// UIに表示 /////
+
+                                tState = TYPING_STATE.ING;
+                                break;
+
+                            case TYPING_STATE.ING:
+                                ga.GameSceneTypingCheck();
+                                break;
+
+                            case TYPING_STATE.FINISH:
+                                break;
+                        }
                         break;
                     case GAME_STATE.RESULT:
 

@@ -12,13 +12,13 @@ public class InitGameMethod : MonoBehaviour {
     [SerializeField] private GameConfig gc;
     [SerializeField] private InitTypingDataMethod pid;  // PlayerのTypingData
     
+    
     /// <summary>
     /// GameSceneの初期化メソッド(SOLOモード用)
     /// </summary>
     public void InitSoloGame() {
 
         InitConfig();
-        InitGameAction();
         pid.InitTypingData();
         InitQuestion();
     }
@@ -28,7 +28,6 @@ public class InitGameMethod : MonoBehaviour {
     public void InitMultiGame() {
 
         InitConfig();
-        InitGameAction();
         pid.InitTypingData();
         ///// サーバから問題データを取得する処理 /////
     }
@@ -43,11 +42,12 @@ public class InitGameMethod : MonoBehaviour {
     /// <summary>
     /// GameAction関連初期化メソッド
     /// </summary>
-    private void InitGameAction() {
+    public void InitGameAction() {
 
-        ga.isInputValid = false;    // 入力可否判定
         ga.keyQueue.Clear();        // キー格納キュー初期化
+        ga.timeQueue.Clear();       // 時間格納キュー初期化
         ga.isRecMistype = false;    // ミスタイプ判定
+        ga.isInputValid = true;     // 入力可否判定(可能にする)
     }
     /// <summary>
     /// 問題文初期化メソッド(マルチの時はサーバ上で行う)
