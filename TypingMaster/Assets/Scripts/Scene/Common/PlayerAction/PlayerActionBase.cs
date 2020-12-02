@@ -7,8 +7,6 @@ using UnityEngine;
 /// </summary>
 public class PlayerActionBase : MonoBehaviour {
 
-    public TypingCheckMethod tc;
-
     // 入力可否判定
     public bool isInputValid;
     // 入力されたキーの情報格納キュー
@@ -18,12 +16,6 @@ public class PlayerActionBase : MonoBehaviour {
     public List<KeyCode> keyList = new List<KeyCode>();     // そのフレームの入力キーを入力順に格納
     // 入力された際に発生する情報
     public double lastJudgeTime;     // 最後に判定が起こった時刻
-
-    // 継承クラス共通初期化動作(オーバーライド用)
-    virtual protected void Awake() {
-
-        tc = new TypingCheckMethod();
-    }
 
     /// <summary>
     /// キー入力判定をし、入力したキーをキューに格納(キー入力の回数に合わせて1f当たりに複数回実行)

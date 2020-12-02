@@ -30,6 +30,7 @@ public class InitGameMethod : MonoBehaviour {
         InitConfig();
         InitGameAction();
         pid.InitTypingData();
+        ///// サーバから問題データを取得する処理 /////
     }
     /// <summary>
     /// GameConfig関連初期化メソッド
@@ -44,8 +45,9 @@ public class InitGameMethod : MonoBehaviour {
     /// </summary>
     private void InitGameAction() {
 
-        ga.keyQueue.Clear();
-        ga.isRecMistype = false;
+        ga.isInputValid = false;    // 入力可否判定
+        ga.keyQueue.Clear();        // キー格納キュー初期化
+        ga.isRecMistype = false;    // ミスタイプ判定
     }
     /// <summary>
     /// 問題文初期化メソッド(マルチの時はサーバ上で行う)
