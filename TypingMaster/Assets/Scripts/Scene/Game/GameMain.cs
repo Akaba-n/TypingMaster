@@ -5,14 +5,18 @@ using UnityEngine.SceneManagement;  // シーンの切り替え等
 
 public class GameMain : MainBase {
 
+    /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GameActionManager ga;
+    [SerializeField] private GameConfig gc;
+    [SerializeField] private InitGameMethod playerInit;    // PlayerInitGame(Player初期化処理)
 
     // ゲームシーンの状態
     public enum GAME_STATE {
 
-        COUNTDOWN,
-        TYPING,
-        RESULT
+        INIT,       // 初期化処理(オンライン時はここで相手の準備完了を待つ)
+        COUNTDOWN,  // ゲームスタートカウントダウン
+        TYPING,     // タイピングゲーム部分
+        RESULT      // 結果画面
     };
     public GAME_STATE gState;
 
@@ -23,7 +27,7 @@ public class GameMain : MainBase {
         base.Start();
 
         // タイピングシーンの状態初期化
-        gState = GAME_STATE.COUNTDOWN;
+        gState = GAME_STATE.INIT;
 
         // エフェクトのロード
         //effectManager.Load("ef001");
@@ -54,8 +58,33 @@ public class GameMain : MainBase {
 
                 switch (gState) {
 
+                    // 初期化処理
+                    case GAME_STATE.INIT:
+
+                        if(gc.gMode == GameConfig.GAME_MODE.SOLO) {
+
+                            playerInit.InitSoloGame();
+                            gState = GAME_STATE.COUNTDOWN;
+                        }
+                        else if (gc.gMode == GameConfig.GAME_MODE.MULTI) {
+
+                            playerInit.InitMultiGame();
+
+                            ///// 対戦相手の準備待ち /////
+                            
+                            gState = GAME_STATE.COUNTDOWN;
+                        }
+                        else {  // 大会モード(実装出来たら)
+
+                            ///// 対戦相手の準備待ち /////
+
+                            gState = GAME_STATE.COUNTDOWN;
+                        }
+                        break;
                     case GAME_STATE.COUNTDOWN:
 
+                        ///// カウントダウン処理 /////
+                        
                         // 遷移処理
                         ga.isInputValid = true;
                         gState = GAME_STATE.TYPING;

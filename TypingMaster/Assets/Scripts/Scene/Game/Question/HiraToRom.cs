@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;  // これはメモリ管理の観点から見ると重いらしい...?
 
 public class HiraToRom : MonoBehaviour {
 
@@ -241,9 +242,14 @@ public class HiraToRom : MonoBehaviour {
         {"？", new string[1] {"?"}}
     };
 
+    /// <summary>
+    /// ひらがな文をローマ字入力候補に変換する関数
+    /// </summary>
+    /// <param name="h">ひらがな文</param>
+    /// <returns>ローマ字入力候補</returns>
     public List<List<string>> HiraToRomSentence(string h) {
 
-        
+        return ConstructTypeSentence(ParseHiraganaSentence(h));
     }
 
     /// <summary>
@@ -251,7 +257,7 @@ public class HiraToRom : MonoBehaviour {
     /// </summary>
     /// <param name="h">ひらがな文</param>
     /// <returns>ひらがな文を区切ったList</returns>
-    private List<string> ParceHiraganaSentence(string h) {
+    private List<string> ParseHiraganaSentence(string h) {
 
         // 返す値の初期化
         var ret = new List<string>();
