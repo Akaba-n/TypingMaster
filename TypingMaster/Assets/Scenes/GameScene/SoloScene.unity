@@ -151,9 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: 0
-  ga: {fileID: 0}
-  gc: {fileID: 0}
-  playerInit: {fileID: 0}
+  ga: {fileID: 2084916061}
+  gc: {fileID: 674426537}
+  playerInit: {fileID: 1486316198}
   gState: 0
 --- !u!4 &48910873
 Transform:
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701d14bca87118e48acead2c1a2c4407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  td: {fileID: 0}
+  td: {fileID: 1419018896}
 --- !u!1 &2017441407
 GameObject:
   m_ObjectHideFlags: 0

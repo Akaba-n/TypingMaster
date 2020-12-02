@@ -26,7 +26,10 @@ public class GameActionManager : GameActionDirector {
         // キー入力があった時の処理
         for(var i = 0; keyList.Count < i; i++) {
 
+            // タイピング成功判定
             tc.MisTypeCheck(keyList[i]);
+            // ローマ字入力候補更新
+            
         }
     }
 
