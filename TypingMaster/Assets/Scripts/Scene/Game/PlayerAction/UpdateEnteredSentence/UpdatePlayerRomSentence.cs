@@ -11,6 +11,9 @@ public class UpdatePlayerRomSentence : MonoBehaviour {
     /// </summary>
     public void UpdatePlayerSentence() {
 
+        pa.enteredSentence = "";
+        pa.notEnteredSentence = "";
+
         for (int i = 0; i < pa.sentenceTyping.Count; ++i) {
 
             // 入力済みの文字について
