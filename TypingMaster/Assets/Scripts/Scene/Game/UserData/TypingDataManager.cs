@@ -10,6 +10,7 @@ public class TypingDataManager : UserData {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private UpdatePlayerRomSentence ur;
+    [SerializeField] private NextSentenceMethod ns;
 
     /*----- Game中情報関連 -----*/
     public string enteredSentence;      // 入力済み文字列(灰色表示部分)
@@ -25,17 +26,26 @@ public class TypingDataManager : UserData {
 
     /*----- 文章更新関連 -----*/
     /// <summary>
-    /// EnteredSentenceの更新(新しい文章になる時)
-    /// </summary>
-    public void UpdatePlayerNewSentence() {
-
-        ur.UpdatePlayerNewSentence();
-    }
-    /// <summary>
     /// EnteredSentenceの更新
     /// </summary>
     public void UpdateEnteredSentence() {
+        
+        ur.UpdatePlayerSentence();
+    }
+    /// <summary>
+    /// 最初の文章を表示する為の更新処理
+    /// </summary>
+    public void UpdateFirstSentence() {
 
+        ns.InitNextSentence();
+        ur.UpdatePlayerSentence();
+    }
+    /// <summary>
+    /// 次の文章に移行する際の更新処理
+    /// </summary>
+    public void UpdateNextSentence() {
+
+        ns.NextSentence();
         ur.UpdatePlayerSentence();
     }
 

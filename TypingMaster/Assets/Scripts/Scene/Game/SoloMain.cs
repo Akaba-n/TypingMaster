@@ -108,6 +108,7 @@ public class SoloMain : MainBase {
                                 ///// プレイヤーの動作に対する挙動 /////
                                 ga.GameSceneTypingCheck();
                                 ///// データの正規化 /////
+                                td.UpdateEnteredSentence();
                                 ///// UIへの表示 /////
                                 break;
 

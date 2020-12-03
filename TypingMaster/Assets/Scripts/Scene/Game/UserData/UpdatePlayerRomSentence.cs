@@ -71,18 +71,4 @@ public class UpdatePlayerRomSentence : MonoBehaviour {
             }
         }
     }
-
-    /// <summary>
-    /// 新しい文章を格納するメソッド
-    /// </summary>
-    public void UpdatePlayerNewSentence() {
-
-        td.enteredSentence = "";
-        for (var i = 0; i < ga.sentenceTyping.Count; i++) {
-            for(var j = 0; j < ga.sentenceTyping[i].Count; j++) {
-                
-                td.notEnteredSentence += ga.sentenceTyping[i][0].ToString();
-            }
-        }
-    }
 }
