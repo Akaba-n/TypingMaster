@@ -8,28 +8,44 @@ using UnityEngine;
 public class InitGameMethod : MonoBehaviour {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
-    [SerializeField] private GameActionManager ga;
+    [SerializeField] private GamePlayerActionManager pa;
     [SerializeField] private GameConfig gc;
-    [SerializeField] private InitTypingDataMethod pid;  // PlayerのTypingData
-    
+    [SerializeField] private PlayerTypingDataManager td;
+    [SerializeField] private NextSentenceMethod ns;
+
     /// <summary>
     /// GameSceneの初期化メソッド(SOLOモード用)
     /// </summary>
     public void InitSoloGame() {
 
         InitConfig();
-        pid.InitTypingData();
+        InitTypingData();
+        InitGamePlayerAction();
         InitQuestion();
+        ///// 最初の文章のenteredSentenceの格納 /////
+        ns.InitNextSentence();
+        pa.UpdateEnteredSentence();
     }
+
     /// <summary>
     /// GameSceneの初期化メソッド(MULTIモード用)
     /// </summary>
     public void InitMultiGame() {
 
         InitConfig();
-        pid.InitTypingData();
+        InitTypingData();
+        InitGamePlayerAction();
         ///// サーバから問題データを取得する処理 /////
     }
+
+    /// <summary>
+    /// Typing開始時の初期化処理
+    /// </summary>
+    public void InitTypingStart() {
+
+        pa.isInputValid = true;
+    }
+
 
     /// <summary>
     /// GameConfig関連初期化メソッド
@@ -42,22 +58,36 @@ public class InitGameMethod : MonoBehaviour {
     /// <summary>
     /// GameAction関連の初期化処理
     /// </summary>
-    public void InitGameAction() {
+    private void InitGamePlayerAction() {
 
-        ga.keyQueue.Clear();        // キー格納キュー初期化
-        ga.timeQueue.Clear();       // 時間格納キュー初期化
-        ga.isRecMistype = false;    // ミスタイプ判定
-        ga.index = 0;
-        ga.acceptSingleN = false;
+        // 記録関連(他でも行っているから必要ないと言えば必要ない)
+        pa.CorrectTypeNum = 0;
+        pa.CorrectTaskNum = 0;
+        pa.MisTypeNum = 0;
+        pa.MisTypeDictionary = new Dictionary<string, int>();
+        pa.enteredSentence = "";
+        pa.notEnteredSentence = "";
+        // タイピング関連
+        pa.keyQueue.Clear();        // キー格納キュー初期化
+        pa.timeQueue.Clear();       // 時間格納キュー初期化
+        pa.isRecMistype = false;    // ミスタイプ判定
+        pa.index = 0;
+        pa.acceptSingleN = false;
     }
     /// <summary>
-    /// Typing開始時の初期化処理
+    /// TypingData関連初期化メソッド
     /// </summary>
-    public void InitTypingStart() {
+    private void InitTypingData() {
 
-        InitGameAction();
-        ga.isInputValid = true;
+        td.CorrectTypeNum = 0;
+        td.CorrectTaskNum = 0;
+        td.MisTypeNum = 0;
+        td.TotalTypingTime = 0f;
+        td.Kpm = 0f;
+        td.Accuracy = 0f;
+        td.MisTypeDictionary = new Dictionary<string, int>();
     }
+    
     /// <summary>
     /// 問題文初期化メソッド(マルチの時はサーバ上で行う)
     /// </summary>
@@ -78,7 +108,7 @@ public class InitGameMethod : MonoBehaviour {
             // 被ってなかったら追加
             if (!pickList[tempNum]) {
 
-                ga.qSen.Add((qJP[tempNum].jp, qJP[tempNum].h, hToRClass.HiraToRomSentence(qJP[tempNum].h)));
+                pa.qSen.Add((qJP[tempNum].jp, qJP[tempNum].h, hToRClass.HiraToRomSentence(qJP[tempNum].h)));
                 pickList[tempNum] = true;
             }
             else {
@@ -86,6 +116,5 @@ public class InitGameMethod : MonoBehaviour {
                 i -= 1;
             }
         }
-        ga.sentenceTyping = ga.qSen[0].rm;
     }
 }

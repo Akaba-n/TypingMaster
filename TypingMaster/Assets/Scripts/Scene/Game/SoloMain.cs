@@ -8,8 +8,8 @@ public class SoloMain : MainBase {
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GameConfig gc;
     [SerializeField] private InitGameMethod ig;     // PlayerInitGame(Player初期化処理)
-    [SerializeField] private GameActionManager ga;          // Playerの動作に対する挙動
-    [SerializeField] private TypingDataManager td;          // データの操作
+    [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
+    [SerializeField] private PlayerTypingDataManager td;          // データの操作
     [SerializeField] private TypingUiManager tUI;           // UIに対する挙動
 
     // ゲームシーンの状態
@@ -41,7 +41,7 @@ public class SoloMain : MainBase {
         tState = TYPING_STATE.START;
 
         // シーン開始時はキー入力禁止
-        ga.isInputValid = false;    // 入力可否判定
+        pa.isInputValid = false;    // 入力可否判定
 
         // エフェクトのロード
         //effectManager.Load("ef001");
@@ -95,21 +95,22 @@ public class SoloMain : MainBase {
                                 ig.InitTypingStart();
 
                                 ///// データ正規化 /////
-                                //td.UpdatePlayerNewSentence();   // ローマ字入力候補の更新
-                                td.UpdateEnteredSentence();
+                                td.SyncGamePlayerActionManager();
 
                                 ///// UIへの表示 /////
-                                tUI.DisplayPlayerNewText(ga.qSen[ga.index].jp, ga.qSen[ga.index].h, td.notEnteredSentence);     // プレイヤーUIの表示
+                                tUI.DisplayPlayerNewText(pa.qSen[pa.index].jp, pa.qSen[pa.index].h, td.notEnteredSentence);     // プレイヤーUIの表示
 
                                 tState = TYPING_STATE.ING;
                                 break;
 
                             case TYPING_STATE.ING:
                                 ///// プレイヤーの動作に対する挙動 /////
-                                ga.GameSceneTypingCheck();
-                                ///// データの正規化 /////
-                                td.UpdateEnteredSentence();
-                                ///// UIへの表示 /////
+                                if (pa.GameSceneTypingCheck()) {
+
+                                    ///// データの正規化 /////
+                                    td.SyncGamePlayerActionManager();
+                                    ///// UIへの表示 /////
+                                }
                                 break;
 
                             case TYPING_STATE.FINISH:

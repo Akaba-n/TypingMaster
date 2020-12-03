@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class NextSentenceMethod : MonoBehaviour {
 
-    [SerializeField] private GameActionManager ga;
-    [SerializeField] private TypingDataManager td;
+    [SerializeField] private GamePlayerActionManager ga;
     
     /// <summary>
     /// 次の問題文に移行する処理
     /// </summary>
-    public void NextSentence() {
+    public void NewSentence() {
 
-        td.CorrectTaskNum++;        // 正解済み問題数を増やす
+        ga.CorrectTaskNum++;        // 正解済み問題数を増やす
         InitNextSentence();         // 文章毎変数の初期化
     }
     /// <summary>
@@ -20,7 +19,7 @@ public class NextSentenceMethod : MonoBehaviour {
     /// </summary>
     public void InitNextSentence() {
 
-        ga.sentenceTyping = ga.qSen[td.CorrectTaskNum].rm;  // ローマ字入力候補の格納
+        ga.sentenceTyping = ga.qSen[ga.CorrectTaskNum].rm;  // ローマ字入力候補の格納
         var sLength = ga.sentenceTyping.Count;              // 問題文の文字数
 
         // 各項目の初期化
