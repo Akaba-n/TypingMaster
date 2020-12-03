@@ -98,7 +98,7 @@ public class SoloMain : MainBase {
                                 td.SyncGamePlayerActionManager();
 
                                 ///// UIへの表示 /////
-                                tUI.DisplayPlayerNewText(pa.qSen[pa.index].jp, pa.qSen[pa.index].h, td.notEnteredSentence);     // プレイヤーUIの表示
+                                tUI.DisplayPlayerNewText(pa.qSen[0].jp, pa.qSen[0].h, td.notEnteredSentence);     // プレイヤーUIの表示
 
                                 tState = TYPING_STATE.ING;
                                 break;
@@ -110,6 +110,7 @@ public class SoloMain : MainBase {
                                     ///// データの正規化 /////
                                     td.SyncGamePlayerActionManager();
                                     ///// UIへの表示 /////
+                                    
                                 }
                                 break;
 

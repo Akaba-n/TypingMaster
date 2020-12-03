@@ -8,7 +8,9 @@ using UnityEngine;
 public class CorrectMethod : MonoBehaviour {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
+    [SerializeField] private GameConfig gc;
     [SerializeField] private GamePlayerActionManager pa;
+    [SerializeField] private NextSentenceMethod ns;
 
     /// <summary>
     /// タイピング正解時の処理
@@ -35,6 +37,31 @@ public class CorrectMethod : MonoBehaviour {
         if (pa.index >= pa.sentenceTyping.Count) {
 
             ///// 文章入力完了処理(次の文章へorリザルト画面へ) /////
+            CompleteTask();
+        }
+    }
+
+    /// <summary>
+    /// 文章入力完了処理
+    /// </summary>
+    private void CompleteTask() {
+
+        // 完了済み問題数の追加
+        pa.CorrectTaskNum++;
+        double currentTime = Time.realtimeSinceStartup; // 完了時間の保存
+        // KPMの計算
+        //KeyPerMinute(currentTime);
+        pa.keyQueue.Clear();
+
+        // 終了処理
+        if (pa.CorrectTaskNum >= gc.Tasks){
+
+            ///// リザルト画面に飛ぶ処理 /////
+        }
+        else {
+
+            // 次の文章へ移行
+            ns.NewSentence();
         }
     }
 

@@ -10,8 +10,7 @@ public class NextSentenceMethod : MonoBehaviour {
     /// 次の問題文に移行する処理
     /// </summary>
     public void NewSentence() {
-
-        ga.CorrectTaskNum++;        // 正解済み問題数を増やす
+        
         InitNextSentence();         // 文章毎変数の初期化
     }
     /// <summary>

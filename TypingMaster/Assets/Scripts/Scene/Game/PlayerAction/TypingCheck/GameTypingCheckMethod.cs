@@ -29,8 +29,6 @@ public class GameTypingCheckMethod : MonoBehaviour {
 
             // timeQueueに入っている時刻が最後に判定があった時刻より早かったら整合性が無いのでスキップ
             if (keyDownTime <= pa.lastJudgeTime) { continue; }
-            // 入力キーの確認(デバッグ用)
-            Debug.Log(kc);
 
             ret.Add(kc);
         }
@@ -93,16 +91,15 @@ public class GameTypingCheckMethod : MonoBehaviour {
                     pa.indexAdd[pa.index][i] = 0;
                 }
             }
+        }
+        if (!isMistype) {
 
-            if (!isMistype) {
+            ///// 正解タイプ時処理 /////
+            cr.Correct(str, pa.acceptSingleN);
+        }
+        else {
 
-                ///// 正解タイプ時処理 /////
-                cr.Correct(str, pa.acceptSingleN);
-            }
-            else {
-
-                ///// 不正解タイプ時処理 /////
-            }
+            ///// 不正解タイプ時処理 /////
         }
     }
 

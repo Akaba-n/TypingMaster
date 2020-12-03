@@ -51,10 +51,14 @@ public class GamePlayerActionManager : PlayerActionBase {
 
         // そのフレーム(前のフレーム？)の入力キーを格納
         keyList = tc.GameTypingCheck();
-        if(keyList.Count == 0) { return false; }
-        // キー入力があった時の処理
-        for(var i = 0; keyList.Count < i; i++) {
 
+        // キー入力が無かった時終了
+        if (keyList.Count == 0) { return false; }
+        // キー入力があった時の処理
+        for (var i = 0; i < keyList.Count; i++) {
+
+            // 入力キーの確認(デバッグ用)
+            Debug.Log("GameSceneTypingCheck.keyList["+i+"]："+keyList[i]);
             // タイピング成否判定
             tc.MisTypeCheck(keyList[i]);
             // ローマ字入力候補更新
