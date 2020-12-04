@@ -20,6 +20,8 @@ public class GamePlayerActionManager : PlayerActionBase {
     public Dictionary<string, int> MisTypeDictionary;    // 苦手キーDict
     public string enteredSentence;      // 入力済み文字列
     public string notEnteredSentence;   // 未入力文字列
+    //public double TotalTypingTime;      // 経過時間
+    public int[] SectionCorrectNum;       // 各文正解タイプ数
 
     // 問題文データセット格納List
     public List<(string jp, string h, List<List<string>> rm)> qSen = new List<(string jp, string h, List<List<string>> rm)>();  // 実際に出題する問題の格納List

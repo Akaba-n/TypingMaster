@@ -66,6 +66,7 @@ public class InitGameMethod : MonoBehaviour {
         pa.MisTypeDictionary = new Dictionary<string, int>();
         pa.enteredSentence = "";
         pa.notEnteredSentence = "";
+        pa.SectionCorrectNum = new int[gc.Tasks];
         // タイピング関連
         pa.keyQueue.Clear();        // キー格納キュー初期化
         pa.timeQueue.Clear();       // 時間格納キュー初期化
@@ -85,6 +86,9 @@ public class InitGameMethod : MonoBehaviour {
         td.Kpm = 0f;
         td.Accuracy = 0f;
         td.MisTypeDictionary = new Dictionary<string, int>();
+        td.SectionTypingTime = new double[gc.Tasks];
+        td.SectionCorrectNum = new int[gc.Tasks];
+        td.SectionKpm = new double[gc.Tasks];
     }
     
     /// <summary>

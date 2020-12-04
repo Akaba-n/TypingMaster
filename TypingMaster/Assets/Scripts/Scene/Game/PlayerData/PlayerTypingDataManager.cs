@@ -10,6 +10,7 @@ public class PlayerTypingDataManager : TypingDataBase {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GamePlayerActionManager pa;
+    [SerializeField] private RecordCalculator rc;
 
     /*----- GamePlayerActionManagerとの同期 -----*/
     /// <summary>
@@ -37,21 +38,24 @@ public class PlayerTypingDataManager : TypingDataBase {
         MisTypeNum = pa.MisTypeNum;
         enteredSentence = pa.enteredSentence;
         notEnteredSentence = pa.notEnteredSentence;
+        SectionCorrectNum = pa.SectionCorrectNum;
     }
 
     /*----- 記録計算関連 -----*/
     /// <summary>
     /// 各種記録の計算を纏めて行うメソッド
     /// </summary>
-    public void CalcurateRecords() {
+    public void RecCalc() {
 
-        CorrectAnswerRate();
+        rc.CorrectAnswerRate();
+        rc.TotalTime();
+        rc.KeyPerMinute();
     }
     /// <summary>
-    /// 正解率計算メソッド
+    /// タイピング終了時の各記録の計算を纏めて行うメソッド
     /// </summary>
-    public void CorrectAnswerRate() {
+    public void FinishRecCalc() {
 
-        Accuracy = 100f * CorrectTaskNum / (CorrectTaskNum + MisTypeNum);
+        rc.SectionKeyPerMinute();
     }
 }

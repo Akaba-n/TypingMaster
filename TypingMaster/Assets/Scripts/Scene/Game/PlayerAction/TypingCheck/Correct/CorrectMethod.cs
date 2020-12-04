@@ -21,6 +21,7 @@ public class CorrectMethod : MonoBehaviour {
 
         // 正解タイプ数を増やす
         pa.CorrectTypeNum++;
+        pa.SectionCorrectNum[pa.CorrectTaskNum]++;
         // ミスタイプがあった場合に苦手キーに追加
         MisTypeAdd(str);
         pa.isRecMistype = false;

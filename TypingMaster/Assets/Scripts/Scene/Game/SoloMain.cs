@@ -11,6 +11,7 @@ public class SoloMain : MainBase {
     [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
     [SerializeField] private PlayerTypingDataManager td;          // データの操作
     [SerializeField] private TypingUiManager tUI;           // UIに対する挙動
+    [SerializeField] private ConsoleUIManager cUI;
 
     // ゲームシーンの状態
     public enum GAME_STATE {
@@ -99,11 +100,16 @@ public class SoloMain : MainBase {
 
                                 ///// UIへの表示 /////
                                 tUI.DisplayPlayerText();
+                                cUI.DisplayConsoleText();
 
                                 tState = TYPING_STATE.ING;
                                 break;
 
                             case TYPING_STATE.ING:
+
+                                // 記録計算
+                                td.RecCalc();
+                                cUI.DisplayTimeText();
                                 ///// プレイヤーの動作に対する挙動 /////
                                 if (pa.GameSceneTypingCheck()) {
 
@@ -113,6 +119,7 @@ public class SoloMain : MainBase {
                                         td.SyncAllGamePlayerActionManager();
                                         ///// UIへの表示 /////
                                         tUI.DisplayPlayerText();
+                                        cUI.DisplayConsoleText();
                                     }
                                     else {
 
@@ -120,6 +127,7 @@ public class SoloMain : MainBase {
                                         td.SyncRecGamePlayerActionManager();
                                         //// UIへの表示 ////
                                         tUI.DisplayRmText(td.enteredSentence, td.notEnteredSentence);
+                                        cUI.DisplayConsoleText();
                                         // ゲーム状態の移行
                                         tState = TYPING_STATE.FINISH;
                                     }
@@ -127,6 +135,7 @@ public class SoloMain : MainBase {
                                 break;
 
                             case TYPING_STATE.FINISH:
+                                cUI.DisplayConsoleText();
                                 Debug.Log("TYPING_STATE->FINISH");
                                 break;
                         }

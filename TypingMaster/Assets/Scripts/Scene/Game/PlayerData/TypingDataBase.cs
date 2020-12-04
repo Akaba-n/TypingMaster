@@ -14,7 +14,11 @@ public class TypingDataBase : MonoBehaviour {
     public int MisTypeNum;          // ミスタイプ数
     public int CorrectTaskNum;      // 正解問題数
     public double TotalTypingTime;  // 総合経過時間
+    public double[] SectionTypingTime;  // 各文経過時間
+    public int[]    SectionCorrectNum;  // 各文正解タイプ数
+    public double[] SectionKpm;         // 各文KPM
     public double Kpm;              // KPM
     public double Accuracy;         // 正答率
     public Dictionary<string, int> MisTypeDictionary;    // 苦手キーDict
+    
 }
