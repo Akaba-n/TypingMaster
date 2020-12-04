@@ -14,12 +14,12 @@ public class UpdatePlayerRomSentence : MonoBehaviour {
         pa.enteredSentence = "";
         pa.notEnteredSentence = "";
 
-        for (int i = 0; i < pa.sentenceTyping.Count; ++i) {
+        for (int i = 0; i < pa.sentenceTyping.Count; ++i) {     // (ひらがな)何文字目
 
             // 入力済みの文字について
             if(i < pa.index) {
 
-                for(var j = 0; j < pa.sentenceTyping[i].Count; ++j) {
+                for(var j = 0; j < pa.sentenceTyping[i].Count; ++j) {       // (候補)何枠目
 
                     if (!pa.sentenceValid[i][j]) {
 
@@ -49,20 +49,21 @@ public class UpdatePlayerRomSentence : MonoBehaviour {
 
                         for (var k = 0; k < pa.sentenceTyping[pa.index][j].Length; ++k) {
 
+                            
+
                             // 入力済み文字
                             if(k < pa.sentenceIndex[pa.index][j]) {
 
                                 pa.enteredSentence += pa.sentenceTyping[i][j][k].ToString();
-                                continue;
                             }
                             // 未入力文字
                             else {
 
                                 pa.notEnteredSentence += pa.sentenceTyping[i][j][k].ToString();
-                                continue;
                             }
                         }
                     }
+                    break;
                 }
             }
             // 未入力の文字について

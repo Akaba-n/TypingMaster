@@ -57,6 +57,7 @@ public class CorrectMethod : MonoBehaviour {
         if (pa.CorrectTaskNum >= gc.Tasks){
 
             ///// リザルト画面に飛ぶ処理 /////
+            Debug.Log("tState.ING->FINISH");
         }
         else {
 
