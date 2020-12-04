@@ -7,33 +7,35 @@ public class UpdatePlayerRomSentence : MonoBehaviour {
     [SerializeField] private GamePlayerActionManager pa;
 
     /// <summary>
-    /// プレイヤー用のローマ字入力候補更新メソッド
+    /// タイピング正解時にenteredSentenceとnotEnteredSentenceの更新を行う処理
     /// </summary>
-    public void UpdatePlayerSentence() {
+    /// <param name="str">正解文字</param>
+    public void UpdateRom(string str) {
+
+        pa.enteredSentence += str;
+        UpdateNotEnteredSentence();
+    }
+    /// <summary>
+    /// 新しい問題文に移行する時にenteredSentenceとnotEnteredSentenceの更新を行う処理
+    /// </summary>
+    public void UpdateRomAtNewSentence() {
 
         pa.enteredSentence = "";
+        UpdateNotEnteredSentence();
+    }
+
+    /// <summary>
+    /// プレイヤー用の未入力ローマ字入力候補(notEnteredSentence)更新メソッド
+    /// </summary>
+    private void UpdateNotEnteredSentence() {
+        
         pa.notEnteredSentence = "";
 
         for (int i = 0; i < pa.sentenceTyping.Count; ++i) {     // (ひらがな)何文字目
 
             // 入力済みの文字について
             if(i < pa.index) {
-
-                for(var j = 0; j < pa.sentenceTyping[i].Count; ++j) {       // (候補)何枠目
-
-                    if (!pa.sentenceValid[i][j]) {
-
-                        continue;
-                    }
-                    else {
-
-                        for(var k = 0; k < pa.sentenceTyping[i][j].Length; ++k) {
-
-                            // 入力済み文字の格納
-                            pa.enteredSentence += pa.sentenceTyping[i][j][k].ToString();
-                        }
-                    }
-                }
+                
                 continue;
             }
             // 入力中の文字について
@@ -41,21 +43,17 @@ public class UpdatePlayerRomSentence : MonoBehaviour {
 
                 for (var j = 0; j < pa.sentenceTyping[i].Count; ++j) {      // (候補)何枠目
 
+                    // 入力した文字に対して無効な候補
                     if (!pa.sentenceValid[pa.index][j]) {
 
                         continue;
                     }
+                    // 有効な候補の一つ目のみを参照
                     else {
 
-                        for (var k = 0; k < pa.sentenceTyping[pa.index][j].Length; ++k) {       // (ローマ字)何文字目
-                            
-                            // 入力済み文字
-                            if(k < pa.sentenceIndex[pa.index][j]) {
+                        for(var k = 0; k < pa.sentenceTyping[pa.index][j].Length; ++k) {
 
-                                pa.enteredSentence += pa.sentenceTyping[i][j][k].ToString();
-                            }
-                            // 未入力文字
-                            else {
+                            if(k >= pa.sentenceIndex[pa.index][j]) {
 
                                 pa.notEnteredSentence += pa.sentenceTyping[i][j][k].ToString();
                             }

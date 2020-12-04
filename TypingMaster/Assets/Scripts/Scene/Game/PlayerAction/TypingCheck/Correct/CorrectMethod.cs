@@ -11,6 +11,7 @@ public class CorrectMethod : MonoBehaviour {
     [SerializeField] private GameConfig gc;
     [SerializeField] private GamePlayerActionManager pa;
     [SerializeField] private NextSentenceMethod ns;
+    [SerializeField] private UpdatePlayerRomSentence ur;
 
     /// <summary>
     /// タイピング正解時の処理
@@ -26,7 +27,7 @@ public class CorrectMethod : MonoBehaviour {
         // 可能な入力パターンのチェック
         bool isIndexCountUp = CheckValidSentence(str, singleN);
         // ローマ字入力候補の更新
-        //UpdateSentence();
+        ur.UpdateRom(str);
         // 可能な入力パターンがある場合
         if (isIndexCountUp) {
 

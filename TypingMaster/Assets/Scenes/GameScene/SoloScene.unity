@@ -1126,8 +1126,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1969916944}
+  m_Children: []
   m_Father: {fileID: 48910873}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1237,7 +1236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3574e6b66a86d4089ea0aaec209bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ga: {fileID: 178959498}
+  pa: {fileID: 178959498}
+  ur: {fileID: 1123705732}
 --- !u!1 &1748941813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,49 +1409,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946622927}
   m_CullTransparentMesh: 0
---- !u!1 &1969916943
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1969916944}
-  - component: {fileID: 1969916945}
-  m_Layer: 0
-  m_Name: InitTypingData
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1969916944
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969916943}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1486316197}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1969916945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969916943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 701d14bca87118e48acead2c1a2c4407, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2068934658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,6 +1456,7 @@ MonoBehaviour:
   gc: {fileID: 674426537}
   pa: {fileID: 178959498}
   ns: {fileID: 1668979613}
+  ur: {fileID: 1123705732}
 --- !u!1 &2104468020
 GameObject:
   m_ObjectHideFlags: 0

@@ -61,17 +61,8 @@ public class GamePlayerActionManager : PlayerActionBase {
             Debug.Log("GameSceneTypingCheck.keyList["+i+"]："+keyList[i]);
             // タイピング成否判定
             tc.MisTypeCheck(keyList[i]);
-            // ローマ字入力候補更新
-            us.UpdatePlayerSentence();
         }
 
         return true;
-    }
-    /// <summary>
-    /// ローマ字入力候補の更新処理(enteredSentenceとnotEnteredSentence)
-    /// </summary>
-    public void UpdateEnteredSentence() {
-
-        us.UpdatePlayerSentence();
     }
 }

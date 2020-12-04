@@ -23,8 +23,7 @@ public class InitGameMethod : MonoBehaviour {
         InitGamePlayerAction();
         InitQuestion();
         ///// 最初の文章のenteredSentenceの格納 /////
-        ns.InitNextSentence();
-        pa.UpdateEnteredSentence();
+        ns.NewSentence();
     }
 
     /// <summary>
