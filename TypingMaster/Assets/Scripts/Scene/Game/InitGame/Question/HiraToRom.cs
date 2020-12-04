@@ -52,7 +52,7 @@ public class HiraToRom {
         {"ろ", new string[1] {"ro"}},
         {"わ", new string[1] {"wa"}},
         {"を", new string[1] {"wo"}},
-        {"ん", new string[2] {"nn", "xn"}},
+        {"ん", new string[3] {"n", "nn", "xn"}},
         {"が", new string[1] {"ga"}},
         {"ぎ", new string[1] {"gi"}},
         {"ぐ", new string[1] {"gu"}},

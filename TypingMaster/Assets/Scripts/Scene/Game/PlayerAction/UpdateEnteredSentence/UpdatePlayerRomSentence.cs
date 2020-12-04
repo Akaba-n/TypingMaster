@@ -39,7 +39,7 @@ public class UpdatePlayerRomSentence : MonoBehaviour {
             // 入力中の文字について
             else if (pa.index == i) {
 
-                for (var j = 0; j < pa.sentenceTyping[i].Count; ++j) {
+                for (var j = 0; j < pa.sentenceTyping[i].Count; ++j) {      // (候補)何枠目
 
                     if (!pa.sentenceValid[pa.index][j]) {
 
@@ -47,10 +47,8 @@ public class UpdatePlayerRomSentence : MonoBehaviour {
                     }
                     else {
 
-                        for (var k = 0; k < pa.sentenceTyping[pa.index][j].Length; ++k) {
-
+                        for (var k = 0; k < pa.sentenceTyping[pa.index][j].Length; ++k) {       // (ローマ字)何文字目
                             
-
                             // 入力済み文字
                             if(k < pa.sentenceIndex[pa.index][j]) {
 
