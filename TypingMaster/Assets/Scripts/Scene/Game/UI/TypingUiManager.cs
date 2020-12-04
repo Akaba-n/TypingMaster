@@ -9,18 +9,16 @@ public class TypingUiManager : MonoBehaviour {
     [SerializeField] private Text _jpText;
     [SerializeField] private Text _hrText;
     [SerializeField] private Text _rmText;
+    [SerializeField] private PlayerTypingDataManager td;
 
     /// <summary>
-    /// 新規問題文表示用関数
+    /// 問題文UI表示処理
     /// </summary>
-    /// <param name="jp">日本語文</param>
-    /// <param name="hr">ひらがな文</param>
-    /// <param name="rm">ローマ字入力候補</param>
-    public void DisplayPlayerNewText(string jp, string hr, string rm) {
+    public void DisplayPlayerText() {
 
-        DisplayJpText(jp);
-        DisplayHrText(hr);
-        DisplayRmText("", rm);
+        DisplayJpText(td.jpSentence);
+        DisplayHrText(td.hrSentence);
+        DisplayRmText(td.enteredSentence, td.notEnteredSentence);
     }
     /// <summary>
     /// 日本語文表示

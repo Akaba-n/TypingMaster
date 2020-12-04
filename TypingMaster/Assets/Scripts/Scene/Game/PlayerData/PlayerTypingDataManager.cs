@@ -15,15 +15,28 @@ public class PlayerTypingDataManager : TypingDataBase {
     /// <summary>
     /// GamePlayerActionManagerとの同期処理
     /// </summary>
-    public void SyncGamePlayerActionManager() {
+    public void SyncAllGamePlayerActionManager() {
 
         CorrectTaskNum = pa.CorrectTaskNum;
         CorrectTypeNum = pa.CorrectTypeNum;
         MisTypeNum = pa.MisTypeNum;
         enteredSentence = pa.enteredSentence;
         notEnteredSentence = pa.notEnteredSentence;
+        jpSentence = pa.qSen[pa.CorrectTaskNum].jp.ToString();
+        hrSentence = pa.qSen[pa.CorrectTaskNum].h.ToString();
         // ↓これはPlayerTypingDataで管理する必要無さそう？
         MisTypeDictionary = pa.MisTypeDictionary;
+    }
+    /// <summary>
+    /// GamePlayerActionManagerとの同期処理(記録関連のみ)
+    /// </summary>
+    public void SyncRecGamePlayerActionManager() {
+
+        CorrectTaskNum = pa.CorrectTaskNum;
+        CorrectTypeNum = pa.CorrectTypeNum;
+        MisTypeNum = pa.MisTypeNum;
+        enteredSentence = pa.enteredSentence;
+        notEnteredSentence = pa.notEnteredSentence;
     }
 
     /*----- 記録計算関連 -----*/

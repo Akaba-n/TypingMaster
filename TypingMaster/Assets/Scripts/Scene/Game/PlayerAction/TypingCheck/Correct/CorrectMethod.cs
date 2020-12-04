@@ -59,6 +59,7 @@ public class CorrectMethod : MonoBehaviour {
 
             ///// リザルト画面に飛ぶ処理 /////
             Debug.Log("tState.ING->FINISH");
+            pa.isFinishedGame = true;
         }
         else {
 

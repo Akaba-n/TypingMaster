@@ -6,6 +6,7 @@ public class NextSentenceMethod : MonoBehaviour {
 
     [SerializeField] private GamePlayerActionManager pa;
     [SerializeField] private UpdatePlayerRomSentence ur;
+    [SerializeField] private TypingUiManager tUI;
     
     /// <summary>
     /// 次の問題文に移行する処理

@@ -574,6 +574,8 @@ MonoBehaviour:
   _jpText: {fileID: 0}
   _hrText: {fileID: 0}
   _rmText: {fileID: 0}
+  pa: {fileID: 0}
+  td: {fileID: 0}
 --- !u!1 &668470627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,6 +1195,8 @@ MonoBehaviour:
   _jpText: {fileID: 1946622929}
   _hrText: {fileID: 268144543}
   _rmText: {fileID: 2104468022}
+  pa: {fileID: 178959498}
+  td: {fileID: 1419018896}
 --- !u!1 &1668979611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,6 +1242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pa: {fileID: 178959498}
   ur: {fileID: 1123705732}
+  tUI: {fileID: 1510218053}
 --- !u!1 &1748941813
 GameObject:
   m_ObjectHideFlags: 0

@@ -95,10 +95,10 @@ public class SoloMain : MainBase {
                                 ig.InitTypingStart();
 
                                 ///// データ正規化 /////
-                                td.SyncGamePlayerActionManager();
+                                td.SyncAllGamePlayerActionManager();
 
                                 ///// UIへの表示 /////
-                                tUI.DisplayPlayerNewText(pa.qSen[0].jp, pa.qSen[0].h, td.notEnteredSentence);     // プレイヤーUIの表示
+                                tUI.DisplayPlayerText();
 
                                 tState = TYPING_STATE.ING;
                                 break;
@@ -107,14 +107,27 @@ public class SoloMain : MainBase {
                                 ///// プレイヤーの動作に対する挙動 /////
                                 if (pa.GameSceneTypingCheck()) {
 
-                                    ///// データの正規化 /////
-                                    td.SyncGamePlayerActionManager();
-                                    ///// UIへの表示 /////
-                                    
+                                    if (!pa.isFinishedGame) {
+
+                                        ///// データの正規化 /////
+                                        td.SyncAllGamePlayerActionManager();
+                                        ///// UIへの表示 /////
+                                        tUI.DisplayPlayerText();
+                                    }
+                                    else {
+
+                                        ///// データの正規化 /////
+                                        td.SyncRecGamePlayerActionManager();
+                                        //// UIへの表示 ////
+                                        tUI.DisplayRmText(td.enteredSentence, td.notEnteredSentence);
+                                        // ゲーム状態の移行
+                                        tState = TYPING_STATE.FINISH;
+                                    }
                                 }
                                 break;
 
                             case TYPING_STATE.FINISH:
+                                Debug.Log("TYPING_STATE->FINISH");
                                 break;
                         }
                         break;

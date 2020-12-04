@@ -33,6 +33,8 @@ public class GamePlayerActionManager : PlayerActionBase {
     public bool acceptSingleN;      // "ん"のn1回可否判定
     // ミスタイプ判定関連
     public bool isRecMistype;       // ミスタイプ中か判定
+    // ゲーム終了判定
+    public bool isFinishedGame = false;
 
     /// <summary>
     /// プレイヤー動作時に作動
