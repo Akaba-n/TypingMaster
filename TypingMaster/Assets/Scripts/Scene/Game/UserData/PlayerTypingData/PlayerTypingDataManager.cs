@@ -12,6 +12,12 @@ public class PlayerTypingDataManager : TypingDataBase {
     [SerializeField] private GamePlayerActionManager pa;
     [SerializeField] private RecordCalculator rc;
 
+    /*---------- Playerのみの変数 ----------*/
+    public Dictionary<string, int> MisTypeDictionary;    // 苦手キーDict
+    public double[] SectionTypingTime;  // 各文経過時間
+    public int[] SectionCorrectNum;  // 各文正解タイプ数
+    public double[] SectionKpm;         // 各文KPM
+
     /*----- GamePlayerActionManagerとの同期 -----*/
     /// <summary>
     /// GamePlayerActionManagerとの同期処理
@@ -25,6 +31,7 @@ public class PlayerTypingDataManager : TypingDataBase {
         notEnteredSentence = pa.notEnteredSentence;
         jpSentence = pa.qSen[pa.CorrectTaskNum].jp.ToString();
         hrSentence = pa.qSen[pa.CorrectTaskNum].h.ToString();
+        isFinishedGame = pa.isFinishedGame;
         // ↓これはPlayerTypingDataで管理する必要無さそう？
         MisTypeDictionary = pa.MisTypeDictionary;
     }

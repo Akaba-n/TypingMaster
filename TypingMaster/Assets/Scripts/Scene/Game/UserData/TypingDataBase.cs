@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// タイピングのデータ関連(Player,Enemy共通)
+/// </summary>
 public class TypingDataBase : MonoBehaviour {
 
     /*----- Game中情報関連 -----*/
@@ -14,11 +17,7 @@ public class TypingDataBase : MonoBehaviour {
     public int MisTypeNum;          // ミスタイプ数
     public int CorrectTaskNum;      // 正解問題数
     public double TotalTypingTime;  // 総合経過時間
-    public double[] SectionTypingTime;  // 各文経過時間
-    public int[]    SectionCorrectNum;  // 各文正解タイプ数
-    public double[] SectionKpm;         // 各文KPM
     public double Kpm;              // KPM
     public double Accuracy;         // 正答率
-    public Dictionary<string, int> MisTypeDictionary;    // 苦手キーDict
-    
+    public bool isFinishedGame;     // ゲーム終了判定
 }

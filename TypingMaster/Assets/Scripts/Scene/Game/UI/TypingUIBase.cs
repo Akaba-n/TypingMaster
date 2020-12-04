@@ -3,40 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TypingUiManager : MonoBehaviour {
+public class TypingUIBase : MonoBehaviour {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
-    [SerializeField] private Text _jpText;
-    [SerializeField] private Text _hrText;
-    [SerializeField] private Text _rmText;
-    [SerializeField] private GamePlayerActionManager pa;
-    [SerializeField] private PlayerTypingDataManager td;
+    public Text _jpText;
+    public Text _hrText;
+    public Text _rmText;
 
-    /// <summary>
-    /// 問題文UI表示処理
-    /// </summary>
-    public void DisplayPlayerText() {
-
-        DisplayJpText(td.jpSentence);
-        DisplayHrText(td.hrSentence);
-        DisplayRmText(td.enteredSentence, td.notEnteredSentence, pa.isRecMistype);
-    }
     /// <summary>
     /// 日本語文表示
     /// </summary>
-    /// <param name="str">入力文字列</param>
-    private void DisplayJpText(string str) {
+    /// <param name="str">日本語文</param>
+    public void DisplayJpText(string str) {
 
         _jpText.text = str;
     }
     /// <summary>
     /// ひらがな文表示
     /// </summary>
-    /// <param name="str">入力文字列</param>
-    private void DisplayHrText(string str) {
+    /// <param name="str">ひらがな文</param>
+    public void DisplayHrText(string str) {
 
         _hrText.text = str;
     }
+
     /// <summary>
     /// ローマ字入力候補の表示
     /// </summary>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // シーンの切り替え等
 
-public class SoloMain : MainBase {
+public class MultiMain : MainBase {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GameConfig gc;
@@ -11,7 +11,6 @@ public class SoloMain : MainBase {
     [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
     [SerializeField] private PlayerTypingDataManager td;          // データの操作
     [SerializeField] private PlayerTypingUiManager tUI;           // UIに対する挙動
-    [SerializeField] private ConsoleUIManager cUI;
 
     // ゲームシーンの状態
     public enum GAME_STATE {
@@ -21,7 +20,7 @@ public class SoloMain : MainBase {
         TYPING,     // タイピングゲーム部分
         RESULT      // 結果画面
     };
-    public static GAME_STATE gState;
+    public GAME_STATE gState;
     // タイピング時の状態
     public enum TYPING_STATE {
 
@@ -29,7 +28,7 @@ public class SoloMain : MainBase {
         ING,        // 
         FINISH      // 終了処理(オンライン時は全員終了まで待機する)
     }
-    public static TYPING_STATE tState;
+    public TYPING_STATE tState;
 
     //// Scene遷移時動作 ////
     protected override void Start(){
@@ -100,7 +99,6 @@ public class SoloMain : MainBase {
 
                                 ///// UIへの表示 /////
                                 tUI.DisplayPlayerText();
-                                cUI.DisplayConsoleText();
 
                                 tState = TYPING_STATE.ING;
                                 break;
@@ -109,17 +107,15 @@ public class SoloMain : MainBase {
 
                                 // 記録計算
                                 td.RecCalc();
-                                cUI.DisplayTimeText();
                                 ///// プレイヤーの動作に対する挙動 /////
                                 if (pa.GameSceneTypingCheck()) {
 
-                                    if (!td.isFinishedGame) {
+                                    if (!pa.isFinishedGame) {
 
                                         ///// データの正規化 /////
                                         td.SyncAllGamePlayerActionManager();
                                         ///// UIへの表示 /////
                                         tUI.DisplayPlayerText();
-                                        cUI.DisplayConsoleText();
                                     }
                                     else {
 
@@ -127,7 +123,6 @@ public class SoloMain : MainBase {
                                         td.SyncRecGamePlayerActionManager();
                                         //// UIへの表示 ////
                                         tUI.DisplayRmText(td.enteredSentence, td.notEnteredSentence);
-                                        cUI.DisplayConsoleText();
                                         // ゲーム状態の移行
                                         tState = TYPING_STATE.FINISH;
                                     }
@@ -135,7 +130,6 @@ public class SoloMain : MainBase {
                                 break;
 
                             case TYPING_STATE.FINISH:
-                                cUI.DisplayConsoleText();
                                 Debug.Log("TYPING_STATE->FINISH");
                                 break;
                         }
