@@ -9,6 +9,7 @@ public class TypingUiManager : MonoBehaviour {
     [SerializeField] private Text _jpText;
     [SerializeField] private Text _hrText;
     [SerializeField] private Text _rmText;
+    [SerializeField] private GamePlayerActionManager pa;
     [SerializeField] private PlayerTypingDataManager td;
 
     /// <summary>
@@ -18,7 +19,7 @@ public class TypingUiManager : MonoBehaviour {
 
         DisplayJpText(td.jpSentence);
         DisplayHrText(td.hrSentence);
-        DisplayRmText(td.enteredSentence, td.notEnteredSentence);
+        DisplayRmText(td.enteredSentence, td.notEnteredSentence, pa.isRecMistype);
     }
     /// <summary>
     /// 日本語文表示

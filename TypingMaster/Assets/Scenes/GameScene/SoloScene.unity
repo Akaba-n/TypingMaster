@@ -238,6 +238,7 @@ MonoBehaviour:
   index: 0
   acceptSingleN: 0
   isRecMistype: 0
+  isFinishedGame: 0
 --- !u!1 &268144541
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,8 +751,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 923311955}
+  - component: {fileID: 923311956}
   m_Layer: 0
-  m_Name: Mistype
+  m_Name: Mistake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -771,6 +773,19 @@ Transform:
   m_Father: {fileID: 1748941814}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &923311956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923311954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673320efac951294cb8ff4cdcea80060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pa: {fileID: 178959498}
 --- !u!1 &1025959036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,6 +1032,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enteredSentence: 
   notEnteredSentence: 
+  jpSentence: 
+  hrSentence: 
   CorrectTypeNum: 0
   MisTypeNum: 0
   CorrectTaskNum: 0
@@ -1291,6 +1308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pa: {fileID: 178959498}
   cr: {fileID: 2068934660}
+  mt: {fileID: 923311956}
 --- !u!1 &1843740563
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class GameTypingCheckMethod : MonoBehaviour {
     /*---------- オブジェクトのインスタンス作成 ----------*/
     [SerializeField] private GamePlayerActionManager pa;
     [SerializeField] private CorrectMethod cr;
+    [SerializeField] private MistakeMethod mt;
 
     /// <summary>
     /// keyQueueにKeyCodeが格納されているかでタイピングチェックするメソッド(全シーン共通)
@@ -37,7 +38,7 @@ public class GameTypingCheckMethod : MonoBehaviour {
 
 
     /// <summary>
-    /// escキーが押された場合に目―ニュー画面を開くメソッド
+    /// escキーが押された場合にメニュー画面を開くメソッド
     /// </summary>
     /// <param name="kc"></param>
     public void OpenMenu(KeyCode kc) {
@@ -100,6 +101,7 @@ public class GameTypingCheckMethod : MonoBehaviour {
         else {
 
             ///// 不正解タイプ時処理 /////
+            mt.Mistake();
         }
     }
 
