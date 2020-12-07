@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class EnemyTypingDataManager : TypingDataBase {
 
-    private 
+    private NetworkManager nm = null;
 
     /*----- 取得する値 -----*/
     public string enemyUserId;
@@ -26,9 +26,30 @@ public class EnemyTypingDataManager : TypingDataBase {
     /// public double Kpm;              // KPM
     /// public double Accuracy;         // 正答率
     /// public bool isFinishedGame;     // ゲーム終了判定
-     
-    public void SyncDataWithServer() {
+    
 
+    private void Start() {
 
+        nm = SystemManager.instance.networkManager;
     }
+
+    /// <summary>
+    /// サーバとクライアントの敵データの同期を行う処理
+    /// </summary>
+    /// <param name="uId">同期先のUserId</param>
+    public void SyncDataWithServer(string uId) {
+
+        
+    }
+    /// <summary>
+    /// サーバに接続してデータを取得する処理
+    /// </summary>
+    /// <param name="userId">ユーザーID</param>
+    /// <param name="roomId">部屋ID</param>
+    private void ConnectServer(string userId, string roomId) {
+
+
+        //nm.GetRequest();
+    }
+    
 }
