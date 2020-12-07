@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class EnemyTypingDataManager : TypingDataBase {
 
+    /*----- オブジェクトのインスタンス化(Inspectorで設定) -----*/
+    [SerializeField] private GetEnemyTypingData getETD;
+    /*----- クラスのインスタンス化 -----*/
     private NetworkManager nm = null;
 
     /*----- 取得する値 -----*/
@@ -31,7 +34,7 @@ public class EnemyTypingDataManager : TypingDataBase {
     private void Start() {
 
         nm = SystemManager.instance.networkManager;
-
+        ConnectServer("2", "2");
     }
 
     /// <summary>
@@ -48,10 +51,8 @@ public class EnemyTypingDataManager : TypingDataBase {
     /// <param name="userId">ユーザーID</param>
     /// <param name="roomId">部屋ID</param>
     private void ConnectServer(string userId, string roomId) {
-
-        // TypingDataのJson変換
-        var jsonData = TypingDataToJson();
-        //nm.GetRequest();
+        
+        StartCoroutine(getETD.GetETD("url"));
     }
     
 }

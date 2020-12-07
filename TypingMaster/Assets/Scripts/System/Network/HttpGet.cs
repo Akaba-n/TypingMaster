@@ -8,7 +8,7 @@ using UnityEngine;
 public class HttpGet : MonoBehaviour {
 
     [SerializeField] private ServerTimeOut serverTimeOut;
-    
+
     /*  WWWクラスによるRequesstは古いので変更 */
     /// <summary>
     /// HTTPにGET接続するコルーチン
@@ -72,8 +72,15 @@ public class HttpGet : MonoBehaviour {
             Debug.Log("GETSuccess : " + www.text);
         }
     }
-    
     /*
+    // GetRequestの返す値を格納する物を用意する
+    private string reqResult = "";
+
+    /// <summary>
+    /// HTTPにGET接続(空)するコルーチン(UnityWebRequest版)
+    /// </summary>
+    /// <param name="url">接続先URL</param>
+    /// <returns></returns>
     public IEnumerator GetRequest(string url) {
 
 
