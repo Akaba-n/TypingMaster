@@ -130,7 +130,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 48910873}
-  - component: {fileID: 48910872}
   - component: {fileID: 48910874}
   m_Layer: 0
   m_Name: SoloMain
@@ -139,20 +138,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &48910872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48910871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 101cbdd0bdc49584aa6bcb1749dcbc19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  status: 0
-  mainCamera: {fileID: 0}
 --- !u!4 &48910873
 Transform:
   m_ObjectHideFlags: 0
@@ -192,11 +177,9 @@ MonoBehaviour:
   gc: {fileID: 674426537}
   ig: {fileID: 1486316198}
   pa: {fileID: 178959498}
-  td: {fileID: 1419018896}
+  ptd: {fileID: 1419018896}
   tUI: {fileID: 1510218053}
   cUI: {fileID: 462381859}
-  gState: 0
-  tState: 0
 --- !u!1 &159181546
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +611,7 @@ MonoBehaviour:
   TotalTimeText: {fileID: 1416280115}
   KpmText: {fileID: 159181548}
   TaskText: {fileID: 820787044}
-  td: {fileID: 1419018896}
+  ptd: {fileID: 1419018896}
   gc: {fileID: 674426537}
 --- !u!1 &505287447
 GameObject:
@@ -1442,7 +1425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb1fdc588351884097a83bbc5e8bb84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  td: {fileID: 1419018896}
+  ptd: {fileID: 1419018896}
   gc: {fileID: 674426537}
 --- !u!1 &1254679162
 GameObject:
@@ -1644,21 +1627,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a329110d7cf9fb948a140624137c8ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enteredSentence: 
-  notEnteredSentence: 
-  jpSentence: 
-  hrSentence: 
-  CorrectTypeNum: 0
-  MisTypeNum: 0
-  CorrectTaskNum: 0
-  TotalTypingTime: 0
+  td:
+    enteredSentence: 
+    notEnteredSentence: 
+    jpSentence: 
+    hrSentence: 
+    CorrectTypeNum: 0
+    MisTypeNum: 0
+    CorrectTaskNum: 0
+    TotalTypingTime: 0
+    Kpm: 0
+    Accuracy: 0
+    isFinishedGame: 0
+  pa: {fileID: 178959498}
+  rc: {fileID: 1164847194}
   SectionTypingTime: []
   SectionCorrectNum: 
   SectionKpm: []
-  Kpm: 0
-  Accuracy: 0
-  pa: {fileID: 178959498}
-  rc: {fileID: 1164847194}
 --- !u!1 &1479703117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,7 +1766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pa: {fileID: 178959498}
   gc: {fileID: 674426537}
-  td: {fileID: 1419018896}
+  ptd: {fileID: 1419018896}
   ns: {fileID: 1668979613}
 --- !u!1 &1510218051
 GameObject:
@@ -1831,7 +1816,7 @@ MonoBehaviour:
   _hrText: {fileID: 268144543}
   _rmText: {fileID: 2104468022}
   pa: {fileID: 178959498}
-  td: {fileID: 1419018896}
+  ptd: {fileID: 1419018896}
 --- !u!1 &1668979611
 GameObject:
   m_ObjectHideFlags: 0

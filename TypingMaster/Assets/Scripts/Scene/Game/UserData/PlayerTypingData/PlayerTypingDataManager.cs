@@ -24,14 +24,14 @@ public class PlayerTypingDataManager : TypingDataBase {
     /// </summary>
     public void SyncAllGamePlayerActionManager() {
 
-        CorrectTaskNum = pa.CorrectTaskNum;
-        CorrectTypeNum = pa.CorrectTypeNum;
-        MisTypeNum = pa.MisTypeNum;
-        enteredSentence = pa.enteredSentence;
-        notEnteredSentence = pa.notEnteredSentence;
-        jpSentence = pa.qSen[pa.CorrectTaskNum].jp.ToString();
-        hrSentence = pa.qSen[pa.CorrectTaskNum].h.ToString();
-        isFinishedGame = pa.isFinishedGame;
+        td.CorrectTaskNum = pa.CorrectTaskNum;
+        td.CorrectTypeNum = pa.CorrectTypeNum;
+        td.MisTypeNum = pa.MisTypeNum;
+        td.enteredSentence = pa.enteredSentence;
+        td.notEnteredSentence = pa.notEnteredSentence;
+        td.jpSentence = pa.qSen[pa.CorrectTaskNum].jp.ToString();
+        td.hrSentence = pa.qSen[pa.CorrectTaskNum].h.ToString();
+        td.isFinishedGame = pa.isFinishedGame;
         // ↓これはPlayerTypingDataで管理する必要無さそう？
         MisTypeDictionary = pa.MisTypeDictionary;
     }
@@ -40,12 +40,13 @@ public class PlayerTypingDataManager : TypingDataBase {
     /// </summary>
     public void SyncRecGamePlayerActionManager() {
 
-        CorrectTaskNum = pa.CorrectTaskNum;
-        CorrectTypeNum = pa.CorrectTypeNum;
-        MisTypeNum = pa.MisTypeNum;
-        enteredSentence = pa.enteredSentence;
-        notEnteredSentence = pa.notEnteredSentence;
+        td.CorrectTaskNum = pa.CorrectTaskNum;
+        td.CorrectTypeNum = pa.CorrectTypeNum;
+        td.MisTypeNum = pa.MisTypeNum;
+        td.enteredSentence = pa.enteredSentence;
+        td.notEnteredSentence = pa.notEnteredSentence;
         SectionCorrectNum = pa.SectionCorrectNum;
+        td.isFinishedGame = pa.isFinishedGame;
     }
 
     /*----- 記録計算関連 -----*/

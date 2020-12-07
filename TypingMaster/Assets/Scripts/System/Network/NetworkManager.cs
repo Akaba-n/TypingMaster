@@ -12,6 +12,9 @@ public class NetworkManager : AppDefine {
     [SerializeField] private HttpGet httpGet;
     [SerializeField] private HttpPost httpPost;
 
+    // URL保管クラスのインスタンス化
+    public ServerUrl sUrl = null;
+
     // 接続先のURL
     private const string URL = "http://ec2-18-181-251-215.ap-northeast-1.compute.amazonaws.com/test/test.php";
     //private const string URL = "http://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060";
@@ -21,6 +24,9 @@ public class NetworkManager : AppDefine {
     private string userData = "abc";
 
     private void Start() {
+
+        // URL保管クラスのインスタンス化
+        sUrl = new ServerUrl();
 
         // サーバ送信データこねこね
         // POST

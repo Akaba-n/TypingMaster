@@ -10,7 +10,7 @@ public class InitGameMethod : MonoBehaviour {
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GamePlayerActionManager pa;
     [SerializeField] private GameConfig gc;
-    [SerializeField] private PlayerTypingDataManager td;
+    [SerializeField] private PlayerTypingDataManager ptd;
     [SerializeField] private NextSentenceMethod ns;
 
     /// <summary>
@@ -19,7 +19,7 @@ public class InitGameMethod : MonoBehaviour {
     public void InitSoloGame() {
 
         InitConfig();
-        InitTypingData();
+        InitPlayerTypingData();
         InitGamePlayerAction();
         InitQuestion();
         ///// 最初の文章のenteredSentenceの格納 /////
@@ -32,7 +32,7 @@ public class InitGameMethod : MonoBehaviour {
     public void InitMultiGame() {
 
         InitConfig();
-        InitTypingData();
+        InitPlayerTypingData();
         InitGamePlayerAction();
         ///// サーバから問題データを取得する処理 /////
     }
@@ -77,18 +77,18 @@ public class InitGameMethod : MonoBehaviour {
     /// <summary>
     /// TypingData関連初期化メソッド
     /// </summary>
-    private void InitTypingData() {
+    private void InitPlayerTypingData() {
 
-        td.CorrectTypeNum = 0;
-        td.CorrectTaskNum = 0;
-        td.MisTypeNum = 0;
-        td.TotalTypingTime = 0f;
-        td.Kpm = 0f;
-        td.Accuracy = 0f;
-        td.MisTypeDictionary = new Dictionary<string, int>();
-        td.SectionTypingTime = new double[gc.Tasks];
-        td.SectionCorrectNum = new int[gc.Tasks];
-        td.SectionKpm = new double[gc.Tasks];
+        ptd.td.CorrectTypeNum = 0;
+        ptd.td.CorrectTaskNum = 0;
+        ptd.td.MisTypeNum = 0;
+        ptd.td.TotalTypingTime = 0f;
+        ptd.td.Kpm = 0f;
+        ptd.td.Accuracy = 0f;
+        ptd.MisTypeDictionary = new Dictionary<string, int>();
+        ptd.SectionTypingTime = new double[gc.Tasks];
+        ptd.SectionCorrectNum = new int[gc.Tasks];
+        ptd.SectionKpm = new double[gc.Tasks];
     }
     
     /// <summary>

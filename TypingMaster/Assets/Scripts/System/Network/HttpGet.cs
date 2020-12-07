@@ -9,6 +9,7 @@ public class HttpGet : MonoBehaviour {
 
     [SerializeField] private ServerTimeOut serverTimeOut;
     
+    /*  WWWクラスによるRequesstは古いので変更 */
     /// <summary>
     /// HTTPにGET接続するコルーチン
     /// </summary>
@@ -71,4 +72,10 @@ public class HttpGet : MonoBehaviour {
             Debug.Log("GETSuccess : " + www.text);
         }
     }
+    
+    /*
+    public IEnumerator GetRequest(string url) {
+
+
+    }*/
 }

@@ -9,7 +9,7 @@ public class SoloMain : MainBase {
     [SerializeField] private GameConfig gc;
     [SerializeField] private InitGameMethod ig;     // PlayerInitGame(Player初期化処理)
     [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
-    [SerializeField] private PlayerTypingDataManager td;          // データの操作
+    [SerializeField] private PlayerTypingDataManager ptd;          // データの操作
     [SerializeField] private PlayerTypingUiManager tUI;           // UIに対する挙動
     [SerializeField] private ConsoleUIManager cUI;
 
@@ -96,7 +96,7 @@ public class SoloMain : MainBase {
                                 ig.InitTypingStart();
 
                                 ///// データ正規化 /////
-                                td.SyncAllGamePlayerActionManager();
+                                ptd.SyncAllGamePlayerActionManager();
 
                                 ///// UIへの表示 /////
                                 tUI.DisplayPlayerText();
@@ -108,15 +108,15 @@ public class SoloMain : MainBase {
                             case TYPING_STATE.ING:
 
                                 // 記録計算
-                                td.RecCalc();
+                                ptd.RecCalc();
                                 cUI.DisplayTimeText();
                                 ///// プレイヤーの動作に対する挙動 /////
                                 if (pa.GameSceneTypingCheck()) {
 
-                                    if (!td.isFinishedGame) {
+                                    if (!pa.isFinishedGame) {
 
                                         ///// データの正規化 /////
-                                        td.SyncAllGamePlayerActionManager();
+                                        ptd.SyncAllGamePlayerActionManager();
                                         ///// UIへの表示 /////
                                         tUI.DisplayPlayerText();
                                         cUI.DisplayConsoleText();
@@ -124,9 +124,9 @@ public class SoloMain : MainBase {
                                     else {
 
                                         ///// データの正規化 /////
-                                        td.SyncRecGamePlayerActionManager();
+                                        ptd.SyncRecGamePlayerActionManager();
                                         //// UIへの表示 ////
-                                        tUI.DisplayRmText(td.enteredSentence, td.notEnteredSentence);
+                                        tUI.DisplayRmText(ptd.td.enteredSentence, ptd.td.notEnteredSentence);
                                         cUI.DisplayConsoleText();
                                         // ゲーム状態の移行
                                         tState = TYPING_STATE.FINISH;

@@ -7,15 +7,15 @@ public class PlayerTypingUiManager : TypingUIBase {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GamePlayerActionManager pa;
-    [SerializeField] private PlayerTypingDataManager td;
+    [SerializeField] private PlayerTypingDataManager ptd;
 
     /// <summary>
     /// 問題文UI表示処理
     /// </summary>
     public void DisplayPlayerText() {
 
-        DisplayJpText(td.jpSentence);
-        DisplayHrText(td.hrSentence);
-        DisplayRmText(td.enteredSentence, td.notEnteredSentence, pa.isRecMistype);
+        DisplayJpText(ptd.td.jpSentence);
+        DisplayHrText(ptd.td.hrSentence);
+        DisplayRmText(ptd.td.enteredSentence, ptd.td.notEnteredSentence, pa.isRecMistype);
     }
 }

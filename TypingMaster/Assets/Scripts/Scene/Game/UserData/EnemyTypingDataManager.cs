@@ -31,6 +31,7 @@ public class EnemyTypingDataManager : TypingDataBase {
     private void Start() {
 
         nm = SystemManager.instance.networkManager;
+
     }
 
     /// <summary>
@@ -48,7 +49,8 @@ public class EnemyTypingDataManager : TypingDataBase {
     /// <param name="roomId">部屋ID</param>
     private void ConnectServer(string userId, string roomId) {
 
-
+        // TypingDataのJson変換
+        var jsonData = TypingDataToJson();
         //nm.GetRequest();
     }
     
