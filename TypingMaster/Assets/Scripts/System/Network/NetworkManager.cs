@@ -13,7 +13,7 @@ public class NetworkManager : AppDefine {
     [SerializeField] private HttpPost httpPost;
 
     // URL保管クラスのインスタンス化
-    public ServerUrl sUrl = null;
+    //public ServerUrl sUrl = null;
 
     // 接続先のURL
     private const string URL = "http://ec2-18-181-251-215.ap-northeast-1.compute.amazonaws.com/test/test.php";
@@ -26,7 +26,7 @@ public class NetworkManager : AppDefine {
     private void Start() {
 
         // URL保管クラスのインスタンス化
-        sUrl = new ServerUrl();
+        //sUrl = new ServerUrl();
 
         // サーバ送信データこねこね
         // POST

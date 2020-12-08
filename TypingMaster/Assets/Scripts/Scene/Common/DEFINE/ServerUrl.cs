@@ -5,13 +5,13 @@ using UnityEngine;
 /// <summary>
 /// URL保管用クラス
 /// </summary>
-public class ServerUrl {
+public static class ServerUrl {
 
     //*----- 基本URL -----*//
-    public const string BASE_URL = "";
+    public const string BASE_URL = "http://ec2-18-181-251-215.ap-northeast-1.compute.amazonaws.com/";
     //*----- ゲーム内 -----*//
-    public const string ENEMY_SYNC_URL    = BASE_URL + "";
-    public const string PLAYER_SYNC_URL   = BASE_URL + "";
+    public const string ENEMY_SYNC_URL    = BASE_URL + "test/userDataTest.php";
+    public const string PLAYER_SYNC_URL   = BASE_URL + "test/playerDataTest.php";
     public const string PLAYER_RESULT_URL = BASE_URL + "";
     //*----- ランキング用 -----*//
 }

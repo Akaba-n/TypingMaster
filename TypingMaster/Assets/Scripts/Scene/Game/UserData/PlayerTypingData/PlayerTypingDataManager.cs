@@ -11,12 +11,21 @@ public class PlayerTypingDataManager : TypingDataBase {
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GamePlayerActionManager pa;
     [SerializeField] private RecordCalculator rc;
+    [SerializeField] private SendPlayerTypingData sendPTD;
 
     /*---------- Playerのみの変数 ----------*/
     public Dictionary<string, int> MisTypeDictionary;    // 苦手キーDict
     public double[] SectionTypingTime;  // 各文経過時間
     public int[] SectionCorrectNum;  // 各文正解タイプ数
     public double[] SectionKpm;         // 各文KPM
+
+    private void Start() {
+        
+        ///// 本来はマッチング時に設定する /////
+        var roomId = "0001";
+        var playerUserId = "00001";
+        ConnectServer(playerUserId, roomId);
+    }
 
     /*----- GamePlayerActionManagerとの同期 -----*/
     /// <summary>
@@ -65,5 +74,12 @@ public class PlayerTypingDataManager : TypingDataBase {
     public void FinishRecCalc() {
 
         rc.SectionKeyPerMinute();
+    }
+
+
+    /*----- サーバー通信関連 -----*/
+    private void ConnectServer(string userId, string roomId) {
+
+        StartCoroutine(sendPTD.SendPTD(userId, roomId));
     }
 }

@@ -9,8 +9,6 @@ public class EnemyTypingDataManager : TypingDataBase {
 
     /*----- オブジェクトのインスタンス化(Inspectorで設定) -----*/
     [SerializeField] private GetEnemyTypingData getETD;
-    /*----- クラスのインスタンス化 -----*/
-    private NetworkManager nm = null;
 
     /*----- 取得する値 -----*/
     public string enemyUserId;
@@ -32,19 +30,15 @@ public class EnemyTypingDataManager : TypingDataBase {
     
 
     private void Start() {
-
-        nm = SystemManager.instance.networkManager;
-        ConnectServer("2", "2");
-    }
-
-    /// <summary>
-    /// サーバとクライアントの敵データの同期を行う処理
-    /// </summary>
-    /// <param name="uId">同期先のUserId</param>
-    public void SyncDataWithServer(string uId) {
-
         
+        ///// 本来はマッチング時に設定する /////
+        var roomId = "0001";
+        enemyUserId = "00001";
+        enemyName = "enemy";
+        ConnectServer(enemyUserId, roomId);
     }
+
+    
     /// <summary>
     /// サーバに接続してデータを取得する処理
     /// </summary>
@@ -52,7 +46,7 @@ public class EnemyTypingDataManager : TypingDataBase {
     /// <param name="roomId">部屋ID</param>
     private void ConnectServer(string userId, string roomId) {
         
-        StartCoroutine(getETD.GetETD("url"));
+        StartCoroutine(getETD.GetETD(userId, roomId));
     }
     
 }
