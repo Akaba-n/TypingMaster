@@ -11,6 +11,7 @@ public class MultiMain : MainBase {
     [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
     [SerializeField] private PlayerTypingDataManager ptd;          // データの操作
     [SerializeField] private PlayerTypingUiManager tUI;           // UIに対する挙動
+    [SerializeField] private EnemyTypingDataManager etd;          // 敵データの操作
 
     // ゲームシーンの状態
     public enum GAME_STATE {
@@ -107,7 +108,7 @@ public class MultiMain : MainBase {
 
                                 // 記録計算
                                 ptd.RecCalc();
-                                ///// プレイヤーの動作に対する挙動 /////
+                                ///// プレイヤーの動作に対する(プレイヤータイピング時の)挙動 /////
                                 if (pa.GameSceneTypingCheck()) {
 
                                     if (!pa.isFinishedGame) {
@@ -126,7 +127,11 @@ public class MultiMain : MainBase {
                                         // ゲーム状態の移行
                                         tState = TYPING_STATE.FINISH;
                                     }
+                                    ///// サーバにPlayerTypingDataの送信 /////
+                                    ptd.UploadPlayerTypingData(ptd.playerUserId, ptd.roomId);
                                 }
+                                ///// サーバから敵データの取得 /////
+                                etd.DownloadEnemyTypingData();
                                 break;
 
                             case TYPING_STATE.FINISH:

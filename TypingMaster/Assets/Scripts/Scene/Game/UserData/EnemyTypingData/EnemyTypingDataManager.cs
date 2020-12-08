@@ -8,11 +8,13 @@ using UnityEngine;
 public class EnemyTypingDataManager : TypingDataBase {
 
     /*----- オブジェクトのインスタンス化(Inspectorで設定) -----*/
-    [SerializeField] private GetEnemyTypingData getETD;
+    [SerializeField] private DownloadEnemyTypingData downloadETD;
 
     /*----- 取得する値 -----*/
     public string enemyUserId;
     public string enemyName;
+    // これ別の方
+    public string roomId;
     /*---------- ↓TypingDataBaseで設定 ----------*/
     /*----- Game中情報関連 -----*/
     /// public string enteredSentence;      // 入力済み文字列(灰色表示部分)
@@ -32,9 +34,13 @@ public class EnemyTypingDataManager : TypingDataBase {
     private void Start() {
         
         ///// 本来はマッチング時に設定する /////
-        var roomId = "0001";
+        roomId = "0001";
         enemyUserId = "00001";
         enemyName = "enemy";
+    }
+
+    public void DownloadEnemyTypingData() {
+        
         ConnectServer(enemyUserId, roomId);
     }
 
@@ -46,7 +52,7 @@ public class EnemyTypingDataManager : TypingDataBase {
     /// <param name="roomId">部屋ID</param>
     private void ConnectServer(string userId, string roomId) {
         
-        StartCoroutine(getETD.GetETD(userId, roomId));
+        StartCoroutine(downloadETD.DownloadETD(userId, roomId));
     }
     
 }

@@ -11,7 +11,7 @@ public class PlayerTypingDataManager : TypingDataBase {
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GamePlayerActionManager pa;
     [SerializeField] private RecordCalculator rc;
-    [SerializeField] private SendPlayerTypingData sendPTD;
+    [SerializeField] private UploadPlayerTypingData uploadPTD;
 
     /*---------- Playerのみの変数 ----------*/
     public Dictionary<string, int> MisTypeDictionary;    // 苦手キーDict
@@ -19,12 +19,16 @@ public class PlayerTypingDataManager : TypingDataBase {
     public int[] SectionCorrectNum;  // 各文正解タイプ数
     public double[] SectionKpm;         // 各文KPM
 
+    /*---------- Debug用 ----------*/
+    public string roomId;
+    public string playerUserId;
+
     private void Start() {
         
         ///// 本来はマッチング時に設定する /////
-        var roomId = "0001";
-        var playerUserId = "00001";
-        ConnectServer(playerUserId, roomId);
+        roomId = "0001";
+        playerUserId = "00001";
+        UploadPlayerTypingData(playerUserId, roomId);
     }
 
     /*----- GamePlayerActionManagerとの同期 -----*/
@@ -78,8 +82,8 @@ public class PlayerTypingDataManager : TypingDataBase {
 
 
     /*----- サーバー通信関連 -----*/
-    private void ConnectServer(string userId, string roomId) {
+    public void UploadPlayerTypingData(string userId, string roomId) {
 
-        StartCoroutine(sendPTD.SendPTD(userId, roomId));
+        StartCoroutine(uploadPTD.UploadPTD(userId, roomId));
     }
 }

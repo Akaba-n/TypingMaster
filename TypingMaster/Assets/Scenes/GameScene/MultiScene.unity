@@ -156,6 +156,7 @@ MonoBehaviour:
   pa: {fileID: 178959498}
   ptd: {fileID: 1419018896}
   tUI: {fileID: 1510218053}
+  etd: {fileID: 1038322610}
   gState: 0
   tState: 0
 --- !u!4 &48910873
@@ -1266,9 +1267,10 @@ MonoBehaviour:
     Kpm: 0
     Accuracy: 0
     isFinishedGame: 0
-  getETD: {fileID: 1516283966}
+  downloadETD: {fileID: 1516283966}
   enemyUserId: 
   enemyName: 
+  roomId: 
 --- !u!1 &1123705730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,6 +1393,50 @@ Transform:
   m_Father: {fileID: 48910873}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1213625799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1213625800}
+  - component: {fileID: 1213625801}
+  m_Layer: 0
+  m_Name: UploadPlayerData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1213625800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213625799}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1419018895}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1213625801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213625799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 032e5989e73ff1a439978720eb10b1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ptd: {fileID: 1419018896}
 --- !u!1 &1419018894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,6 +1466,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1164847193}
+  - {fileID: 1213625800}
   m_Father: {fileID: 1209515384}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1449,9 +1496,12 @@ MonoBehaviour:
     isFinishedGame: 0
   pa: {fileID: 178959498}
   rc: {fileID: 1164847194}
+  uploadPTD: {fileID: 1213625801}
   SectionTypingTime: []
   SectionCorrectNum: 
   SectionKpm: []
+  roomId: 
+  playerUserId: 
 --- !u!1 &1479703117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,7 +1686,7 @@ GameObject:
   - component: {fileID: 1516283965}
   - component: {fileID: 1516283966}
   m_Layer: 0
-  m_Name: GetEnemyData
+  m_Name: DownloadEnemyData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2183,7 +2233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2111704525
 Transform:
   m_ObjectHideFlags: 0

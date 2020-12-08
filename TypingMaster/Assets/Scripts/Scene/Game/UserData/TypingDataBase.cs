@@ -39,7 +39,7 @@ public class TypingDataBase : MonoBehaviour {
 
         // Json形式に変換
         string ret = JsonUtility.ToJson(td);
-        Debug.Log(ret);
+        Debug.Log("TypingDataBase："+ret);
 
         return ret;
     }

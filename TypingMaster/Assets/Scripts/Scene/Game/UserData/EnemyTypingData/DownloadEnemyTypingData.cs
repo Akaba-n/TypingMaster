@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class SendPlayerTypingData : MonoBehaviour {
-
+/// <summary>
+/// サーバと通信し、Enemyのデータを取得する為のクラス
+/// </summary>
+public class DownloadEnemyTypingData : MonoBehaviour {
+    
     /*----- オブジェクトのインスタンス化(Inspectorで設定) -----*/
-    [SerializeField] private PlayerTypingDataManager ptd;
+    [SerializeField] private EnemyTypingDataManager etd;
     /*----- オブジェクトのインスタンス化 -----*/
     //private ServerUrl sUrl = new ServerUrl();
 
     /// <summary>
-    /// UnityWebRequestでサーバにPlayerのデータを送信格納
+    /// UnityWebRequestでサーバから敵のデータを取得
     /// </summary>
-    /// <param name="userId">PlayerのuserId</param>
-    /// <param name="roomId">所属しているroomId</param>
+    /// <param name="url">接続先URL</param>
     /// <returns></returns>
-    public IEnumerator SendPTD(string userId, string roomId) {
+    public IEnumerator DownloadETD(string userId, string roomId) {
 
         // 接続先URL
-        var url = ServerUrl.BASE_URL+ServerUrl.PLAYER_SYNC_URL+"?userId="+userId+"&roomId="+roomId;
+        var url = ServerUrl.ENEMY_SYNC_URL + "?userId=" +userId+"&roomId="+roomId;
         // URLをGETで用意
         UnityWebRequest webRequest = UnityWebRequest.Get(url);
         // URLに接続して結果が戻ってくるまで待機
@@ -35,6 +37,11 @@ public class SendPlayerTypingData : MonoBehaviour {
 
             // 通信成功時処理
             Debug.Log(webRequest.downloadHandler.text);
+            var jsonstr = webRequest.downloadHandler.text;
+            etd.td = JsonUtility.FromJson<EnemyTypingDataManager.TypingData>(jsonstr);
+
+            // 再帰処理
+            //StartCoroutine(DownloadETD(userId, roomId));
         }
     }
 }
