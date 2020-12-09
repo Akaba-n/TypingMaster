@@ -9,6 +9,7 @@ public class TypingUIBase : MonoBehaviour {
     public Text _jpText;
     public Text _hrText;
     public Text _rmText;
+    public Text _anText;
 
     /// <summary>
     /// 日本語文表示
@@ -48,5 +49,25 @@ public class TypingUIBase : MonoBehaviour {
                 _rmText.text += notEntered[i];
             }
         }
+    }
+
+    /// <summary>
+    /// アナウンス表示領域処理
+    /// </summary>
+    /// <param name="str">表示文字列</param>
+    public void DisplayAnText(string str) {
+
+        _anText.text = str;
+    }
+
+    /// <summary>
+    /// ゲーム終了表示(Multi用)
+    /// </summary>
+    public void DisplayFinishText() {
+        
+        DisplayJpText("");
+        DisplayHrText("");
+        DisplayRmText("", "");
+        DisplayAnText("FINISH!!");
     }
 }

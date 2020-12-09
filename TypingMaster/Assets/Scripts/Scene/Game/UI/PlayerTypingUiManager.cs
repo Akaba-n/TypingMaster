@@ -14,6 +14,7 @@ public class PlayerTypingUiManager : TypingUIBase {
     /// </summary>
     public void DisplayPlayerText() {
 
+        DisplayAnText("");
         DisplayJpText(ptd.td.jpSentence);
         DisplayHrText(ptd.td.hrSentence);
         DisplayRmText(ptd.td.enteredSentence, ptd.td.notEnteredSentence, pa.isRecMistype);

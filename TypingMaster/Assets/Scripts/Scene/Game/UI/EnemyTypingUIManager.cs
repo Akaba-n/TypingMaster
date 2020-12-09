@@ -15,6 +15,7 @@ public class EnemyTypingUIManager : TypingUIBase {
     /// </summary>
     public void DisplayEnemyText() {
 
+        DisplayAnText("");
         DisplayJpText(etd.td.jpSentence);
         DisplayHrText(etd.td.hrSentence);
         DisplayRmText(etd.td.enteredSentence, etd.td.notEnteredSentence);

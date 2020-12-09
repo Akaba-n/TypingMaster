@@ -77,6 +77,7 @@ public class MultiMain : MainBase {
                     // 初期化処理
                     case GAME_STATE.INIT:
 
+                        ///// 後でInitMultiGameに変える /////
                         ig.InitSoloGame();
                         gState = GAME_STATE.COUNTDOWN;
                         
@@ -95,9 +96,11 @@ public class MultiMain : MainBase {
                             case TYPING_STATE.START:
                                 ///// 初期化処理 /////
                                 ig.InitTypingStart();
-
+                                
                                 ///// データ正規化 /////
                                 ptd.SyncAllGamePlayerActionManager();
+                                ///// サーバにPlayerTypingDataの送信 /////
+                                ptd.UploadPlayerTypingData(ptd.playerUserId, ptd.roomId);
 
                                 ///// UIへの表示 /////
                                 tUI.DisplayPlayerText();
@@ -123,8 +126,8 @@ public class MultiMain : MainBase {
 
                                         ///// データの正規化 /////
                                         ptd.SyncRecGamePlayerActionManager();
-                                        //// UIへの表示 ////
-                                        tUI.DisplayRmText(ptd.td.enteredSentence, ptd.td.notEnteredSentence);
+                                        ///// UIへの表示 /////
+                                        tUI.DisplayFinishText();
                                         // ゲーム状態の移行
                                         tState = TYPING_STATE.FINISH;
                                     }
@@ -134,11 +137,43 @@ public class MultiMain : MainBase {
                                 ///// サーバから敵データの取得 /////
                                 etd.DownloadEnemyTypingData();
                                 ///// 敵データの表示 /////
-                                eUI.DisplayEnemyText();
+                                // 敵未終了時
+                                if (!etd.td.isFinishedGame) {
+
+                                    eUI.DisplayEnemyText();
+                                }
+                                // 敵終了時
+                                else {
+
+                                    eUI.DisplayFinishText();
+                                }
                                 break;
 
                             case TYPING_STATE.FINISH:
-                                Debug.Log("TYPING_STATE->FINISH");
+                                // 自分と相手の両方終了時
+                                if(ptd.td.isFinishedGame && etd.td.isFinishedGame) {
+
+                                    ///// ゲーム終了処理 /////
+                                    // リザルト画面に移動
+                                    gState = GAME_STATE.RESULT;
+                                }
+                                // 敵の終了待ち
+                                else {
+
+                                    ///// サーバから敵データの取得 /////
+                                    etd.DownloadEnemyTypingData();
+                                    // 敵未終了時
+                                    if (!etd.td.isFinishedGame) {
+
+                                        eUI.DisplayEnemyText();
+                                    }
+                                    // 敵終了時
+                                    else {
+
+                                        eUI.DisplayFinishText();
+                                    }
+                                }
+                                
                                 break;
                         }
                         break;
@@ -168,7 +203,7 @@ public class MultiMain : MainBase {
                     // GameScene用サウンドの破棄
                     Release();
                     // Scene遷移
-                    SceneManager.LoadScene("ResultScene");
+                    //SceneManager.LoadScene("ResultScene");
                 }
                 break;
         }
