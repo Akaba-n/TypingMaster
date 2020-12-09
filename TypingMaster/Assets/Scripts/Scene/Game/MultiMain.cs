@@ -12,6 +12,7 @@ public class MultiMain : MainBase {
     [SerializeField] private PlayerTypingDataManager ptd;          // データの操作
     [SerializeField] private PlayerTypingUiManager tUI;           // UIに対する挙動
     [SerializeField] private EnemyTypingDataManager etd;          // 敵データの操作
+    [SerializeField] private EnemyTypingUIManager eUI;           // UIに対する挙動
 
     // ゲームシーンの状態
     public enum GAME_STATE {
@@ -132,6 +133,8 @@ public class MultiMain : MainBase {
                                 }
                                 ///// サーバから敵データの取得 /////
                                 etd.DownloadEnemyTypingData();
+                                ///// 敵データの表示 /////
+                                eUI.DisplayEnemyText();
                                 break;
 
                             case TYPING_STATE.FINISH:

@@ -99,6 +99,13 @@
 
 
 (3)使用サイトURL
+【AWS関連】
+AWSでのsu
+https://www.kannon.link/fuku/index.php/2016/09/19/02/
+rm
+https://raspi.taneyats.com/entry/command-rm
+chmod
+http://raining.bear-life.com/linux/chmod%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%80%81%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%A4%89%E6%9B%B4
 【コルーチン】
 Unityでコルーチン
 https://developers.wonderpla.net/entry/2014/09/02/205829
@@ -111,7 +118,15 @@ https://www.slideshare.net/KMC_JP/c-91154309
 【サーバ接続関連】
 UnityでHTTP接続する(UnityWebRequest) Qiita
 https://qiita.com/ponchan/items/65aeb43e8fea8da0bcac
-
+HTTP接続フレームワーク例(何か使ってるので改変必要)
+https://github.com/sassembla/Autoya/blob/master/Assets/Autoya/Connections/HTTP.cs
+【PHP関連】
+ファイルの書き込み
+https://www.php.net/manual/ja/function.file-put-contents.php
+PHPでJSONを受け取るには
+https://qiita.com/hidepy/items/42220523cb2b3eb2c451
+PHPでPUTの受け取り
+https://www.tmp1024.com/articles/php-put-get-data
 
 (4)気になるポイント
 ・HTTP通信にWWWクラスを使っている物とUnityWebRequestを使っている物の差

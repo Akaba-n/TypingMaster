@@ -157,6 +157,7 @@ MonoBehaviour:
   ptd: {fileID: 1419018896}
   tUI: {fileID: 1510218053}
   etd: {fileID: 1038322610}
+  eUI: {fileID: 742337332}
   gState: 0
   tState: 0
 --- !u!4 &48910873
@@ -971,6 +972,7 @@ GameObject:
   m_Component:
   - component: {fileID: 742337330}
   - component: {fileID: 742337331}
+  - component: {fileID: 742337332}
   m_Layer: 0
   m_Name: EnemyUIManager
   m_TagString: Untagged
@@ -1010,6 +1012,22 @@ MonoBehaviour:
   _rmText: {fileID: 196112390}
   pa: {fileID: 178959498}
   ptd: {fileID: 1419018896}
+--- !u!114 &742337332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742337329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4029563b9e8896d4f9868696cbb7024e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jpText: {fileID: 171334704}
+  _hrText: {fileID: 1830664003}
+  _rmText: {fileID: 196112390}
+  etd: {fileID: 1038322610}
 --- !u!1 &865584680
 GameObject:
   m_ObjectHideFlags: 0
