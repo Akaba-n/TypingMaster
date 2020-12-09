@@ -115,6 +115,7 @@ public class MultiMain : MainBase {
                                 ///// プレイヤーの動作に対する(プレイヤータイピング時の)挙動 /////
                                 if (pa.GameSceneTypingCheck()) {
 
+                                    // タイピング未終了時
                                     if (!pa.isFinishedGame) {
 
                                         ///// データの正規化 /////
@@ -122,8 +123,11 @@ public class MultiMain : MainBase {
                                         ///// UIへの表示 /////
                                         tUI.DisplayPlayerText();
                                     }
+                                    // タイピング終了時
                                     else {
 
+                                        // タイピング不可判定
+                                        pa.isInputValid = false;
                                         ///// データの正規化 /////
                                         ptd.SyncRecGamePlayerActionManager();
                                         ///// UIへの表示 /////
@@ -154,6 +158,7 @@ public class MultiMain : MainBase {
                                 if(ptd.td.isFinishedGame && etd.td.isFinishedGame) {
 
                                     ///// ゲーム終了処理 /////
+                                    eUI.DisplayFinishText();
                                     // リザルト画面に移動
                                     gState = GAME_STATE.RESULT;
                                 }
