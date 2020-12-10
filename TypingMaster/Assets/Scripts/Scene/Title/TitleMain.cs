@@ -2,11 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // シーンの切り替え等
+using Data;
+
+/*
+【TitleSceneの流れ】
+ TitleScene表示
+ ↓
+ enter any key
+ ↓
+ (PlayerPrefs)ユーザー情報確認(userId,userName,password)(未登録の場合は登録画面,userIdは00000000にしておく)
+ ↓
+ (サーバ接続:https)ユーザー情報確認(未登録の場合はuserId割り当て)
+ ↓
+*/
 
 /// <summary>
 /// TitleSceneでの基本動作クラス
 /// </summary>
 public class TitleMain : MainBase {
+
+    /*----- クラスのインスタンス化(Isnpectorで設定) -----*/
+    [SerializeField] private TitleUIManager tUI;
+
+    /*----- クラス内変数の定義 -----*/
+    // TitleScene内での状態変化
+    private enum TITLE_STATE {
+
+        START,
+        SIGNIN_UP,
+        ONLINE_SECTION,
+        OFFLINE_SECTION
+    }
+    private TITLE_STATE tState = TITLE_STATE.START;
 
     // Scene切り替え時実行
     protected override void Start() {
@@ -39,26 +66,59 @@ public class TitleMain : MainBase {
             // シーン中動作
             case SCENE_STATE.PLAY:
 
-                // Zキーを押したとき
-                if (Input.GetKeyDown(KeyCode.Z)) {
+                // push any key時点
+                switch (tState) {
 
-                    soundManager.Play(SOUND_TYPE.SE, "se001");
+                    // push any key時の処理
+                    case TITLE_STATE.START:
+                        // キー入力が確認されたとき
+                        if (Input.anyKeyDown) {
+
+                            ///// ユーザー確認処理(PlayerPrefs) /////
+                            // オンライン時処理
+                            if (networkManager.judgeConnecting()) {
+
+                                Debug.Log("ConnectionStatus：Online");
+                                // 未ログイン時
+                                if (PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_MAIL, "") == "") {
+
+                                    ///// ログイン or 新規登録処理 /////
+                                    tState = TITLE_STATE.SIGNIN_UP;
+                                    break;
+                                }
+                                else {
+
+                                    ///// オンライン整合性判定 /////
+                                    tState = TITLE_STATE.ONLINE_SECTION;
+                                    break;
+                                }
+                            }
+                            // オフライン時処理
+                            else {
+
+                                Debug.Log("ConnectionStatus：Offline");
+                                ///// オフライン時処理 /////
+                                // 未ログイン時
+                                if (PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_MAIL, "") == "") {
+
+                                    ///// ゲスト扱い処理 /////
+                                }
+                                else {
+
+                                    ///// ユーザーログイン処理(要らないかも) /////
+                                }
+                                tState = TITLE_STATE.OFFLINE_SECTION;
+                                break;
+                            }
+                        }
+                        break;
+
+                    case TITLE_STATE.SIGNIN_UP:
+                        break;
+                    default:
+                        break;
                 }
-
-                // Xキーを押したとき
-                if (Input.GetKeyDown(KeyCode.X)) {
-
-                    soundManager.Play(SOUND_TYPE.VOICE, "vo001");
-                }
-
-                // スペースキーを押したとき
-                if (Input.GetKeyDown(KeyCode.Space)) {
-
-                    // フェードアウトの開始
-                    fadeManager.FadeOutPlay();
-                    soundManager.Play(SOUND_TYPE.SE, "se001");
-                    status = SCENE_STATE.CHANGE_WAIT;
-                }
+                
                 break;
 
             // シーン遷移待ち状態

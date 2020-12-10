@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using Data;
 
 /// <summary>
 /// サーバ通信管理クラス
@@ -12,34 +13,10 @@ public class NetworkManager : AppDefine {
     [SerializeField] private HttpGet httpGet;
     [SerializeField] private HttpPost httpPost;
 
-    // URL保管クラスのインスタンス化
-    //public ServerUrl sUrl = null;
-
-    // 接続先のURL
-    private const string URL = "http://ec2-18-181-251-215.ap-northeast-1.compute.amazonaws.com/test/test.php";
-    //private const string URL = "http://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060";
-    // サーバへリクエストするデータ
-    private string userId = "0";
-    private string userName = "waka";
-    private string userData = "abc";
+    // 接続状況管理変数
+    public bool ConnectionStatus = false;
 
     private void Start() {
-
-        // URL保管クラスのインスタンス化
-        //sUrl = new ServerUrl();
-
-        // サーバ送信データこねこね
-        // POST
-        Dictionary<string, string> dic = new Dictionary<string, string>();
-        dic.Add("id", userId);
-        dic.Add("name", userName);
-        dic.Add("data", userData);
-        // POST送信
-        PostRequest(URL, dic);
-
-        // GET
-        GetRequest(URL, dic);
-        GetRequest(URL);
     }
     
     /// <summary>
@@ -69,5 +46,34 @@ public class NetworkManager : AppDefine {
     public void GetRequest(string URL) {
 
         StartCoroutine(httpGet.GetRequest(URL));
+    }
+
+    /// <summary>
+    /// サーバ接続状況確認(同一フレーム内で行うので接続に時間がかかる場合もあるかも)
+    /// </summary>
+    public bool judgeConnecting() {
+
+        // 接続先URL
+        var url = ServerUrl.ENEMY_SYNC_URL;
+        // URLをGETで用意
+        UnityWebRequest webRequest = UnityWebRequest.Get(url);
+        // URLに接続して結果が戻ってくるまで待機
+        webRequest.SendWebRequest();
+
+        // エラーチェック
+        if (webRequest.isNetworkError) {
+
+            // 通信失敗時処理
+            Debug.Log(webRequest.error);
+            ConnectionStatus = false;
+            return false;
+        }
+        else {
+
+            // 通信成功時処理
+            Debug.Log("ServerConnection：Success!!");
+            ConnectionStatus = true;
+            return true;
+        }
     }
 }

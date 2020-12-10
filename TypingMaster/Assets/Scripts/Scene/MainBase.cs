@@ -11,6 +11,7 @@ public class MainBase : AppDefine {
     public static FadeManager      fadeManager     = null;
     public static EffectManager    effectManager   = null;
     public static DebugManager     debugManager    = null;
+    public static NetworkManager   networkManager = null;
 
     public SCENE_STATE status = SCENE_STATE.START;
 
@@ -27,6 +28,7 @@ public class MainBase : AppDefine {
         fadeManager     = SystemManager.instance.fadeManager;
         effectManager   = SystemManager.instance.effectManager;
         debugManager    = SystemManager.instance.debugManager;
+        networkManager  = SystemManager.instance.networkManager;
 
         // 待機状態から始める
         status = SCENE_STATE.START;

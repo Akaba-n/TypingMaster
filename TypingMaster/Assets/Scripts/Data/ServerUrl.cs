@@ -9,6 +9,8 @@ public static class ServerUrl {
 
     //*----- 基本URL -----*//
     public const string BASE_URL = "http://ec2-18-181-251-215.ap-northeast-1.compute.amazonaws.com/";
+    //*----- サーバ接続判定用 -----*//
+    public const string JUDGE_CONECTION_URL   = BASE_URL + "API/judgeConnection.php";
     //*----- ゲーム内 -----*//
     public const string ENEMY_SYNC_URL        = BASE_URL + "test/userDataTest.php";
     public const string PLAYER_TYPINGDATA_URL = BASE_URL + "test/playerDataTest.php";
