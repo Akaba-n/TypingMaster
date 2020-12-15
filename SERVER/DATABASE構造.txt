@@ -1,0 +1,25 @@
+﻿// ログイン情報
+UserId：root
+UserPass：自分の汎用pass
+//*---------- ユーザー情報格納DB ----------*//
+// データベース作成
+CREATE DATABASE UserDB default character set utf8mb4;
+//*----- ユーザー情報テーブル -----*//
+// テーブル作成
+CREATE TABLE User(
+userId VARCHAR(10) NOT NULL PRIMARY KEY,
+userName VARCHAR(10) NOT NULL,
+mailAddress VARCHAR(255) NOT NULL UNIQUE,
+lastLogin DateTime
+)
+default character set utf8mb4;
+
+
+//*----- 記録格納テーブル -----*//
+// テーブル作成
+CREATE TABLE Record(
+recId INT AUTO_INCREMENT PRIMARY KEY,
+userId VARCHAR(10),
+recTime DateTime	// 記録日時
+)
+default character set utf8mb4;

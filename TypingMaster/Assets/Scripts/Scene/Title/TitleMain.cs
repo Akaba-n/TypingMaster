@@ -79,47 +79,59 @@ public class TitleMain : MainBase {
                             if (networkManager.judgeConnecting()) {
 
                                 Debug.Log("ConnectionStatus：Online");
-                                // 未ログイン時
-                                if (PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_MAIL, "") == "") {
-
-                                    ///// ログイン or 新規登録処理 /////
-                                    tState = TITLE_STATE.SIGNIN_UP;
-                                    break;
-                                }
-                                else {
-
-                                    ///// オンライン整合性判定 /////
-                                    tState = TITLE_STATE.ONLINE_SECTION;
-                                    break;
-                                }
+                                tState = TITLE_STATE.ONLINE_SECTION;
                             }
                             // オフライン時処理
                             else {
 
                                 Debug.Log("ConnectionStatus：Offline");
-                                ///// オフライン時処理 /////
-                                // 未ログイン時
-                                if (PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_MAIL, "") == "") {
-
-                                    ///// ゲスト扱い処理 /////
-                                }
-                                else {
-
-                                    ///// ユーザーログイン処理(要らないかも) /////
-                                }
                                 tState = TITLE_STATE.OFFLINE_SECTION;
-                                break;
                             }
                         }
                         break;
-
+                    
+                    // SignIn/Up画面オープン時処理
                     case TITLE_STATE.SIGNIN_UP:
+                        tUI.SignInUpFocus();
                         break;
+
+                    // オンライン時の処理
+                    case TITLE_STATE.ONLINE_SECTION:
+                        // 未ログイン時
+                        if (PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_MAIL, "") == "") {
+
+                            ///// ログイン or 新規登録処理 /////
+                            tState = TITLE_STATE.SIGNIN_UP;
+                            tUI.OpenSignInUp();
+                        }
+                        else {
+
+                            ///// オンライン整合性判定 /////
+                            tState = TITLE_STATE.ONLINE_SECTION;
+                        }
+                        break;
+                        
+                    // オフライン時の処理
+                    case TITLE_STATE.OFFLINE_SECTION:
+                        // 未ログイン時
+                        if (PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_MAIL, "") == "") {
+
+                            ///// ゲスト扱い処理 /////
+                            PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_ID, "00000000");
+                            PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_NAME, "Guest");
+                        }
+                        else {
+
+                            ///// ユーザーログイン処理(要らないかも) /////
+                        }
+                        break;
+
                     default:
                         break;
                 }
                 
                 break;
+
 
             // シーン遷移待ち状態
             case SCENE_STATE.CHANGE_WAIT:
@@ -132,6 +144,9 @@ public class TitleMain : MainBase {
                     // Sceneの遷移
                     SceneManager.LoadScene("GameScene");
                 }
+                break;
+
+            default:
                 break;
         }
     }

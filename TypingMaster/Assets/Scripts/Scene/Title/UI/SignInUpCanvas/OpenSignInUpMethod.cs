@@ -24,4 +24,9 @@ public class OpenSignInUpMethod : MonoBehaviour {
         signInPanel.SetActive(false);
         signUpPanel.SetActive(true);
     }
+    public void CloseSignInUp() {
+
+        signInPanel.SetActive(false);
+        signUpPanel.SetActive(false);
+    }
 }
