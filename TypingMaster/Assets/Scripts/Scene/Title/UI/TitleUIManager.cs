@@ -18,13 +18,9 @@ public class TitleUIManager : MonoBehaviour {
 
         sc.SignInUpFocus();
     }
-    /// <summary>
-    /// SignIn/Up画面のオープン処理
-    /// </summary>
-    /// <param name="inup">In or Up 選択(true：in, false：up)</param>
-    public void OpenSignInUp(bool inup = true) {
+    public void OpenSignInUp() {
 
-        sc.OpenSignInUp(inup);
+        sc.OpenSignInUp();
     }
     /// <summary>
     /// SignIn/Up画面のクローズ処理

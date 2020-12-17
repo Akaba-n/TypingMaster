@@ -12,6 +12,7 @@ namespace Data {
         public const string PLAYER_ID = "my_player_id";
         public const string PLAYER_NAME = "my_player_name";
         public const string PLAYER_MAIL = "my_player_mail";
+        public const string PLAYER_PASS = "my_player_pass";
         public const string BGM_VOLUME = "bgm_vol";
         public const string SE_VOLUME = "se_vol";
     }
