@@ -18,6 +18,9 @@ public class TitleUIManager : MonoBehaviour {
 
         sc.SignInUpFocus();
     }
+    /// <summary>
+    /// SignIn/Up画面のオープン処理
+    /// </summary>
     public void OpenSignInUp() {
 
         sc.OpenSignInUp();
@@ -28,5 +31,12 @@ public class TitleUIManager : MonoBehaviour {
     public void CloseSignInUp() {
 
         sc.CloseSignInUp();
+    }
+    /// <summary>
+    /// SignInUp画面にあるボタンを押す処理(Enterキー)
+    /// </summary>
+    public void EnterSignInUpButton() {
+
+        sc.EnterSignInUpButton();
     }
 }

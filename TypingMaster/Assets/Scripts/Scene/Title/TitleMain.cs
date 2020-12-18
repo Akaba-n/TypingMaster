@@ -26,6 +26,15 @@ public class TitleMain : MainBase {
     [SerializeField] private TitleNetworkManager tnm;
     [SerializeField] private PlayerData pd;
 
+    ///// for Debug /////
+    private void Awake() {
+
+        PlayerPrefs.DeleteKey(PlayerPrefsKey.PLAYER_ID);
+        PlayerPrefs.DeleteKey(PlayerPrefsKey.PLAYER_NAME);
+        PlayerPrefs.DeleteKey(PlayerPrefsKey.PLAYER_MAIL);
+        PlayerPrefs.DeleteKey(PlayerPrefsKey.PLAYER_PASS);
+    }
+
     /*----- クラス内変数の定義 -----*/
     // TitleScene内での状態変化
     public enum TITLE_STATE {
@@ -91,6 +100,7 @@ public class TitleMain : MainBase {
                     // SignIn/Up画面オープン時処理
                     case TITLE_STATE.SIGNIN_UP:
                         tUI.SignInUpFocus();
+                        tUI.EnterSignInUpButton();
                         break;
 
                     // オンライン時の処理
@@ -119,8 +129,11 @@ public class TitleMain : MainBase {
                             PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_MAIL, "");
                             PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_PASS, "");
                         }
+                        // メニュー画面へ移行
+                        status = SCENE_STATE.CHANGE_WAIT;
                         break;
 
+                    // 通信中処理
                     case TITLE_STATE.CONNECTING:
 
                         Debug.Log("通信中...");
@@ -141,7 +154,7 @@ public class TitleMain : MainBase {
                     // サウンドの破棄
                     Release();
                     // Sceneの遷移
-                    SceneManager.LoadScene("GameScene");
+                    SceneManager.LoadScene("MultiScene");
                 }
                 break;
 

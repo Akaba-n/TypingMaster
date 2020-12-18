@@ -13,6 +13,7 @@ public static class ServerUrl {
     public const string JUDGE_CONECTION_URL   = BASE_URL + "API/judgeConnection.php";
     //*----- タイトルシーン内 -----*//
     public const string SIGNIN_URL = BASE_URL + "API/signIn.php";
+    public const string SIGNUP_URL = BASE_URL + "API/signUp.php";
     //*----- ゲーム内 -----*//
     public const string ENEMY_SYNC_URL        = BASE_URL + "test/userDataTest.php";
     public const string PLAYER_TYPINGDATA_URL = BASE_URL + "test/playerDataTest.php";

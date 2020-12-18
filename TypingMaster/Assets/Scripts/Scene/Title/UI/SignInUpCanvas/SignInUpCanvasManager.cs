@@ -7,6 +7,7 @@ public class SignInUpCanvasManager : MonoBehaviour {
 
     [SerializeField] private SignInUpFocusMethod sf;
     [SerializeField] private OpenSignInUpMethod os;
+    [SerializeField] private EnterSignInUpButton eb;
     
     // SignInとSignUpのどちらの処理中かの判定
     public enum SIGN_STATE {
@@ -57,5 +58,13 @@ public class SignInUpCanvasManager : MonoBehaviour {
 
         os.CloseSignInUp();
         sState = SIGN_STATE.SIGN_UP;
+    }
+
+    /// <summary>
+    /// SignInUp画面にあるボタンを押す処理(Enterキー)
+    /// </summary>
+    public void EnterSignInUpButton() {
+
+        eb.PushButtonByEnter();
     }
 }

@@ -11,6 +11,7 @@ public class TitleNetworkManager : MonoBehaviour {
 
     [SerializeField] private TitleOnlineJudge toj;
     [SerializeField] private TitleSignIn tsi;
+    [SerializeField] private TitleSignUp tsu;
     [SerializeField] private TitleMain tm;
 
     /// <summary>
@@ -51,5 +52,14 @@ public class TitleNetworkManager : MonoBehaviour {
         tm.tState = TitleMain.TITLE_STATE.CONNECTING;
         // SignIn処理
         yield return StartCoroutine(tsi.SignIn(userId, userName, email, pass));
+    }
+
+    public IEnumerator SignUp(string userName, string email, string pass) {
+
+        // 通信開始時処理(TItle画面で通信中動かさないで良い)
+        var temp = tm.tState;
+        tm.tState = TitleMain.TITLE_STATE.CONNECTING;
+        // SignIn処理
+        yield return StartCoroutine(tsu.SignUp(userName, email, pass));
     }
 }

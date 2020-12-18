@@ -225,6 +225,10 @@ public class SignInUpFocusMethod : MonoBehaviour {
                         sc.actField = SignInUpCanvasManager.ACTIVE_FIELD.CHANGE_IN_UP;
                         break;
 
+                    case SignInUpCanvasManager.ACTIVE_FIELD.MAIL_FIELD:
+                        signInMailField.ActivateInputField();
+                        break;
+
                     case SignInUpCanvasManager.ACTIVE_FIELD.PASS_FIELD:
                         signInMailField.ActivateInputField();
                         sc.actField = SignInUpCanvasManager.ACTIVE_FIELD.MAIL_FIELD;
@@ -281,6 +285,7 @@ public class SignInUpFocusMethod : MonoBehaviour {
             }
         }
     }
+
     /// <summary>
     /// 全てのinputFieldのフォーカスを外す処理
     /// </summary>
