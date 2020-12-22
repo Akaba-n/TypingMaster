@@ -154,7 +154,7 @@ public class TitleMain : MainBase {
                     // サウンドの破棄
                     Release();
                     // Sceneの遷移
-                    SceneManager.LoadScene("MultiScene");
+                    SceneManager.LoadScene("MenuScene");
                 }
                 break;
 

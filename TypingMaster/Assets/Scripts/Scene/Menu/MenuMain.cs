@@ -7,7 +7,9 @@ public class MenuMain : MainBase {
 
     [SerializeField] private MenuDisplayChange mc;
     [SerializeField] private ModeSelectManager ms;
+    [SerializeField] private MultiModeSelectManager mms;
 
+    // MenuScene内で表示している画面
     public enum MENU_STATE {
 
         MODE_SELECT,
@@ -15,6 +17,7 @@ public class MenuMain : MainBase {
     }
     public MENU_STATE mState;
 
+    // モードセレクト画面で選択している項目
     public enum MODE_SELECT {
 
         SOLO,
@@ -65,7 +68,11 @@ public class MenuMain : MainBase {
                         break;
 
                     case MENU_STATE.MULTI_MODE_SELECT:
+                        // 画面遷移時の処理
+                        mc.MenuMainChange();
 
+                        mms.MultiModeSelectAction();
+                        break;
 
                     default:
                         break;

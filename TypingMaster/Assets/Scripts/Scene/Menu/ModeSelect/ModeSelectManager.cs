@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ModeSelectManager : MonoBehaviour {
-
-    [SerializeField] private MenuMain mm;
+    
+    /*---------- スクリプトの取得(Inspectorで設定) ----------*/
     [SerializeField] private ModeSelectUIManager msUI;
     [SerializeField] private ModeSelectPlayerActionManager msPA;
 
-    // モードセレクトシーンでの動作
+    /// <summary>
+    /// モードセレクト画面での動作
+    /// </summary>
     public void ModeSelectAction() {
 
         msUI.ModeSelectUI();

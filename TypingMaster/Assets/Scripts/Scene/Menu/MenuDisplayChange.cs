@@ -33,5 +33,6 @@ public class MenuDisplayChange : MonoBehaviour {
                     break;
             }
         }
+        mm.isChanged = true;
     }
 }

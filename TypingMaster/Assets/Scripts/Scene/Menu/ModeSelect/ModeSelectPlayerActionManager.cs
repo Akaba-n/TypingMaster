@@ -60,13 +60,13 @@ public class ModeSelectPlayerActionManager : MonoBehaviour {
 
             if(mm.mSelect == MenuMain.MODE_SELECT.SOLO) {
 
-                mm.isChanged = false;
                 mm.status = AppDefine.SCENE_STATE.CHANGE_WAIT;
+                mm.isChanged = false;
             }
             else {
-
-                mm.isChanged = false;
+                
                 mm.mState = MenuMain.MENU_STATE.MULTI_MODE_SELECT;
+                mm.isChanged = false;
             }
         }
     }
