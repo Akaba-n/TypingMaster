@@ -9,21 +9,25 @@ using UnityEngine.UI;
 public class ModeSelectUIManager : MonoBehaviour {
 
     /*---------- オブジェクトの取得(Inspectorで設定) ----------*/
-    [SerializeField] private Text soloText;
-    [SerializeField] private Text multiText;
+    [SerializeField] private GameObject selectSoloIcon;
+    [SerializeField] private GameObject selectMultiIcon;
     /*---------- スクリプトの取得(Inspectorで設定) ----------*/
     [SerializeField] private MenuMain mm;
 
-    // モードセレクトシーンでのUIの動作
-    private void ModeSelectUI() {
+    /// <summary>
+    /// モードセレクトシーンでのUIの動作
+    /// </summary>
+    public void ModeSelectUI() {
 
         if (mm.mSelect == MenuMain.MODE_SELECT.SOLO) {
 
-
+            selectSoloIcon.SetActive(true);
+            selectMultiIcon.SetActive(false);
         }
-        else {
+        else if (mm.mSelect == MenuMain.MODE_SELECT.MULTI) {
 
-
+            selectSoloIcon.SetActive(false);
+            selectMultiIcon.SetActive(true);
         }
     }
 }

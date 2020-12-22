@@ -1641,9 +1641,12 @@ MonoBehaviour:
     isFinishedGame: 0
   pa: {fileID: 178959498}
   rc: {fileID: 1164847194}
+  uploadPTD: {fileID: 0}
   SectionTypingTime: []
   SectionCorrectNum: 
   SectionKpm: []
+  roomId: 
+  playerUserId: 
 --- !u!1 &1479703117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1815,6 +1818,7 @@ MonoBehaviour:
   _jpText: {fileID: 1946622929}
   _hrText: {fileID: 268144543}
   _rmText: {fileID: 2104468022}
+  _anText: {fileID: 0}
   pa: {fileID: 178959498}
   ptd: {fileID: 1419018896}
 --- !u!1 &1668979611

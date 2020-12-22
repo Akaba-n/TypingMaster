@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;  // シーンの切り替え等
 
 public class MenuMain : MainBase {
 
+    [SerializeField] private MenuDisplayChange mc;
+    [SerializeField] private ModeSelectManager ms;
+
     public enum MENU_STATE {
 
-        MODE_SELECT
+        MODE_SELECT,
+        MULTI_MODE_SELECT
     }
     public MENU_STATE mState;
 
@@ -17,6 +21,8 @@ public class MenuMain : MainBase {
         MULTI
     }
     public MODE_SELECT mSelect;
+
+    public bool isChanged = false;  // MenuScene内画面遷移判定
 
     //// Scene遷移時動作 ////
     protected override void Start() {
@@ -52,8 +58,14 @@ public class MenuMain : MainBase {
 
                     // モードセレクト画面
                     case MENU_STATE.MODE_SELECT:
-
+                        // 画面遷移時の処理
+                        mc.MenuMainChange();
+                        
+                        ms.ModeSelectAction();
                         break;
+
+                    case MENU_STATE.MULTI_MODE_SELECT:
+
 
                     default:
                         break;
