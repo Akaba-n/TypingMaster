@@ -18,10 +18,10 @@ public class DownloadEnemyTypingData : MonoBehaviour {
     /// </summary>
     /// <param name="url">接続先URL</param>
     /// <returns></returns>
-    public IEnumerator DownloadETD(string userId, string roomId) {
+    public IEnumerator DownloadETD(int userNum, string roomId) {
 
         // 接続先URL
-        var url = ServerUrl.ENEMY_SYNC_URL + "?userId=" +userId+"&roomId="+roomId;
+        var url = ServerUrl.ENEMY_SYNC_URL + "?userNum=" + userNum.ToString() + "&roomId=" + roomId;
         // URLをGETで用意
         UnityWebRequest webRequest = UnityWebRequest.Get(url);
         // URLに接続して結果が戻ってくるまで待機

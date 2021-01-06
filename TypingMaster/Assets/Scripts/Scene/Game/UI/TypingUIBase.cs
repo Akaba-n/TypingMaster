@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class TypingUIBase : MonoBehaviour {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
-    public Text _jpText;
-    public Text _hrText;
-    public Text _rmText;
-    public Text _anText;
+    public Text _jpText;    // 日本語文表示領域
+    public Text _hrText;    // ひらがな文表示領域
+    public Text _rmText;    // ローマ字文表示領域
+    public Text _anText;    // アナウンス文表示領域
 
     /// <summary>
     /// 日本語文表示

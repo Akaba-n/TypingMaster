@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // シーンの切り替え等
+using Data;
 
 public class MultiMain : MainBase {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
-    [SerializeField] private GameConfig gc;
+    [SerializeField] private GameConfigClass gc;
     [SerializeField] private InitGameMethod ig;     // PlayerInitGame(Player初期化処理)
     [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
     [SerializeField] private PlayerTypingDataManager ptd;          // データの操作
@@ -17,6 +18,7 @@ public class MultiMain : MainBase {
     // ゲームシーンの状態
     public enum GAME_STATE {
 
+        MATCHING,   // マッチング待機画面
         INIT,       // 初期化処理(オンライン時はここで相手の準備完了を待つ)
         COUNTDOWN,  // ゲームスタートカウントダウン
         TYPING,     // タイピングゲーム部分
@@ -44,6 +46,15 @@ public class MultiMain : MainBase {
 
         // シーン開始時はキー入力禁止
         pa.isInputValid = false;    // 入力可否判定
+
+        // ユーザー情報初期化
+        ptd.td.UserId   = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_ID, "00000000");
+        ptd.td.UserName = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_NAME, "");
+        ptd.UserNum     = PlayerPrefs.GetInt(PlayerPrefsKey.USER_NUM, 1);
+        ptd.roomId      = PlayerPrefs.GetString(PlayerPrefsKey.ROOM_ID, "0000");
+
+        // サーバとのデータ同期
+        ptd.UploadPlayerTypingData(ptd.UserNum, ptd.roomId);
 
         // エフェクトのロード
         //effectManager.Load("ef001");
@@ -76,19 +87,32 @@ public class MultiMain : MainBase {
 
                     // 初期化処理
                     case GAME_STATE.INIT:
-
                         ///// 後でInitMultiGameに変える /////
                         ig.InitSoloGame();
-                        gState = GAME_STATE.COUNTDOWN;
+                        gState = GAME_STATE.MATCHING;
                         
                         break;
-                    case GAME_STATE.COUNTDOWN:
 
+                    // マッチング待機画面
+                    case GAME_STATE.MATCHING:
+                        if (etd.td.UserId == "none") {
+
+                            // 両者準備完了時
+                            if (ptd.td.isReady && etd.td.isReady) {
+
+                                gState = GAME_STATE.COUNTDOWN;
+                            }
+                        }
+                        
+                        break;
+
+                    case GAME_STATE.COUNTDOWN:
                         ///// カウントダウン処理 /////
                         
                         // 遷移処理
                         gState = GAME_STATE.TYPING;
                         break;
+
                     case GAME_STATE.TYPING:
 
                         switch (tState) {
@@ -100,7 +124,7 @@ public class MultiMain : MainBase {
                                 ///// データ正規化 /////
                                 ptd.SyncAllGamePlayerActionManager();
                                 ///// サーバにPlayerTypingDataの送信 /////
-                                ptd.UploadPlayerTypingData(ptd.playerUserId, ptd.roomId);
+                                ptd.UploadPlayerTypingData(ptd.UserNum, ptd.roomId);
 
                                 ///// UIへの表示 /////
                                 tUI.DisplayPlayerText();
@@ -136,7 +160,7 @@ public class MultiMain : MainBase {
                                         tState = TYPING_STATE.FINISH;
                                     }
                                     ///// サーバにPlayerTypingDataの送信 /////
-                                    ptd.UploadPlayerTypingData(ptd.playerUserId, ptd.roomId);
+                                    ptd.UploadPlayerTypingData(ptd.UserNum, ptd.roomId);
                                 }
                                 ///// サーバから敵データの取得 /////
                                 etd.DownloadEnemyTypingData();

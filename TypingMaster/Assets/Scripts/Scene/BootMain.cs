@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // シーンの切り替え等
+using Data;
 
 public class BootMain : MainBase {
 
@@ -19,6 +20,9 @@ public class BootMain : MainBase {
 
         // 基底クラスでの設定分を実行
         base.Start();
+
+        PlayerPrefs.SetString(PlayerPrefsKey.ROOM_ID, "none");
+        PlayerPrefs.SetInt(PlayerPrefsKey.USER_NUM, 0);
 
         // 汎用音の読み込み
         soundManager.CommonLoad();

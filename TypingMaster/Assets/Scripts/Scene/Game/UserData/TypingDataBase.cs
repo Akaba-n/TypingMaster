@@ -7,13 +7,21 @@ using UnityEngine;
 /// </summary>
 public class TypingDataBase : MonoBehaviour {
 
+    /*---------- Player用 ----------*/
+    public string roomId;
+    public int UserNum;     // Player1 or 2
+
     /// <summary>
     /// サーバとやり取り行うゲーム中データのクラス(JsonUtility用)
     /// </summary>
     [System.Serializable]
     public class TypingData {
 
+        /*----- Game準備完了判定 -----*/
+        public bool isReady;
         /*----- Game中情報関連 -----*/
+        public string UserId;               // ユーザーID
+        public string UserName;             // ユーザー名
         public string enteredSentence;      // 入力済み文字列(灰色表示部分)
         public string notEnteredSentence;   // 未入力文字列(通常表示用)
         public string jpSentence;           // 現在の問題の日本語文

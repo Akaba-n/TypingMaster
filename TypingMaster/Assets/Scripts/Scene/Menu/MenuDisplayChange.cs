@@ -9,6 +9,7 @@ public class MenuDisplayChange : MonoBehaviour {
     // オブジェクトの取得(Inspectorで取得)
     [SerializeField] private GameObject modeSelect;
     [SerializeField] private GameObject multiModeSelect;
+    [SerializeField] private GameObject hostSelect;
 
     /// <summary>
     /// MenuScene内での画面遷移時の処理
@@ -22,11 +23,19 @@ public class MenuDisplayChange : MonoBehaviour {
                 case MenuMain.MENU_STATE.MODE_SELECT:
                     modeSelect.SetActive(true);
                     multiModeSelect.SetActive(false);
+                    hostSelect.SetActive(false);
                     break;
 
                 case MenuMain.MENU_STATE.MULTI_MODE_SELECT:
                     modeSelect.SetActive(false);
                     multiModeSelect.SetActive(true);
+                    hostSelect.SetActive(false);
+                    break;
+
+                case MenuMain.MENU_STATE.MULTI_HOST_SELECT:
+                    modeSelect.SetActive(false);
+                    multiModeSelect.SetActive(false);
+                    hostSelect.SetActive(true);
                     break;
 
                 default:

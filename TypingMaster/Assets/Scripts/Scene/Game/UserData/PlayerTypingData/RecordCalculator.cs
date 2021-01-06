@@ -10,7 +10,7 @@ public class RecordCalculator : MonoBehaviour {
 
     /*----- オブジェクトのインスタンス化(Insprctorで設定) -----*/
     [SerializeField] private PlayerTypingDataManager ptd;
-    [SerializeField] private GameConfig gc;
+    [SerializeField] private GameConfigClass gc;
 
     /// <summary>
     /// 正解率計算メソッド
@@ -48,7 +48,7 @@ public class RecordCalculator : MonoBehaviour {
     /// </summary>
     public void SectionKeyPerMinute() {
         
-        for(var i = 0; i < gc.Tasks; i++) {
+        for(var i = 0; i < gc.gc.Tasks; i++) {
 
             ptd.SectionKpm[i] = (ptd.SectionCorrectNum[i] * 1.0f) / (ptd.SectionTypingTime[i] * 1.0f) * 60f;
         }

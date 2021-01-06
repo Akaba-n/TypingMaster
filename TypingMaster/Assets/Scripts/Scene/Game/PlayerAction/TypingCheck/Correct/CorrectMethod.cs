@@ -8,7 +8,7 @@ using UnityEngine;
 public class CorrectMethod : MonoBehaviour {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
-    [SerializeField] private GameConfig gc;
+    [SerializeField] private GameConfigClass gc;
     [SerializeField] private GamePlayerActionManager pa;
     [SerializeField] private NextSentenceMethod ns;
     [SerializeField] private UpdatePlayerRomSentence ur;
@@ -56,7 +56,7 @@ public class CorrectMethod : MonoBehaviour {
         pa.keyQueue.Clear();
 
         // 終了処理
-        if (pa.CorrectTaskNum >= gc.Tasks){
+        if (pa.CorrectTaskNum >= gc.gc.Tasks){
 
             ///// リザルト画面に飛ぶ処理 /////
             Debug.Log("tState.ING->FINISH");

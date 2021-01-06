@@ -9,7 +9,7 @@ public class InitGameMethod : MonoBehaviour {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GamePlayerActionManager pa;
-    [SerializeField] private GameConfig gc;
+    [SerializeField] private GameConfigClass gc;
     [SerializeField] private PlayerTypingDataManager ptd;
     [SerializeField] private NextSentenceMethod ns;
 
@@ -66,7 +66,7 @@ public class InitGameMethod : MonoBehaviour {
         pa.MisTypeDictionary = new Dictionary<string, int>();
         pa.enteredSentence = "";
         pa.notEnteredSentence = "";
-        pa.SectionCorrectNum = new int[gc.Tasks];
+        pa.SectionCorrectNum = new int[gc.gc.Tasks];
         // タイピング関連
         pa.keyQueue.Clear();        // キー格納キュー初期化
         pa.timeQueue.Clear();       // 時間格納キュー初期化
@@ -86,9 +86,9 @@ public class InitGameMethod : MonoBehaviour {
         ptd.td.Kpm = 0f;
         ptd.td.Accuracy = 0f;
         ptd.MisTypeDictionary = new Dictionary<string, int>();
-        ptd.SectionTypingTime = new double[gc.Tasks];
-        ptd.SectionCorrectNum = new int[gc.Tasks];
-        ptd.SectionKpm = new double[gc.Tasks];
+        ptd.SectionTypingTime = new double[gc.gc.Tasks];
+        ptd.SectionCorrectNum = new int[gc.gc.Tasks];
+        ptd.SectionKpm = new double[gc.gc.Tasks];
     }
     
     /// <summary>
@@ -100,11 +100,11 @@ public class InitGameMethod : MonoBehaviour {
         var csvImport = new CsvImport();
         var hToRClass = new HiraToRom();
         // 問題データセットの取得
-        var qJP = csvImport.datasetImport(gc.DatasetName);
+        var qJP = csvImport.datasetImport(gc.gc.DatasetName);
         // 選択済み判定(問題順並び替え用)
         var pickList = new bool[qJP.Count];
 
-        for(var i = 0; i < gc.Tasks; i++) {
+        for(var i = 0; i < gc.gc.Tasks; i++) {
 
             // 問題文の順序入れ替え + ローマ字入力候補追加
             var tempNum = UnityEngine.Random.Range(0, qJP.Count);

@@ -65,7 +65,9 @@ public class MultiModeSelectPlayerActionManager : MonoBehaviour {
 
             if(mms.mmSelect == MultiModeSelectManager.MULTI_MODE_SELECT.FRIEND) {
 
-                ///// 部屋建て処理 /////
+                // ホスト選択画面へ移動
+                mm.mState = MenuMain.MENU_STATE.MULTI_HOST_SELECT;
+                mm.isChanged = false;
             }
             else if(mms.mmSelect == MultiModeSelectManager.MULTI_MODE_SELECT.RANDOM){
 

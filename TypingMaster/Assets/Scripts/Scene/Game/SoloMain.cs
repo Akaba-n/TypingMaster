@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;  // シーンの切り替え等
 public class SoloMain : MainBase {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
-    [SerializeField] private GameConfig gc;
+    [SerializeField] private GameConfigClass gc;
     [SerializeField] private InitGameMethod ig;     // PlayerInitGame(Player初期化処理)
     [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
     [SerializeField] private PlayerTypingDataManager ptd;          // データの操作

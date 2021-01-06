@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Data;
 
 /// <summary>
 /// Player情報クラス
@@ -16,19 +17,18 @@ public class PlayerTypingDataManager : TypingDataBase {
     /*---------- Playerのみの変数 ----------*/
     public Dictionary<string, int> MisTypeDictionary;    // 苦手キーDict
     public double[] SectionTypingTime;  // 各文経過時間
-    public int[] SectionCorrectNum;  // 各文正解タイプ数
+    public int[] SectionCorrectNum;     // 各文正解タイプ数
     public double[] SectionKpm;         // 各文KPM
 
-    /*---------- Debug用 ----------*/
-    public string roomId;
-    public string playerUserId;
-
-    private void Start() {
+    private void Awake() {
         
         ///// 本来はマッチング時に設定する /////
-        roomId = "0001";
-        playerUserId = "00001";
-        UploadPlayerTypingData(playerUserId, roomId);
+        roomId = PlayerPrefs.GetString(PlayerPrefsKey.ROOM_ID, "0000");
+        td.UserId = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_ID, "00000000");
+        td.UserName = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_NAME, "");
+        UserNum = PlayerPrefs.GetInt(PlayerPrefsKey.USER_NUM, 1);
+        td.isReady = false;
+        //UploadPlayerTypingData(playerUserId, roomId);
     }
 
     /*----- GamePlayerActionManagerとの同期 -----*/
@@ -82,8 +82,8 @@ public class PlayerTypingDataManager : TypingDataBase {
 
 
     /*----- サーバー通信関連 -----*/
-    public void UploadPlayerTypingData(string userId, string roomId) {
+    public void UploadPlayerTypingData(int userNum, string roomId) {
 
-        StartCoroutine(uploadPTD.UploadPTD(userId, roomId));
+        StartCoroutine(uploadPTD.UploadPTD(userNum, roomId));
     }
 }

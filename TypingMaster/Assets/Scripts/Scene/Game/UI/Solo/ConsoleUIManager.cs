@@ -15,7 +15,7 @@ public class ConsoleUIManager : MonoBehaviour {
     [SerializeField] private Text KpmText;
     [SerializeField] private Text TaskText;
     [SerializeField] private PlayerTypingDataManager ptd;
-    [SerializeField] private GameConfig gc;
+    [SerializeField] private GameConfigClass gc;
 
     /// <summary>
     /// 記録関連UI表示処理
@@ -25,7 +25,7 @@ public class ConsoleUIManager : MonoBehaviour {
         CorrectTypeNumText.text = "正解数 : " + ptd.td.CorrectTypeNum.ToString();
         MisTypeNumText.text     = "ミスタイプ数 : " + ptd.td.MisTypeNum.ToString();
         KpmText.text = "KPM : " + ptd.td.Kpm.ToString("f1");
-        TaskText.text = "問題数 : " + ptd.td.CorrectTaskNum.ToString() + " / " + gc.Tasks.ToString();
+        TaskText.text = "問題数 : " + ptd.td.CorrectTaskNum.ToString() + " / " + gc.gc.Tasks.ToString();
     }
     /// <summary>
     /// 時間UI表示処理

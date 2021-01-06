@@ -8,12 +8,14 @@ public class MenuMain : MainBase {
     [SerializeField] private MenuDisplayChange mc;
     [SerializeField] private ModeSelectManager ms;
     [SerializeField] private MultiModeSelectManager mms;
+    [SerializeField] private HostSelectManager hs;
 
     // MenuScene内で表示している画面
     public enum MENU_STATE {
 
         MODE_SELECT,
-        MULTI_MODE_SELECT
+        MULTI_MODE_SELECT,
+        MULTI_HOST_SELECT
     }
     public MENU_STATE mState;
 
@@ -24,6 +26,14 @@ public class MenuMain : MainBase {
         MULTI
     }
     public MODE_SELECT mSelect;
+
+    // ホストセレクト画面で選択している項目
+    public enum HOST_SELECT {
+
+        HOST,
+        JOIN
+    }
+    public HOST_SELECT hSelect;
 
     public bool isChanged = false;  // MenuScene内画面遷移判定
 
@@ -72,6 +82,13 @@ public class MenuMain : MainBase {
                         mc.MenuMainChange();
 
                         mms.MultiModeSelectAction();
+                        break;
+
+                    case MENU_STATE.MULTI_HOST_SELECT:
+                        // 画面遷移時の処理
+                        mc.MenuMainChange();
+
+                        hs.HostSelectAction();
                         break;
 
                     default:

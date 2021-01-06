@@ -50,17 +50,17 @@ public class UploadPlayerTypingData : MonoBehaviour {
     /// <summary>
     /// UnityWebRequestでサーバにPlayerのデータをHttp/Postで送信格納
     /// </summary>
-    /// <param name="userId">PlayerのuserId</param>
+    /// <param name="userNum">Playerの番号</param>
     /// <param name="roomId">所属しているroomId</param>
     /// <returns></returns>
-    public IEnumerator UploadPTD(string userId, string roomId) {
+    public IEnumerator UploadPTD(int userNum, string roomId) {
         
         // 送信データの作成
         var sendJson = ptd.TypingDataToJson();
         byte[] postData = System.Text.Encoding.UTF8.GetBytes(sendJson); // byte型配列に変換
 
         // 接続先URL
-        var url = ServerUrl.PLAYER_TYPINGDATA_URL + "?userId=" + userId + "&roomId=" + roomId;
+        var url = ServerUrl.PLAYER_TYPINGDATA_URL + "?userNum=" + userNum.ToString() + "&roomId=" + roomId;
         // URLをPOSTで用意
         UnityWebRequest webRequest = new UnityWebRequest(url, "POST");
         webRequest.uploadHandler = (UploadHandler)new UploadHandlerRaw(postData);
