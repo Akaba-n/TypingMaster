@@ -33,6 +33,10 @@ public class MainBase : AppDefine {
         // 待機状態から始める
         status = SCENE_STATE.START;
 
+        // マウスカーソルを表示しない(マウス操作を無効化する)
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         fadeManager.FadeInPlay();
     }
 }

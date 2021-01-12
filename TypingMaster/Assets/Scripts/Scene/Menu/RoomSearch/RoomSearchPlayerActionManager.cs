@@ -27,7 +27,7 @@ public class RoomSearchPlayerActionManager : MonoBehaviour {
     /// </summary>
     private void DownArrowAction() {
 
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.Tab)) {
             
             if(mm.rSelect == MenuMain.ROOM_SEARCH.INPUT) {
 
@@ -64,6 +64,7 @@ public class RoomSearchPlayerActionManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Return)) {
 
             ///// Room検索処理を行う /////
+            // 成功時:シーン切り替え, 失敗時:エラー表示
         }
     }
     /// <summary>
