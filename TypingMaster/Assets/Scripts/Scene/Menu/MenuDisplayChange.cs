@@ -10,6 +10,7 @@ public class MenuDisplayChange : MonoBehaviour {
     [SerializeField] private GameObject modeSelect;
     [SerializeField] private GameObject multiModeSelect;
     [SerializeField] private GameObject hostSelect;
+    [SerializeField] private GameObject roomSearch;
 
     /// <summary>
     /// MenuScene内での画面遷移時の処理
@@ -24,18 +25,28 @@ public class MenuDisplayChange : MonoBehaviour {
                     modeSelect.SetActive(true);
                     multiModeSelect.SetActive(false);
                     hostSelect.SetActive(false);
+                    roomSearch.SetActive(false);
                     break;
 
                 case MenuMain.MENU_STATE.MULTI_MODE_SELECT:
                     modeSelect.SetActive(false);
                     multiModeSelect.SetActive(true);
                     hostSelect.SetActive(false);
+                    roomSearch.SetActive(false);
                     break;
 
                 case MenuMain.MENU_STATE.MULTI_HOST_SELECT:
                     modeSelect.SetActive(false);
                     multiModeSelect.SetActive(false);
                     hostSelect.SetActive(true);
+                    roomSearch.SetActive(false);
+                    break;
+
+                case MenuMain.MENU_STATE.ROOM_SEARCH:
+                    modeSelect.SetActive(false);
+                    multiModeSelect.SetActive(false);
+                    hostSelect.SetActive(false);
+                    roomSearch.SetActive(true);
                     break;
 
                 default:

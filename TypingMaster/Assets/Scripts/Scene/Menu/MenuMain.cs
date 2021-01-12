@@ -9,13 +9,15 @@ public class MenuMain : MainBase {
     [SerializeField] private ModeSelectManager ms;
     [SerializeField] private MultiModeSelectManager mms;
     [SerializeField] private HostSelectManager hs;
+    [SerializeField] private RoomSearchManager rs;
 
     // MenuScene内で表示している画面
     public enum MENU_STATE {
 
         MODE_SELECT,
         MULTI_MODE_SELECT,
-        MULTI_HOST_SELECT
+        MULTI_HOST_SELECT,
+        ROOM_SEARCH
     }
     public MENU_STATE mState;
 
@@ -34,6 +36,14 @@ public class MenuMain : MainBase {
         JOIN
     }
     public HOST_SELECT hSelect;
+
+    // Room検索画面で選択している項目
+    public enum ROOM_SEARCH {
+
+        INPUT,
+        SUBMIT
+    }
+    public ROOM_SEARCH rSelect;
 
     public bool isChanged = false;  // MenuScene内画面遷移判定
 
@@ -89,6 +99,13 @@ public class MenuMain : MainBase {
                         mc.MenuMainChange();
 
                         hs.HostSelectAction();
+                        break;
+
+                    case MENU_STATE.ROOM_SEARCH:
+                        // 画面遷移時の処理
+                        mc.MenuMainChange();
+
+                        rs.RoomSearch();
                         break;
 
                     default:

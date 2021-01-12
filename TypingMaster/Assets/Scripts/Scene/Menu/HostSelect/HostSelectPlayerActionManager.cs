@@ -15,6 +15,7 @@ public class HostSelectPlayerActionManager : MonoBehaviour {
         DownArrowAction();
         UpArrowAction();
         EnterAction();
+        EscAction();
     }
     /// <summary>
     /// ↓ボタン押下時の処理
@@ -66,9 +67,21 @@ public class HostSelectPlayerActionManager : MonoBehaviour {
             else {
                 
                 // 部屋検索に移動
-                mm.mState = MenuMain.MENU_STATE.MULTI_MODE_SELECT;
+                mm.mState = MenuMain.MENU_STATE.ROOM_SEARCH;
                 mm.isChanged = false;
             }
+        }
+    }
+    /// <summary>
+    /// Escキーでの処理
+    /// </summary>
+    private void EscAction() {
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+
+            mm.mState = MenuMain.MENU_STATE.MULTI_MODE_SELECT;
+            mm.hSelect = MenuMain.HOST_SELECT.HOST;
+            mm.isChanged = false;
         }
     }
 }
