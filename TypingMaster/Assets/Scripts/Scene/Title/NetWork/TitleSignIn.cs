@@ -11,7 +11,7 @@ public class TitleSignIn : MonoBehaviour {
     [SerializeField] private TitleMain tm;
 
     public IEnumerator SignIn(string userId, string userName, string email, string pass) {
-            
+        
         // 接続先URL
         var url = ServerUrl.SIGNIN_URL + "?userId=" + userId + "&userName=" + userName + "&email=" + email + "&pass=" + pass;
 
@@ -59,13 +59,18 @@ public class TitleSignIn : MonoBehaviour {
             else {
 
                 // ユーザー情報再格納
+                Debug.Log(webRequest.downloadHandler.text);
                 var jsonstr = webRequest.downloadHandler.text;
+                Debug.Log(jsonstr);
+
+                ///// ここでミスが起きてるので直す必要あり /////
                 pd.pd = JsonUtility.FromJson<PlayerData.PlayerDataTemp>(jsonstr);
-                PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_ID, pd.pd.playerId);
-                PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_NAME, pd.pd.playerName);
+                PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_ID, pd.pd.userId);
+                PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_NAME, pd.pd.userName);
                 PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_MAIL, pd.pd.email);
                 PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_PASS, pd.pd.pass);
                 Debug.Log("SignIn成功");
+                Debug.Log("PlayerId:" + PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_ID, "00000000") + ", PlayerName:" + PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_NAME, "none"));
 
                 //tm.tState = TitleMain.TITLE_STATE.ONLINE_SECTION;
                 tm.status = AppDefine.SCENE_STATE.CHANGE_WAIT;

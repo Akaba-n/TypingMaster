@@ -9,8 +9,8 @@ public class PlayerData : MonoBehaviour{
 
     public class PlayerDataTemp{
 
-        public string playerId;
-        public string playerName;
+        public string userId;
+        public string userName;
         public string email;
         public string pass;
     }

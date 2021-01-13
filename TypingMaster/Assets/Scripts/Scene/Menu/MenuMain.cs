@@ -46,6 +46,7 @@ public class MenuMain : MainBase {
     public ROOM_SEARCH rSelect;
 
     public bool isChanged = false;  // MenuScene内画面遷移判定
+    public bool isInputValid;    // MenuScene内でのキー入力判定(サーバ接続確認中無効化する)
 
     //// Scene遷移時動作 ////
     protected override void Start() {
@@ -60,6 +61,9 @@ public class MenuMain : MainBase {
         // サウンドの再生
         soundManager.Play(SOUND_TYPE.BGM, "bgm003");
         soundManager.Play(SOUND_TYPE.VOICE, "vo002");
+
+        // キー入力判定を有効か()
+        isInputValid = true;
     }
 
     private void Update() {

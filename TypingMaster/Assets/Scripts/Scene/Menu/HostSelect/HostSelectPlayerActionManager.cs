@@ -6,6 +6,7 @@ public class HostSelectPlayerActionManager : MonoBehaviour {
 
     /*---------- スクリプトの取得(Inspectorで設定) ----------*/
     [SerializeField] private MenuMain mm;
+    [SerializeField] private ServerMkFriendRoom sm;
 
     /// <summary>
     /// Host選択画面でのプレイヤー操作
@@ -60,8 +61,8 @@ public class HostSelectPlayerActionManager : MonoBehaviour {
 
             if(mm.hSelect == MenuMain.HOST_SELECT.HOST) {
 
-                mm.status = AppDefine.SCENE_STATE.CHANGE_WAIT;
                 ///// 部屋建て処理 /////
+                StartCoroutine(sm.MkFriendRoom());
                 mm.isChanged = false;
             }
             else {

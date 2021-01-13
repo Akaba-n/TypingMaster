@@ -28,12 +28,14 @@ public class TitleOnlineJudge : MonoBehaviour {
             // 通信失敗時処理
             Debug.Log("Server：OFFLINE");
             isOnline = false;
+            PlayerPrefs.SetInt(PlayerPrefsKey.ONLINE_JUDGE, 0);
         }
         else {
 
             // 通信成功時処理
             Debug.Log("Server：ONLINE");
             isOnline = true;
+            PlayerPrefs.SetInt(PlayerPrefsKey.ONLINE_JUDGE, 1);
         }
     }
 }

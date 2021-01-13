@@ -53,8 +53,8 @@ public class TitleSignUp : MonoBehaviour {
                 // ユーザー情報再格納
                 var jsonstr = webRequest.downloadHandler.text;
                 pd.pd = JsonUtility.FromJson<PlayerData.PlayerDataTemp>(jsonstr);
-                PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_ID, pd.pd.playerId);
-                PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_NAME, pd.pd.playerName);
+                PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_ID, pd.pd.userId);
+                PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_NAME, pd.pd.userName);
                 PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_MAIL, pd.pd.email);
                 PlayerPrefs.SetString(PlayerPrefsKey.PLAYER_PASS, pd.pd.pass);
                 Debug.Log("SignUp成功");

@@ -17,5 +17,6 @@ namespace Data {
         public const string USER_NUM = "user_num";
         public const string BGM_VOLUME = "bgm_vol";
         public const string SE_VOLUME = "se_vol";
+        public const string ONLINE_JUDGE = "online_judge";  // 1:online, 0:offline
     }
 }

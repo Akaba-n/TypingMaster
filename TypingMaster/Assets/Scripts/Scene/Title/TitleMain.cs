@@ -27,13 +27,14 @@ public class TitleMain : MainBase {
     [SerializeField] private PlayerData pd;
 
     ///// for Debug /////
+    /*
     private void Awake() {
 
         PlayerPrefs.DeleteKey(PlayerPrefsKey.PLAYER_ID);
         PlayerPrefs.DeleteKey(PlayerPrefsKey.PLAYER_NAME);
         PlayerPrefs.DeleteKey(PlayerPrefsKey.PLAYER_MAIL);
         PlayerPrefs.DeleteKey(PlayerPrefsKey.PLAYER_PASS);
-    }
+    }*/
 
     /*----- クラス内変数の定義 -----*/
     // TitleScene内での状態変化
@@ -54,16 +55,21 @@ public class TitleMain : MainBase {
         base.Start();
 
         // サウンドのロード
-        soundManager.Load(SoundManager.SOUND_TYPE.BGM, "bgm001");
+        //soundManager.Load(SoundManager.SOUND_TYPE.BGM, "bgm001");
 
         // サウンドの再生
-        soundManager.Play(SOUND_TYPE.BGM, "bgm001", true);  // 基本BGMなのでループ
+        //soundManager.Play(SOUND_TYPE.BGM, "bgm001", true);  // 基本BGMなのでループ
 
         // ゲーム開始時プレイヤーデータ格納(オンラインで整合性確認)
-        pd.pd.playerId = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_ID, "00000000");
-        pd.pd.playerName = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_NAME, "GUEST");
+        pd.pd.userId = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_ID, "00000000");
+        pd.pd.userName = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_NAME, "GUEST");
         pd.pd.email = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_MAIL, "");
         pd.pd.pass = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_PASS, "");
+
+        Debug.Log("playerId:" + PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_ID, "00000000") +
+                    ", playerName:" + PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_NAME, "none") + 
+                    ", email:" + PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_MAIL, "none") +
+                    ", pass:"+ PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_PASS, "none"));
     }
 
     void Update() {
@@ -114,7 +120,7 @@ public class TitleMain : MainBase {
                         // 既ログイン時
                         else {
 
-                            StartCoroutine(tnm.SignIn(pd.pd.playerId, pd.pd.playerName, pd.pd.email, pd.pd.pass));
+                            StartCoroutine(tnm.SignIn(pd.pd.userId, pd.pd.userName, pd.pd.email, pd.pd.pass));
                         }
                         break;
                         
