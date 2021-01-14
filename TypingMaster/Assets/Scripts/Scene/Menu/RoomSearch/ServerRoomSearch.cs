@@ -41,18 +41,19 @@ public class ServerRoomSearch : MonoBehaviour {
             if(webRequest.downloadHandler.text == "1") {
 
                 ///// エラー文を表示する処理 /////
-                Debug.Log("部屋が存在していません");
+                Debug.Log("1:部屋が存在していません");
             }
             // 部屋が満員だった時の処理
             else if(webRequest.downloadHandler.text == "2") {
 
                 ///// エラー文を表示する処理 /////
-                Debug.Log("部屋が満員です");
+                Debug.Log("2:部屋が満員です");
             }
             else {
 
                 ///// その部屋番号でPlayer2として参加する処理 /////
-                Debug.Log("入室成功");
+                Debug.Log("0:入室成功");
+                Debug.Log(webRequest.downloadHandler.text);
                 PlayerPrefs.SetString(PlayerPrefsKey.ROOM_ID, roomId);
                 PlayerPrefs.SetInt(PlayerPrefsKey.USER_NUM, 2);
                 // Scene切り替え待機状態に移行
