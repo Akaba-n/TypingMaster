@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Room検索画面でのプレイヤーの動作に対するレスポンス管理のクラス
@@ -10,6 +11,9 @@ public class RoomSearchPlayerActionManager : MonoBehaviour {
     /*---------- スクリプトの取得(Inspectorで設定) ----------*/
     [SerializeField] private MenuMain mm;
     [SerializeField] private RoomSearchManager rs;
+    [SerializeField] private ServerRoomSearch srs;
+    /*---------- オブジェクトの取得(Inspectorで設定) ----------*/
+    [SerializeField] private InputField roomSearchFieldText;
     
     /// <summary>
     /// MultiModeSelect画面でのプレイヤー操作へのレスポンス
@@ -63,8 +67,11 @@ public class RoomSearchPlayerActionManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Return)) {
 
+            // InputFieldからフォーカスを外す
+            mm.rSelect = MenuMain.ROOM_SEARCH.SUBMIT;
             ///// Room検索処理を行う /////
             // 成功時:シーン切り替え, 失敗時:エラー表示
+            StartCoroutine(srs.RoomSearch(roomSearchFieldText.text));
         }
     }
     /// <summary>

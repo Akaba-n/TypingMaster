@@ -23,6 +23,8 @@ public class RoomSearchUIManager : MonoBehaviour {
         else {
 
             dummyField.ActivateInputField();
+            ///// submitボタンをそれっぽい見た目にする /////
+            
         }
     }
 }

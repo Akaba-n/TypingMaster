@@ -16,6 +16,7 @@ public static class ServerUrl {
     public const string SIGNUP_URL = BASE_URL + "API/signUp.php";
     //*----- メニューシーン用 -----*//
     public const string MAKE_FRIENDROOM_URL = BASE_URL + "MATCHING/mkFriendRoom.php";
+    public const string ROOM_SEARCH_URL = BASE_URL + "MATCHING/searchFriendRoom.php";
     //*----- ゲーム内 -----*//
     public const string ENEMY_SYNC_URL        = BASE_URL + "REALTIME/sendTypingData.php";
     public const string PLAYER_TYPINGDATA_URL = BASE_URL + "REALTIME/uploadPlayerData.php";
