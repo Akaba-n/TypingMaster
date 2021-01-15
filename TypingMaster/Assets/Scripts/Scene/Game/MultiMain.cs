@@ -18,8 +18,8 @@ public class MultiMain : MainBase {
     // ゲームシーンの状態
     public enum GAME_STATE {
 
-        MATCHING,   // マッチング待機画面
         INIT,       // 初期化処理(オンライン時はここで相手の準備完了を待つ)
+        MATCHING,   // マッチング待機画面
         COUNTDOWN,  // ゲームスタートカウントダウン
         TYPING,     // タイピングゲーム部分
         RESULT      // 結果画面
@@ -95,15 +95,26 @@ public class MultiMain : MainBase {
 
                     // マッチング待機画面
                     case GAME_STATE.MATCHING:
+                        // 常にサーバと通信し続ける(最後に接続した時間を保存し続ける:サーバ接続状況確認用)
+
+
+                        // マッチング待機時
                         if (etd.td.UserId == "none") {
 
-                            // 両者準備完了時
-                            if (ptd.td.isReady && etd.td.isReady) {
-
-                                gState = GAME_STATE.COUNTDOWN;
-                            }
+                            
                         }
-                        
+                        // マッチング完了時
+                        else {
+
+                        }
+                        // 両者準備完了時
+                        if (ptd.td.isReady && etd.td.isReady) {
+
+                            gState = GAME_STATE.COUNTDOWN;
+                        }
+
+                        // 対戦相手の接続遮断時(最終接続時間から5秒(仮))
+
                         break;
 
                     case GAME_STATE.COUNTDOWN:
