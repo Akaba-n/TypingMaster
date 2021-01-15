@@ -8,7 +8,7 @@ public class RoomIdTextController : MonoBehaviour {
 
     [SerializeField] Text roomIdText;
 
-    private void Update() {
+    public void RoomIdText() {
 
         roomIdText.text = "Room:" + PlayerPrefs.GetString(PlayerPrefsKey.ROOM_ID, "0000");
     }

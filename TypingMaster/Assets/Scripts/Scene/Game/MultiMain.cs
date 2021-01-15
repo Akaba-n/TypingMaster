@@ -8,6 +8,7 @@ public class MultiMain : MainBase {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GameConfigClass gc;
+    [SerializeField] private CommonUIManager cUI;   // MultiGameScene内共通UI管理
     [SerializeField] private InitGameMethod ig;     // PlayerInitGame(Player初期化処理)
     [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
     [SerializeField] private PlayerTypingDataManager ptd;          // データの操作
@@ -68,6 +69,8 @@ public class MultiMain : MainBase {
     }
 
     void Update() {
+
+        cUI.CommonUIAll();
 
         switch (status) {
 
