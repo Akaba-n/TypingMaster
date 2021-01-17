@@ -8,6 +8,10 @@ public class ServerMkFriendRoom : MonoBehaviour {
 
     [SerializeField] private MenuMain mm;
 
+    /// <summary>
+    /// サーバ接続を行い部屋を建てる処理
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator MkFriendRoom() {
 
         // キー入力を無効化する
@@ -29,7 +33,7 @@ public class ServerMkFriendRoom : MonoBehaviour {
         if(webRequest.isNetworkError || webRequest.isHttpError) {
 
             // 通信失敗時処理
-            Debug.Log("接続失敗");
+            Debug.Log(webRequest.error);
             PlayerPrefs.SetInt(PlayerPrefsKey.ONLINE_JUDGE, 0);
             // キー入力有効化
             mm.isInputValid = true;
@@ -41,6 +45,8 @@ public class ServerMkFriendRoom : MonoBehaviour {
             // roomIDが返ってくるので格納
             var dlStr = webRequest.downloadHandler.text;
             PlayerPrefs.SetString(PlayerPrefsKey.ROOM_ID, dlStr);
+            // ホストなのでUserNumは1にする
+            PlayerPrefs.SetInt(PlayerPrefsKey.USER_NUM, 1);
             Debug.Log(PlayerPrefs.GetString(PlayerPrefsKey.ROOM_ID, "none"));
             // キー入力有効化
             mm.isInputValid = true;

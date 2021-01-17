@@ -10,6 +10,9 @@ public class MultiMain : MainBase {
     [SerializeField] private GameConfigClass gc;
     [SerializeField] private CommonUIManager cUI;   // MultiGameScene内共通UI管理
     [SerializeField] private InitGameMethod ig;     // PlayerInitGame(Player初期化処理)
+    [SerializeField] private MatchingNetworkManager mnm;        // Matching画面でのネットワーク処理
+    [SerializeField] private MatchingPlayerActionManager mpa;   // Matching画面でのPlayerの操作に対する処理
+    [SerializeField] private MatchingUIManager mUI;             // Matching画面でのUIの処理
     [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
     [SerializeField] private PlayerTypingDataManager ptd;          // データの操作
     [SerializeField] private PlayerTypingUiManager tUI;           // UIに対する挙動
@@ -69,7 +72,8 @@ public class MultiMain : MainBase {
     }
 
     void Update() {
-
+        
+        // PlayerNameとRoomIdの表示
         cUI.CommonUIAll();
 
         switch (status) {
@@ -98,25 +102,27 @@ public class MultiMain : MainBase {
 
                     // マッチング待機画面
                     case GAME_STATE.MATCHING:
-                        // 常にサーバと通信し続ける(最後に接続した時間を保存し続ける:サーバ接続状況確認用)
 
+                        ///// ネットワーク関連処理 /////
+                        mnm.MatchingNetwork();
+
+                        ///// Player操作関連 /////
+                        mpa.MatchingPlayerAction();
+
+                        ///// UI関連処理 /////
+                        mUI.MatchingUI();
 
                         // マッチング待機時
                         if (etd.td.UserId == "none") {
 
-                            
-                        }
-                        // マッチング完了時
-                        else {
-
+                            ptd.td.isReady = false;
                         }
                         // 両者準備完了時
                         if (ptd.td.isReady && etd.td.isReady) {
 
+                            // カウントダウン画面に遷移
                             gState = GAME_STATE.COUNTDOWN;
                         }
-
-                        // 対戦相手の接続遮断時(最終接続時間から5秒(仮))
 
                         break;
 

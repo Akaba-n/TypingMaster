@@ -11,9 +11,20 @@ public class EnemyNameTextController : MonoBehaviour {
     /*----- オブジェクトの取得(Inspectorで設定) -----*/
     [SerializeField] private Text enemyNameText;
 
-    // プレイヤー名を表示する処理
+    /// <summary>
+    /// プレイヤー名を表示する処理
+    /// </summary>
     public void EnemyNameText() {
 
-        enemyNameText.text = etd.td.UserName;
+        // 未マッチング時
+        if (etd.td.UserId == "none") {
+            
+            enemyNameText.text = "-----";
+        }
+        // マッチング時
+        else {
+
+            enemyNameText.text = etd.td.UserName;
+        }
     }
 }

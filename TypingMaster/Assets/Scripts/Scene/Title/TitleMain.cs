@@ -60,6 +60,9 @@ public class TitleMain : MainBase {
         // サウンドの再生
         //soundManager.Play(SOUND_TYPE.BGM, "bgm001", true);  // 基本BGMなのでループ
 
+        // 初期化データ
+        PlayerPrefs.SetInt(PlayerPrefsKey.USER_NUM, 1);
+
         // ゲーム開始時プレイヤーデータ格納(オンラインで整合性確認)
         pd.pd.userId = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_ID, "00000000");
         pd.pd.userName = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_NAME, "GUEST");
@@ -70,6 +73,10 @@ public class TitleMain : MainBase {
                     ", playerName:" + PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_NAME, "none") + 
                     ", email:" + PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_MAIL, "none") +
                     ", pass:"+ PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_PASS, "none"));
+        Debug.Log("playerId:" + pd.pd.userId +
+                    ", playerName:" + pd.pd.userName +
+                    ", email:" + pd.pd.email +
+                    ", pass:" + pd.pd.pass);
     }
 
     void Update() {
