@@ -38,6 +38,8 @@ public class EnemyTypingDataManager : TypingDataBase {
 
             UserNum = 1;
         }
+
+        td.UserId = "none";
     }
 
     public void DownloadEnemyTypingData() {

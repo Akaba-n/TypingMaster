@@ -8,8 +8,9 @@ using Data;
 /// </summary>
 public class MatchingNetworkManager : MonoBehaviour {
 
-    [SerializeField] EnemyConnectJudge ecj;
-    [SerializeField] PlayerConnectJudge pcj;
+    [SerializeField] private EnemyConnectJudge ecj;
+    [SerializeField] private PlayerConnectJudge pcj;
+    [SerializeField] private DownloadEnemyTypingData dletd;
     
     /// <summary>
     /// Matching画面での通信関連管理処理
@@ -21,6 +22,8 @@ public class MatchingNetworkManager : MonoBehaviour {
         var userId = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_ID, "00000000");
         // 対戦相手の通信判定
         StartCoroutine(ecj.ServerEnemyConnectJudge(playerNum, roomId));
+        // 対戦相手のデータダウンロード
+        StartCoroutine(dletd.DownloadETD(playerNum, roomId));
         // プレイヤーのサーバ接続時間更新
         StartCoroutine(pcj.ServerPlayerConnectJudge(playerNum, roomId, userId));
     }

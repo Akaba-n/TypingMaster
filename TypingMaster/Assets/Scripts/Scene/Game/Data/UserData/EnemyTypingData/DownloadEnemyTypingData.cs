@@ -34,14 +34,11 @@ public class DownloadEnemyTypingData : MonoBehaviour {
             Debug.Log(webRequest.error);
         }
         else {
-
+            
             // 通信成功時処理
             Debug.Log(webRequest.downloadHandler.text);
             var jsonstr = webRequest.downloadHandler.text;
             etd.td = JsonUtility.FromJson<EnemyTypingDataManager.TypingData>(jsonstr);
-
-            // 再帰処理
-            //StartCoroutine(DownloadETD(userId, roomId));
         }
     }
 }

@@ -7,7 +7,9 @@ public class SoloMain : MainBase {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GameConfigClass gc;
+    [SerializeField] private SoloDisplayChange sdc;
     [SerializeField] private InitGameMethod ig;     // PlayerInitGame(Player初期化処理)
+    [SerializeField] private SoloCountDownManager scd;
     [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
     [SerializeField] private PlayerTypingDataManager ptd;          // データの操作
     [SerializeField] private PlayerTypingUiManager tUI;           // UIに対する挙動
@@ -21,7 +23,7 @@ public class SoloMain : MainBase {
         TYPING,     // タイピングゲーム部分
         RESULT      // 結果画面
     };
-    public static GAME_STATE gState;
+    public GAME_STATE gState;
     // タイピング時の状態
     public enum TYPING_STATE {
 
@@ -29,7 +31,9 @@ public class SoloMain : MainBase {
         ING,        // 
         FINISH      // 終了処理(オンライン時は全員終了まで待機する)
     }
-    public static TYPING_STATE tState;
+    public TYPING_STATE tState;
+
+    public bool isChanged;  // 画面遷移済み判定
 
     //// Scene遷移時動作 ////
     protected override void Start(){
@@ -44,6 +48,8 @@ public class SoloMain : MainBase {
         // シーン開始時はキー入力禁止
         pa.isInputValid = false;    // 入力可否判定
 
+        isChanged = false;
+
         // エフェクトのロード
         //effectManager.Load("ef001");
 
@@ -56,6 +62,11 @@ public class SoloMain : MainBase {
     }
 
     void Update() {
+
+        if (!isChanged) {
+
+            sdc.SoloDisplayChangeMethod();
+        }
 
         switch (status) {
 
@@ -78,14 +89,20 @@ public class SoloMain : MainBase {
 
                         ig.InitSoloGame();
                         gState = GAME_STATE.COUNTDOWN;
+                        isChanged = false;
                         
                         break;
                     case GAME_STATE.COUNTDOWN:
 
                         ///// カウントダウン処理 /////
+                        scd.CountDown();
                         
                         // 遷移処理
-                        gState = GAME_STATE.TYPING;
+                        if(scd.countSec < 0f) {
+
+                            gState = GAME_STATE.TYPING;
+                            isChanged = false;
+                        }
                         break;
                     case GAME_STATE.TYPING:
 
@@ -137,6 +154,8 @@ public class SoloMain : MainBase {
                             case TYPING_STATE.FINISH:
                                 cUI.DisplayConsoleText();
                                 Debug.Log("TYPING_STATE->FINISH");
+                                gState = GAME_STATE.RESULT;
+                                isChanged = false;
                                 break;
                         }
                         break;
@@ -166,7 +185,7 @@ public class SoloMain : MainBase {
                     // GameScene用サウンドの破棄
                     Release();
                     // Scene遷移
-                    SceneManager.LoadScene("ResultScene");
+                    //SceneManager.LoadScene("ResultScene");
                 }
                 break;
         }
