@@ -8,9 +8,11 @@ using Data;
 /// </summary>
 public class MatchingNetworkManager : MonoBehaviour {
 
+    /*----- Scriptの取得(Inspectorで設定) -----*/
     [SerializeField] private EnemyConnectJudge ecj;
     [SerializeField] private PlayerConnectJudge pcj;
     [SerializeField] private DownloadEnemyTypingData dletd;
+    [SerializeField] private UploadPlayerTypingData ulptd;
     
     /// <summary>
     /// Matching画面での通信関連管理処理
@@ -26,5 +28,7 @@ public class MatchingNetworkManager : MonoBehaviour {
         StartCoroutine(dletd.DownloadETD(playerNum, roomId));
         // プレイヤーのサーバ接続時間更新
         StartCoroutine(pcj.ServerPlayerConnectJudge(playerNum, roomId, userId));
+        // プレイヤーのデータアップロード
+        StartCoroutine(ulptd.UploadPTD(playerNum, roomId));
     }
 }
