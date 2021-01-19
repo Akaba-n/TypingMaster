@@ -6,18 +6,20 @@ public class InitMultiGameManager : MonoBehaviour {
     
     /*---------- スクリプトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GamePlayerActionManager pa;
-    [SerializeField] private NextSentenceMethod ns;
 
     [SerializeField] private InitConfigMethod ic;
     [SerializeField] private InitTypingDataMethod itd;
     [SerializeField] private InitPlayerActionMethod ipa;
     [SerializeField] private InitMultiQuestionMethod iq;
 
+    // 一回のみ実行判定
+    public bool isFirst;
     // MATCHING画面遷移判定
     public bool toMatching;
 
     private void Awake() {
 
+        isFirst = true;
         toMatching = false;
     }
 
@@ -26,12 +28,15 @@ public class InitMultiGameManager : MonoBehaviour {
     /// </summary>
     public void InitGame() {
 
+        // 一回目実行判定
+        isFirst = false;
+
         ic.InitMultiConfig();
         itd.InitTypingData();
         ipa.InitPlayerAction();
         StartCoroutine(iq.InitMultiQuestion());
         ///// 最初の文章のenteredSentenceの格納 /////
-        ns.NewSentence();
+        
     }
 
     /// <summary>

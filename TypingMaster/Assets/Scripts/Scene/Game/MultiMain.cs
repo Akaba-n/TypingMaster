@@ -94,8 +94,10 @@ public class MultiMain : MainBase {
 
                     // 初期化処理
                     case GAME_STATE.INIT:
-                        ///// 後でInitMultiGameに変える /////
-                        ig.InitGame();
+                        if (ig.isFirst) {
+
+                            ig.InitGame();
+                        }
                         if (ig.toMatching) {
 
                             gState = GAME_STATE.MATCHING;

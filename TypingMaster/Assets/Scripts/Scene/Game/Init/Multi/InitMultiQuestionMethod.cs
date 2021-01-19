@@ -11,6 +11,7 @@ public class InitMultiQuestionMethod : MonoBehaviour {
     [SerializeField] private GamePlayerActionManager pa;
     [SerializeField] private CsvImport ci;
     [SerializeField] private HiraToRom hr;
+    [SerializeField] private NextSentenceMethod ns;
 
     /// <summary>
     /// Multiモードでの問題文初期化処理
@@ -42,7 +43,9 @@ public class InitMultiQuestionMethod : MonoBehaviour {
             Debug.Log("問題文データ");
             // 問題文データセットがcsv形式で返ってくるので格納
             var qCsv = webRequest.downloadHandler.text;
+            Debug.Log(qCsv);
             var tmpList = ci.CsvtextToList(qCsv);
+            Debug.Log(tmpList);
 
             // 問題文格納
             for(var i = 0; i < tmpList.Count; i++) {
@@ -50,6 +53,7 @@ public class InitMultiQuestionMethod : MonoBehaviour {
                 pa.qSen.Add((tmpList[i].jp, tmpList[i].h, hr.HiraToRomSentence(tmpList[i].h)));
             }
 
+            ns.NewSentence();
             ig.toMatching = true;
         }
     }
