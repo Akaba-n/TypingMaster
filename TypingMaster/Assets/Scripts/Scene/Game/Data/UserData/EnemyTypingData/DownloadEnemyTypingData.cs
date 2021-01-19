@@ -10,8 +10,7 @@ public class DownloadEnemyTypingData : MonoBehaviour {
     
     /*----- オブジェクトのインスタンス化(Inspectorで設定) -----*/
     [SerializeField] private EnemyTypingDataManager etd;
-    /*----- オブジェクトのインスタンス化 -----*/
-    //private ServerUrl sUrl = new ServerUrl();
+    [SerializeField] private MultiMain mm;
 
     /// <summary>
     /// UnityWebRequestでサーバから敵のデータを取得
@@ -20,6 +19,9 @@ public class DownloadEnemyTypingData : MonoBehaviour {
     /// <returns></returns>
     public IEnumerator DownloadETD(int userNum, string roomId) {
 
+        // 通信開始時画面
+        var tmpGState = mm.gState;
+
         // 接続先URL
         var url = ServerUrl.ENEMY_SYNC_URL + "?userNum=" + userNum.ToString() + "&roomId=" + roomId;
         // URLをGETで用意
@@ -27,18 +29,22 @@ public class DownloadEnemyTypingData : MonoBehaviour {
         // URLに接続して結果が戻ってくるまで待機
         yield return webRequest.SendWebRequest();
 
-        // エラーチェック
-        if (webRequest.isNetworkError) {
+        // 通信開始時と通信終了時の画面が同一であれば処理
+        if (tmpGState == mm.gState) {
 
-            // 通信失敗時処理
-            Debug.Log(webRequest.error);
-        }
-        else {
-            
-            // 通信成功時処理
-            Debug.Log(webRequest.downloadHandler.text);
-            var jsonstr = webRequest.downloadHandler.text;
-            etd.td = JsonUtility.FromJson<EnemyTypingDataManager.TypingData>(jsonstr);
+            // エラーチェック
+            if (webRequest.isNetworkError) {
+
+                // 通信失敗時処理
+                Debug.Log(webRequest.error);
+            }
+            else {
+                
+                // 通信成功時処理
+                Debug.Log(webRequest.downloadHandler.text);
+                var jsonstr = webRequest.downloadHandler.text;
+                etd.td = JsonUtility.FromJson<EnemyTypingDataManager.TypingData>(jsonstr);
+            }
         }
     }
 }

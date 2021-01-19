@@ -10,6 +10,8 @@ public class UploadPlayerTypingData : MonoBehaviour {
 
     /*----- オブジェクトのインスタンス化(Inspectorで設定) -----*/
     [SerializeField] private PlayerTypingDataManager ptd;
+    [SerializeField] private MultiMain mm;
+
     /*----- オブジェクトのインスタンス化 -----*/
     //private ServerUrl sUrl = new ServerUrl();
 
@@ -54,6 +56,9 @@ public class UploadPlayerTypingData : MonoBehaviour {
     /// <param name="roomId">所属しているroomId</param>
     /// <returns></returns>
     public IEnumerator UploadPTD(int userNum, string roomId) {
+
+        // 通信開始時画面
+        var tmpGState = mm.gState;
         
         // 送信データの作成
         var sendJson = ptd.TypingDataToJson();
@@ -69,16 +74,20 @@ public class UploadPlayerTypingData : MonoBehaviour {
         // URLに接続して結果が戻ってくるまで待機
         yield return webRequest.SendWebRequest();
 
-        // エラーチェック
-        if (webRequest.isNetworkError || webRequest.isHttpError) {
+        // 通信開始時と通信終了時の画面が同一であれば処理
+        if (tmpGState == mm.gState) {
 
-            // 通信失敗時処理
-            Debug.Log(webRequest.error);
-        }
-        else {
+            // エラーチェック
+            if (webRequest.isNetworkError || webRequest.isHttpError) {
 
-            // 通信成功時処理
-            Debug.Log(webRequest.downloadHandler.text);
+                // 通信失敗時処理
+                Debug.Log(webRequest.error);
+            }
+            else {
+
+                // 通信成功時処理
+                Debug.Log(webRequest.downloadHandler.text);
+            }
         }
     }
 }

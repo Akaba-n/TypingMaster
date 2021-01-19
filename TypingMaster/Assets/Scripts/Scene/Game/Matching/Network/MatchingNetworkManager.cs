@@ -13,6 +13,10 @@ public class MatchingNetworkManager : MonoBehaviour {
     [SerializeField] private PlayerConnectJudge pcj;
     [SerializeField] private DownloadEnemyTypingData dletd;
     [SerializeField] private UploadPlayerTypingData ulptd;
+
+    // コルーチンの動作数カウント(全コルーチン終了判定用)
+    public int strCnt;  // 開始済み
+    public int endCnt;  // 終了済み
     
     /// <summary>
     /// Matching画面での通信関連管理処理

@@ -6,6 +6,8 @@ using Data;
 
 public class EnemyConnectJudge : MonoBehaviour {
 
+    [SerializeField] MultiMain mm;
+
     /// <summary>
     /// 対戦相手の接続状況を確認する処理(5秒以上接続無しで切断処理)
     /// </summary>
@@ -14,6 +16,9 @@ public class EnemyConnectJudge : MonoBehaviour {
     /// <returns></returns>
     public IEnumerator ServerEnemyConnectJudge(int userNum, string roomId) {
 
+        // 開始時の状態
+        var tmpGState = mm.gState;
+
         // 接続先URL
         var url = ServerUrl.ENEMY_CONNECT_JUDGE_URL + "?userNum=" + userNum.ToString() + "&roomId=" + roomId;
         // URLをGETで用意
@@ -21,26 +26,30 @@ public class EnemyConnectJudge : MonoBehaviour {
         // URLに接続して結果が戻ってくるまで待機
         yield return webRequest.SendWebRequest();
 
-        // エラーチェック
-        if (webRequest.isNetworkError || webRequest.isHttpError) {
+        if(mm.gState == tmpGState) {
 
-            // 通信失敗時処理
-            Debug.Log(webRequest.error);
-        }
-        else {
+            // エラーチェック
+            if (webRequest.isNetworkError || webRequest.isHttpError) {
 
-            // 通信成功時処理
-            Debug.Log(webRequest.downloadHandler.text);
-            // 対戦相手の最終接続からの時間
-            var retStr = webRequest.downloadHandler.text;
-            float distanceTime = float.Parse(retStr);
-            // 最終通信時間から5秒以上経過している時
-            if (distanceTime > 5) {
+                // 通信失敗時処理
+                Debug.Log(webRequest.error);
+            }
+            else {
 
-                ///// 対戦相手を通信切断扱いにする処理 /////
-                StartCoroutine(ServerEnemyDisconnected(userNum, roomId));
+                // 通信成功時処理
+                Debug.Log(webRequest.downloadHandler.text);
+                // 対戦相手の最終接続からの時間
+                var retStr = webRequest.downloadHandler.text;
+                float distanceTime = float.Parse(retStr);
+                // 最終通信時間から5秒以上経過している時
+                if (distanceTime > 5) {
+
+                    ///// 対戦相手を通信切断扱いにする処理 /////
+                    StartCoroutine(ServerEnemyDisconnected(userNum, roomId));
+                }
             }
         }
+        
     }
 
     /// <summary>

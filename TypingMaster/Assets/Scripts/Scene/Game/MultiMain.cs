@@ -9,10 +9,9 @@ public class MultiMain : MainBase {
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GameConfigClass gc;
     [SerializeField] private CommonUIManager cUI;   // MultiGameScene内共通UI管理
+    [SerializeField] private DisplayCanvasManager dc;       // MultiGame内一括Canvas管理
     [SerializeField] private InitMultiGameManager ig;     // PlayerInitGame(Player初期化処理)
-    [SerializeField] private MatchingNetworkManager mnm;        // Matching画面でのネットワーク処理
-    [SerializeField] private MatchingPlayerActionManager mpa;   // Matching画面でのPlayerの操作に対する処理
-    [SerializeField] private MatchingUIManager mUI;             // Matching画面でのUIの処理
+    [SerializeField] private MatchingManager matchingManager;       // Maching画面での処理の一括管理
     [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
     [SerializeField] private PlayerTypingDataManager ptd;          // データの操作
     [SerializeField] private PlayerTypingUiManager tUI;           // UIに対する挙動
@@ -75,6 +74,7 @@ public class MultiMain : MainBase {
         
         // PlayerNameとRoomIdの表示
         cUI.CommonUIAll();
+        
 
         switch (status) {
 
@@ -107,28 +107,13 @@ public class MultiMain : MainBase {
 
                     // マッチング待機画面
                     case GAME_STATE.MATCHING:
-
-                        ///// ネットワーク関連処理 /////
-                        mnm.MatchingNetwork();
-
-                        ///// Player操作関連 /////
-                        mpa.MatchingPlayerAction();
-
-                        ///// UI関連処理 /////
-                        mUI.MatchingUI();
-
-                        // マッチング待機時
-                        if (etd.td.UserId == "none") {
-
-                            ptd.td.isReady = false;
-                        }
+                        matchingManager.Matching();
                         // 両者準備完了時
                         if (ptd.td.isReady && etd.td.isReady) {
 
                             // カウントダウン画面に遷移
                             gState = GAME_STATE.COUNTDOWN;
                         }
-
                         break;
 
                     case GAME_STATE.COUNTDOWN:
