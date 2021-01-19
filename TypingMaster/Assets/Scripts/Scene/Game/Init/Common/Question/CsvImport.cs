@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// CSVファイルから問題文を呼び出すクラス
 /// </summary>
-public class CsvImport {
+public class CsvImport : MonoBehaviour {
     
     TextAsset csvFile;  //　CSVファイル
 
@@ -33,6 +33,26 @@ public class CsvImport {
         }
 
         //Debug.Log(tmpList[0]);
+
+        return tmpList;
+    }
+
+    /// <summary>
+    /// CSV形式のテキストをListの形に変換する処理
+    /// </summary>
+    /// <param name="csvText">csv形式の文</param>
+    /// <returns>問題文データセット</returns>
+    public List<(string jp, string h)> CsvtextToList(string csvText) {
+
+        var tmpList = new List<(string jp, string h)>();
+
+        // "\n" で分割
+        var line = csvText.Split('|');
+        for(var i = 0; i < line.Length; i++) {
+
+            var tmp = line[i].Split(',');          // "," 区切り(配列の形)
+            tmpList.Add((tmp[0], tmp[1]));
+        }
 
         return tmpList;
     }

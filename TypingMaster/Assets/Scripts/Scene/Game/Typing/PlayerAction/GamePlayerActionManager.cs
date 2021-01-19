@@ -10,7 +10,7 @@ public class GamePlayerActionManager : PlayerActionBase {
 
     [SerializeField] private GameTypingCheckMethod tc;
     [SerializeField] private PlayerTypingDataManager td;
-    [SerializeField] private InitGameMethod ig;
+    [SerializeField] private InitSoloGameManager ig;
     [SerializeField] private UpdatePlayerRomSentence us;
 
     // 記録関連(TypingDataとTypingData側で同期させる)

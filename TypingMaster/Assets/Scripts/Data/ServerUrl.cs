@@ -19,6 +19,7 @@ public static class ServerUrl {
     public const string ROOM_SEARCH_URL = BASE_URL + "MATCHING/searchFriendRoom.php";               // Room検索を行う
     //*----- ゲームシーン用 -----*//
     // マッチング部分用
+    public const string DOWNLOAD_SENTENCE_URL = BASE_URL + "MATCHING/downloadSentenceData.php";         // 問題文ダウンロード
     public const string ENEMY_CONNECT_JUDGE_URL = BASE_URL + "MATCHING/enemyConnectJudge.php";      // 対戦相手接続確認
     public const string PLAYER_CONNECT_JUDGE_URL = BASE_URL + "MATCHING/playerConnectJudge.php";    // 自分の接続時間更新
     public const string ENEMY_DISCONNECT_URL = BASE_URL + "MATCHING/enemyDisconnect.php";           // 対戦相手を切断扱いにする処理

@@ -8,7 +8,7 @@ public class SoloMain : MainBase {
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GameConfigClass gc;
     [SerializeField] private SoloDisplayChange sdc;
-    [SerializeField] private InitGameMethod ig;     // PlayerInitGame(Player初期化処理)
+    [SerializeField] private InitSoloGameManager ig;     // PlayerInitGame(Player初期化処理)
     [SerializeField] private SoloCountDownManager scd;
     [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
     [SerializeField] private PlayerTypingDataManager ptd;          // データの操作
@@ -87,7 +87,7 @@ public class SoloMain : MainBase {
                     // 初期化処理
                     case GAME_STATE.INIT:
 
-                        ig.InitSoloGame();
+                        ig.InitGame();
                         gState = GAME_STATE.COUNTDOWN;
                         isChanged = false;
                         

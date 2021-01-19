@@ -9,7 +9,7 @@ public class MultiMain : MainBase {
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GameConfigClass gc;
     [SerializeField] private CommonUIManager cUI;   // MultiGameScene内共通UI管理
-    [SerializeField] private InitGameMethod ig;     // PlayerInitGame(Player初期化処理)
+    [SerializeField] private InitMultiGameManager ig;     // PlayerInitGame(Player初期化処理)
     [SerializeField] private MatchingNetworkManager mnm;        // Matching画面でのネットワーク処理
     [SerializeField] private MatchingPlayerActionManager mpa;   // Matching画面でのPlayerの操作に対する処理
     [SerializeField] private MatchingUIManager mUI;             // Matching画面でのUIの処理
@@ -95,8 +95,11 @@ public class MultiMain : MainBase {
                     // 初期化処理
                     case GAME_STATE.INIT:
                         ///// 後でInitMultiGameに変える /////
-                        ig.InitSoloGame();
-                        gState = GAME_STATE.MATCHING;
+                        ig.InitGame();
+                        if (ig.toMatching) {
+
+                            gState = GAME_STATE.MATCHING;
+                        }
                         
                         break;
 

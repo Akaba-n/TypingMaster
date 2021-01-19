@@ -34,7 +34,7 @@ public class ServerMkFriendRoom : MonoBehaviour {
 
             // 通信失敗時処理
             Debug.Log(webRequest.error);
-            PlayerPrefs.SetInt(PlayerPrefsKey.ONLINE_JUDGE, 0);
+            // PlayerPrefs.SetInt(PlayerPrefsKey.ONLINE_JUDGE, 0);
             // キー入力有効化
             mm.isInputValid = true;
         }
