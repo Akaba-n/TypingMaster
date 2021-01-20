@@ -74,9 +74,6 @@ public class MultiMain : MainBase {
     }
 
     void Update() {
-        
-        // PlayerNameとRoomIdの表示
-        cUI.CommonUIAll();
 
         switch (status) {
 
@@ -116,7 +113,10 @@ public class MultiMain : MainBase {
 
                     // マッチング待機画面
                     case GAME_STATE.MATCHING:
+                        // Matchin画面での処理
                         matchingManager.Matching();
+                        // PlayerNameとRoomIdの表示
+                        cUI.CommonUIAll();
                         // 両者準備完了時
                         if (ptd.td.isReady && etd.td.isReady) {
 
