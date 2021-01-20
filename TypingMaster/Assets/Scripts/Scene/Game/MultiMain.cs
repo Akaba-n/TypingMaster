@@ -136,7 +136,7 @@ public class MultiMain : MainBase {
                         ///// サーバにPlayerTypingDataの送信 /////
                         ptd.UploadPlayerTypingData(ptd.UserNum, ptd.roomId);
                         ///// サーバから敵データの取得 /////
-                        etd.DownloadEnemyTypingData();
+                        StartCoroutine(etd.DownloadEnemyTypingData(ptd.UserNum, ptd.roomId));
 
                         if (countdownManager.countSec < 0) {
 
@@ -196,7 +196,7 @@ public class MultiMain : MainBase {
                                     ptd.UploadPlayerTypingData(ptd.UserNum, ptd.roomId);
                                 }
                                 ///// サーバから敵データの取得 /////
-                                etd.DownloadEnemyTypingData();
+                                StartCoroutine(etd.DownloadEnemyTypingData(ptd.UserNum, ptd.roomId));
                                 ///// 敵データの表示 /////
                                 // 敵未終了時
                                 if (!etd.td.isFinishedGame) {
@@ -209,7 +209,8 @@ public class MultiMain : MainBase {
                                     eUI.DisplayFinishText();
                                 }
                                 break;
-
+                            
+                            // 自分のタイピング終了時
                             case TYPING_STATE.FINISH:
                                 // 自分と相手の両方終了時
                                 if(ptd.td.isFinishedGame && etd.td.isFinishedGame) {
@@ -224,7 +225,7 @@ public class MultiMain : MainBase {
                                 else {
 
                                     ///// サーバから敵データの取得 /////
-                                    etd.DownloadEnemyTypingData();
+                                    StartCoroutine(etd.DownloadEnemyTypingData(ptd.UserNum, ptd.roomId));
                                     // 敵未終了時
                                     if (!etd.td.isFinishedGame) {
 

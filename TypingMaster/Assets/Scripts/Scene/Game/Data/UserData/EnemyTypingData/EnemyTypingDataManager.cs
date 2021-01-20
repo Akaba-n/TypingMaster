@@ -42,19 +42,14 @@ public class EnemyTypingDataManager : TypingDataBase {
         td.UserId = "none";
     }
 
-    public void DownloadEnemyTypingData() {
-        
-        ConnectServer(UserNum, roomId);
-    }
-
     
     /// <summary>
     /// サーバに接続してデータを取得する処理
     /// </summary>
     /// <param name="userId">ユーザーID</param>
     /// <param name="roomId">部屋ID</param>
-    private void ConnectServer(int userNum, string roomId) {
+    public IEnumerator DownloadEnemyTypingData(int userNum, string roomId) {
         
-        StartCoroutine(downloadETD.DownloadETD(userNum, roomId));
+        yield return StartCoroutine(downloadETD.DownloadETD(userNum, roomId));
     }
 }
