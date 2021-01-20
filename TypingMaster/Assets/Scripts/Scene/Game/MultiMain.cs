@@ -38,6 +38,8 @@ public class MultiMain : MainBase {
     }
     public TYPING_STATE tState;
 
+    private bool gameCanvasChanged;    // 画面変更済み判定(true: 変更済み)
+
     //// Scene遷移時動作 ////
     protected override void Start(){
 
@@ -75,7 +77,6 @@ public class MultiMain : MainBase {
         
         // PlayerNameとRoomIdの表示
         cUI.CommonUIAll();
-        
 
         switch (status) {
 
@@ -90,6 +91,12 @@ public class MultiMain : MainBase {
 
             // シーン中動作
             case SCENE_STATE.PLAY:
+                
+                // 表示canvas変更処理
+                if (!gameCanvasChanged) {
+
+                    dc.DisplayCanvasChange();
+                }
 
                 switch (gState) {
 
@@ -101,6 +108,7 @@ public class MultiMain : MainBase {
                         }
                         if (ig.toMatching) {
 
+                            gameCanvasChanged = false;
                             gState = GAME_STATE.MATCHING;
                         }
                         
@@ -113,6 +121,7 @@ public class MultiMain : MainBase {
                         if (ptd.td.isReady && etd.td.isReady) {
 
                             // カウントダウン画面に遷移
+                            gameCanvasChanged = false;
                             gState = GAME_STATE.COUNTDOWN;
                         }
                         break;
@@ -124,6 +133,7 @@ public class MultiMain : MainBase {
                         if (countdownManager.countSec < 0) {
 
                             // 遷移処理
+                            gameCanvasChanged = false;
                             gState = GAME_STATE.TYPING;
                         }
                         break;
@@ -199,6 +209,7 @@ public class MultiMain : MainBase {
                                     ///// ゲーム終了処理 /////
                                     eUI.DisplayFinishText();
                                     // リザルト画面に移動
+                                    gameCanvasChanged = false;
                                     gState = GAME_STATE.RESULT;
                                 }
                                 // 敵の終了待ち

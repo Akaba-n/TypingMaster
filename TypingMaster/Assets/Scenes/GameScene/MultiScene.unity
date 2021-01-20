@@ -4018,7 +4018,7 @@ MonoBehaviour:
   MatchingCanvas: {fileID: 1463307578}
   CountdownCanvas: {fileID: 192334390}
   TypingCanvas: {fileID: 351087466}
-  ResultCanvas: {fileID: 0}
+  ResultCanvas: {fileID: 1969310698}
 --- !u!1 &1830664001
 GameObject:
   m_ObjectHideFlags: 0
