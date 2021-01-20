@@ -157,9 +157,9 @@ MonoBehaviour:
   ig: {fileID: 1486316198}
   matchingManager: {fileID: 1198018019}
   countdownManager: {fileID: 1321273275}
-  pa: {fileID: 0}
-  ptd: {fileID: 0}
-  tUI: {fileID: 0}
+  pa: {fileID: 178959498}
+  ptd: {fileID: 1419018896}
+  tUI: {fileID: 1510218053}
   etd: {fileID: 1038322610}
   eUI: {fileID: 742337332}
   gState: 0

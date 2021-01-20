@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // シーンの切り替え等
+using Data;
 
 public class SoloMain : MainBase {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
-    [SerializeField] private GameConfigClass gc;
-    [SerializeField] private SoloDisplayChange sdc;
-    [SerializeField] private InitSoloGameManager ig;     // PlayerInitGame(Player初期化処理)
-    [SerializeField] private SoloCountDownManager scd;
-    [SerializeField] private SoloPlayerActionManager pa;          // Playerの動作に対する挙動
-    [SerializeField] private SoloPlayerTypingDataManager ptd;          // データの操作
-    [SerializeField] private SoloPlayerTypingUiManager tUI;           // UIに対する挙動
-    [SerializeField] private ConsoleUIManager cUI;
+    [SerializeField] private GameConfigClass gc;                // GameのConfig管理
+    [SerializeField] private SoloDisplayChange sdc;             // SoloGame内のCanvas管理
+    [SerializeField] private InitSoloGameManager ig;            // SoloGameの初期化処理
+    [SerializeField] private SoloCountDownManager scd;          // Countdown画面での処理
+    [SerializeField] private SoloPlayerActionManager pa;        // Playerの動作に対する挙動
+    [SerializeField] private SoloPlayerTypingDataManager ptd;   // データの操作
+    [SerializeField] private SoloPlayerTypingUiManager tUI;     // UIに対する挙動
+    [SerializeField] private ConsoleUIManager cUI;              // 記録関連UIの挙動
 
     // ゲームシーンの状態
     public enum GAME_STATE {
@@ -29,7 +30,7 @@ public class SoloMain : MainBase {
 
         START,      // 開始時間記録の初期化を行う
         ING,        // 
-        FINISH      // 終了処理(オンライン時は全員終了まで待機する)
+        FINISH      // 終了処理
     }
     public TYPING_STATE tState;
 
@@ -63,7 +64,7 @@ public class SoloMain : MainBase {
 
     void Update() {
 
-        if (!isChanged) {
+        if (!isChanged && status == SCENE_STATE.PLAY) {
 
             sdc.SoloDisplayChangeMethod();
         }
@@ -73,8 +74,8 @@ public class SoloMain : MainBase {
             // 未フェードイン時(シーン遷移時)
             case SCENE_STATE.START:
                 
-                if(fadeManager.CheckFadeEnd() == true) {
-
+                if(fadeManager.CheckFadeEnd()) {
+                    
                     status = SCENE_STATE.PLAY;
                 }
                 break;

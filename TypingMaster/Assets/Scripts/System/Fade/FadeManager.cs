@@ -17,7 +17,7 @@ public class FadeManager : MonoBehaviour {
     private FADE state = FADE.STAY;
 
     private float time = 0f;
-    private float fadeTime = 0.5f;  // かける時間
+    private float fadeTime = 1f;  // かける時間
 
 
     //// フェードアウト実行用メソッド ////
