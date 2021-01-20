@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// ゲーム内タイピング正解時実行メソッドクラス
-/// </summary>
-public class CorrectMethod : MonoBehaviour {
+public class MultiCorrectMethod : MonoBehaviour {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
     [SerializeField] private GameConfigClass gc;
-    [SerializeField] private GamePlayerActionManager pa;
-    [SerializeField] private NextSentenceMethod ns;
-    [SerializeField] private UpdatePlayerRomSentence ur;
+    [SerializeField] private MultiPlayerActionManager pa;
+    [SerializeField] private MultiNextSentenceMethod ns;
+    [SerializeField] private MultiUpdatePlayerRomSentence ur;
 
     /// <summary>
     /// タイピング正解時の処理

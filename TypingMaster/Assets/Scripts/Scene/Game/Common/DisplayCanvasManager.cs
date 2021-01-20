@@ -24,7 +24,17 @@ public class DisplayCanvasManager : MonoBehaviour {
         switch (mm.gState) {
 
             case MultiMain.GAME_STATE.INIT:
+                Debug.Log("GAME_STATE:INIT Start");
+
+                MatchingCanvas.SetActive(true);
+                CountdownCanvas.SetActive(false);
+                TypingCanvas.SetActive(false);
+                ResultCanvas.SetActive(false);
+                break;
+
             case MultiMain.GAME_STATE.MATCHING:
+                Debug.Log("GAME_STATE:MATCHING Start");
+
                 MatchingCanvas.SetActive(true);
                 CountdownCanvas.SetActive(false);
                 TypingCanvas.SetActive(false);
@@ -32,6 +42,8 @@ public class DisplayCanvasManager : MonoBehaviour {
                 break;
 
             case MultiMain.GAME_STATE.COUNTDOWN:
+                Debug.Log("GAME_STATE:COUNTDOWN Start");
+
                 MatchingCanvas.SetActive(false);
                 CountdownCanvas.SetActive(true);
                 TypingCanvas.SetActive(false);
@@ -39,6 +51,7 @@ public class DisplayCanvasManager : MonoBehaviour {
                 break;
 
             case MultiMain.GAME_STATE.TYPING:
+                Debug.Log("GAME_STATE:TYPING Start");
                 MatchingCanvas.SetActive(false);
                 CountdownCanvas.SetActive(false);
                 TypingCanvas.SetActive(true);
@@ -46,6 +59,8 @@ public class DisplayCanvasManager : MonoBehaviour {
                 break;
 
             case MultiMain.GAME_STATE.RESULT:
+                Debug.Log("GAME_STATE:RESULT Start");
+
                 MatchingCanvas.SetActive(false);
                 CountdownCanvas.SetActive(false);
                 TypingCanvas.SetActive(false);

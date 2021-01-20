@@ -10,9 +10,9 @@ public class SoloMain : MainBase {
     [SerializeField] private SoloDisplayChange sdc;
     [SerializeField] private InitSoloGameManager ig;     // PlayerInitGame(Player初期化処理)
     [SerializeField] private SoloCountDownManager scd;
-    [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
-    [SerializeField] private PlayerTypingDataManager ptd;          // データの操作
-    [SerializeField] private PlayerTypingUiManager tUI;           // UIに対する挙動
+    [SerializeField] private SoloPlayerActionManager pa;          // Playerの動作に対する挙動
+    [SerializeField] private SoloPlayerTypingDataManager ptd;          // データの操作
+    [SerializeField] private SoloPlayerTypingUiManager tUI;           // UIに対する挙動
     [SerializeField] private ConsoleUIManager cUI;
 
     // ゲームシーンの状態

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MatchingManager : MonoBehaviour {
 
     /*---------- Scriptの取得(Inspectorで設定) ----------*/
-    [SerializeField] private PlayerTypingDataManager ptd;
+    [SerializeField] private MultiPlayerTypingDataManager ptd;
     [SerializeField] private EnemyTypingDataManager etd;
     [SerializeField] private MatchingNetworkManager mnw;
     [SerializeField] private MatchingPlayerActionManager mpa;

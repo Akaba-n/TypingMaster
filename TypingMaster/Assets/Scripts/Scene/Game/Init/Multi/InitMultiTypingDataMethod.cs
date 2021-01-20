@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InitTypingDataMethod : MonoBehaviour {
-
-    [SerializeField] private PlayerTypingDataManager ptd;
+public class InitMultiTypingDataMethod : MonoBehaviour {
+    
+    [SerializeField] private MultiPlayerTypingDataManager ptd;
     [SerializeField] private GameConfigClass gc;
     
     public void InitTypingData() {

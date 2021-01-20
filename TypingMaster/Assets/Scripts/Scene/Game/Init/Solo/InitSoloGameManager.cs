@@ -8,12 +8,12 @@ using UnityEngine;
 public class InitSoloGameManager : MonoBehaviour {
 
     /*---------- スクリプトのインスタンス化(Inspectorで設定) ----------*/
-    [SerializeField] private GamePlayerActionManager pa;
-    [SerializeField] private NextSentenceMethod ns;
+    [SerializeField] private SoloPlayerActionManager pa;
+    [SerializeField] private SoloNextSentenceMethod ns;
 
     [SerializeField] private InitConfigMethod ic;
-    [SerializeField] private InitTypingDataMethod itd;
-    [SerializeField] private InitPlayerActionMethod ipa;
+    [SerializeField] private InitSoloTypingDataMethod itd;
+    [SerializeField] private InitSoloPlayerActionMethod ipa;
     [SerializeField] private InitSoloQuestionMethod iq;
 
     /// <summary>

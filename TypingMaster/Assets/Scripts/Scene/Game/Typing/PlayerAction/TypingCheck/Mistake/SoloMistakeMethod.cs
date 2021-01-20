@@ -5,9 +5,9 @@ using UnityEngine;
 /// <summary>
 /// ミスタイプ時の処理クラス
 /// </summary>
-public class MistakeMethod : MonoBehaviour {
+public class SoloMistakeMethod : MonoBehaviour {
 
-    [SerializeField] private GamePlayerActionManager pa;
+    [SerializeField] private SoloPlayerActionManager pa;
 
     /// <summary>
     /// ミスタイプ時の処理

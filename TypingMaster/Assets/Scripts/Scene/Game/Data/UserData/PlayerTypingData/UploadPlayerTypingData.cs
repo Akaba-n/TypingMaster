@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 public class UploadPlayerTypingData : MonoBehaviour {
 
     /*----- オブジェクトのインスタンス化(Inspectorで設定) -----*/
-    [SerializeField] private PlayerTypingDataManager ptd;
+    [SerializeField] private MultiPlayerTypingDataManager ptd;
     [SerializeField] private MultiMain mm;
 
     /*----- オブジェクトのインスタンス化 -----*/

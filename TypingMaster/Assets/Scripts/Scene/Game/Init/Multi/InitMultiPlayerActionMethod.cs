@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InitPlayerActionMethod : MonoBehaviour {
+public class InitMultiPlayerActionMethod : MonoBehaviour {
 
-    [SerializeField] private GamePlayerActionManager pa;
+    [SerializeField] private MultiPlayerActionManager pa;
     [SerializeField] private GameConfigClass gc;
-    
+
     /// <summary>
     /// PlayerAction関連の初期化
     /// </summary>
-    public void InitPlayerAction() {
+    public void InitPlayerAction()
+    {
 
         // 記録関連(他でも行っているから必要ないと言えば必要ない)
         pa.CorrectTypeNum = 0;

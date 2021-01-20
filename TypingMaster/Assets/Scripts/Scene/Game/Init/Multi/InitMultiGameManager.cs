@@ -5,11 +5,11 @@ using UnityEngine;
 public class InitMultiGameManager : MonoBehaviour {
     
     /*---------- スクリプトのインスタンス化(Inspectorで設定) ----------*/
-    [SerializeField] private GamePlayerActionManager pa;
+    [SerializeField] private MultiPlayerActionManager pa;
 
     [SerializeField] private InitConfigMethod ic;
-    [SerializeField] private InitTypingDataMethod itd;
-    [SerializeField] private InitPlayerActionMethod ipa;
+    [SerializeField] private InitMultiTypingDataMethod itd;
+    [SerializeField] private InitMultiPlayerActionMethod ipa;
     [SerializeField] private InitMultiQuestionMethod iq;
 
     // 一回のみ実行判定

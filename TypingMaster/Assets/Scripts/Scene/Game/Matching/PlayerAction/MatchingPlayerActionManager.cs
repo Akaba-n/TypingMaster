@@ -10,7 +10,7 @@ public class MatchingPlayerActionManager : MonoBehaviour {
     // スクリプトの取得(Insprctorで設定)
     [SerializeField] private MultiMain mm;
     [SerializeField] private EnemyTypingDataManager etd;
-    [SerializeField] private PlayerTypingDataManager ptd;
+    [SerializeField] private MultiPlayerTypingDataManager ptd;
 
     /// <summary>
     /// Matching画面でのプレイヤーのアクションに対する処理

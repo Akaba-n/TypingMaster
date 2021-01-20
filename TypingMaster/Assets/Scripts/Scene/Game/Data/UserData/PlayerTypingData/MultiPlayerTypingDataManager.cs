@@ -4,14 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Data;
 
-/// <summary>
-/// Player情報クラス
-/// </summary>
-public class PlayerTypingDataManager : TypingDataBase {
+public class MultiPlayerTypingDataManager : TypingDataBase {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
-    [SerializeField] private GamePlayerActionManager pa;
-    [SerializeField] private RecordCalculator rc;
+    [SerializeField] private MultiPlayerActionManager pa;
+    [SerializeField] private MultiRecordCalculator rc;
     [SerializeField] private UploadPlayerTypingData uploadPTD;
 
     /*---------- Playerのみの変数 ----------*/

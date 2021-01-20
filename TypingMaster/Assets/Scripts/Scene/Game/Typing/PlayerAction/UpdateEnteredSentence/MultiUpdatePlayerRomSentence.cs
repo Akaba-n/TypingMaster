@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpdatePlayerRomSentence : MonoBehaviour {
-    
-    [SerializeField] private GamePlayerActionManager pa;
+public class MultiUpdatePlayerRomSentence : MonoBehaviour {
+
+    [SerializeField] private MultiPlayerActionManager pa;
 
     /// <summary>
     /// タイピング正解時にenteredSentenceとnotEnteredSentenceの更新を行う処理

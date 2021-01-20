@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerTypingUiManager : TypingUIBase {
+public class MultiPlayerTypingUiManager : TypingUIBase {
 
     /*---------- オブジェクトのインスタンス化(Inspectorで設定) ----------*/
-    [SerializeField] private GamePlayerActionManager pa;
-    [SerializeField] private PlayerTypingDataManager ptd;
+    [SerializeField] private MultiPlayerActionManager pa;
+    [SerializeField] private MultiPlayerTypingDataManager ptd;
 
     /// <summary>
     /// 問題文UI表示処理

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class MatchingUIManager : MonoBehaviour {
 
     /*----- スクリプトの取得(Inspectorで設定) -----*/
-    [SerializeField] private PlayerTypingDataManager ptd;
+    [SerializeField] private MultiPlayerTypingDataManager ptd;
     [SerializeField] private EnemyTypingDataManager etd;
     /*----- オブジェクトの取得(Inspectorで設定) -----*/
     [SerializeField] private Text playerText;

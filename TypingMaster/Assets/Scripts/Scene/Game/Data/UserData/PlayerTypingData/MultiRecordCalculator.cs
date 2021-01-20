@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// 記録計算クラス
-/// </summary>
-public class RecordCalculator : MonoBehaviour {
+public class MultiRecordCalculator : MonoBehaviour {
 
     /*----- オブジェクトのインスタンス化(Insprctorで設定) -----*/
-    [SerializeField] private PlayerTypingDataManager ptd;
+    [SerializeField] private MultiPlayerTypingDataManager ptd;
     [SerializeField] private GameConfigClass gc;
 
     /// <summary>

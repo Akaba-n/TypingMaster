@@ -6,7 +6,7 @@ using Data;
 public class InitSoloQuestionMethod : MonoBehaviour {
 
     [SerializeField] private GameConfigClass gc;
-    [SerializeField] private GamePlayerActionManager pa;
+    [SerializeField] private SoloPlayerActionManager pa;
     [SerializeField] private CsvImport ci;
     [SerializeField] private HiraToRom hr;
     

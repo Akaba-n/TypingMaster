@@ -14,7 +14,7 @@ public class ConsoleUIManager : MonoBehaviour {
     [SerializeField] private Text TotalTimeText;
     [SerializeField] private Text KpmText;
     [SerializeField] private Text TaskText;
-    [SerializeField] private PlayerTypingDataManager ptd;
+    [SerializeField] private SoloPlayerTypingDataManager ptd;
     [SerializeField] private GameConfigClass gc;
 
     /// <summary>

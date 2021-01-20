@@ -13,9 +13,9 @@ public class MultiMain : MainBase {
     [SerializeField] private InitMultiGameManager ig;     // PlayerInitGame(Player初期化処理)
     [SerializeField] private MatchingManager matchingManager;       // Maching画面での処理の一括管理
     [SerializeField] private MultiCountdownManager countdownManager;    // Countdown画面での処理の一括管理
-    [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
-    [SerializeField] private PlayerTypingDataManager ptd;          // データの操作
-    [SerializeField] private PlayerTypingUiManager tUI;           // UIに対する挙動
+    [SerializeField] private MultiPlayerActionManager pa;          // Playerの動作に対する挙動
+    [SerializeField] private MultiPlayerTypingDataManager ptd;          // データの操作
+    [SerializeField] private MultiPlayerTypingUiManager tUI;           // UIに対する挙動
     [SerializeField] private EnemyTypingDataManager etd;          // 敵データの操作
     [SerializeField] private EnemyTypingUIManager eUI;           // UIに対する挙動
 
@@ -75,6 +75,8 @@ public class MultiMain : MainBase {
 
     void Update() {
 
+        Debug.Log(etd.td.UserName);
+
         switch (status) {
 
             // 未フェードイン時(シーン遷移時)
@@ -93,6 +95,7 @@ public class MultiMain : MainBase {
                 if (!gameCanvasChanged) {
 
                     dc.DisplayCanvasChange();
+                    gameCanvasChanged = true;
                 }
 
                 switch (gState) {

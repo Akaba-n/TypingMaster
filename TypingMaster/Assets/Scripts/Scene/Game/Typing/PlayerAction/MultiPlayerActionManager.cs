@@ -6,12 +6,12 @@ using Data;
 /// <summary>
 /// GameScene中のPlayerのアクションに対するレスポンスの管理クラス
 /// </summary>
-public class GamePlayerActionManager : PlayerActionBase {
+public class MultiPlayerActionManager : PlayerActionBase {
 
-    [SerializeField] private GameTypingCheckMethod tc;
-    [SerializeField] private PlayerTypingDataManager td;
-    [SerializeField] private InitSoloGameManager ig;
-    [SerializeField] private UpdatePlayerRomSentence us;
+    [SerializeField] private MultiTypingCheckMethod tc;
+    [SerializeField] private MultiPlayerTypingDataManager td;
+    [SerializeField] private InitMultiGameManager ig;
+    [SerializeField] private MultiUpdatePlayerRomSentence us;
 
     // 記録関連(TypingDataとTypingData側で同期させる)
     public int CorrectTypeNum;      // 正解タイピング数

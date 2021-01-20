@@ -8,10 +8,10 @@ public class InitMultiQuestionMethod : MonoBehaviour {
 
     [SerializeField] private InitMultiGameManager ig;
     [SerializeField] private GameConfigClass gc;
-    [SerializeField] private GamePlayerActionManager pa;
+    [SerializeField] private MultiPlayerActionManager pa;
     [SerializeField] private CsvImport ci;
     [SerializeField] private HiraToRom hr;
-    [SerializeField] private NextSentenceMethod ns;
+    [SerializeField] private MultiNextSentenceMethod ns;
 
     /// <summary>
     /// Multiモードでの問題文初期化処理

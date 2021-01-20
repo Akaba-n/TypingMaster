@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class GameTypingCheckMethod : MonoBehaviour {
+public class MultiTypingCheckMethod : MonoBehaviour {
 
     /*---------- オブジェクトのインスタンス作成 ----------*/
-    [SerializeField] private GamePlayerActionManager pa;
-    [SerializeField] private CorrectMethod cr;
-    [SerializeField] private MistakeMethod mt;
+    [SerializeField] private MultiPlayerActionManager pa;
+    [SerializeField] private MultiCorrectMethod cr;
+    [SerializeField] private MultiMistakeMethod mt;
 
     /// <summary>
     /// keyQueueにKeyCodeが格納されているかでタイピングチェックするメソッド(全シーン共通)

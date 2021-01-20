@@ -538,7 +538,7 @@ MonoBehaviour:
   lastJudgeTime: 0
   tc: {fileID: 1748941815}
   td: {fileID: 1419018896}
-  ig: {fileID: 0}
+  ig: {fileID: 1486316198}
   us: {fileID: 1123705732}
   CorrectTypeNum: 0
   CorrectTaskNum: 0
@@ -2266,7 +2266,6 @@ MonoBehaviour:
     isFinishedGame: 0
   pa: {fileID: 178959498}
   rc: {fileID: 1164847194}
-  uploadPTD: {fileID: 0}
   SectionTypingTime: []
   SectionCorrectNum: 
   SectionKpm: []
@@ -2672,7 +2671,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1717555061}
   - component: {fileID: 1717555062}
-  - component: {fileID: 1717555063}
   m_Layer: 0
   m_Name: InitPlayerAction
   m_TagString: Untagged
@@ -2708,20 +2706,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pa: {fileID: 178959498}
   gc: {fileID: 674426537}
---- !u!114 &1717555063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717555060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b9bcb5e396baff4d8de19e3dacf1b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pa: {fileID: 0}
-  gc: {fileID: 0}
 --- !u!1 &1748941813
 GameObject:
   m_ObjectHideFlags: 0
