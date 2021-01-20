@@ -12,6 +12,7 @@ public class MultiMain : MainBase {
     [SerializeField] private DisplayCanvasManager dc;       // MultiGame内一括Canvas管理
     [SerializeField] private InitMultiGameManager ig;     // PlayerInitGame(Player初期化処理)
     [SerializeField] private MatchingManager matchingManager;       // Maching画面での処理の一括管理
+    [SerializeField] private MultiCountdownManager countdownManager;    // Countdown画面での処理の一括管理
     [SerializeField] private GamePlayerActionManager pa;          // Playerの動作に対する挙動
     [SerializeField] private PlayerTypingDataManager ptd;          // データの操作
     [SerializeField] private PlayerTypingUiManager tUI;           // UIに対する挙動
@@ -118,9 +119,13 @@ public class MultiMain : MainBase {
 
                     case GAME_STATE.COUNTDOWN:
                         ///// カウントダウン処理 /////
-                        
-                        // 遷移処理
-                        gState = GAME_STATE.TYPING;
+                        countdownManager.CountDown();
+
+                        if (countdownManager.countSec < 0) {
+
+                            // 遷移処理
+                            gState = GAME_STATE.TYPING;
+                        }
                         break;
 
                     case GAME_STATE.TYPING:

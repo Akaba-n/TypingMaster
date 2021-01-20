@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// CountDown画面での処理管理クラス
-/// </summary>
-public class SoloCountDownManager : MonoBehaviour {
-
-    [SerializeField] private SoloCountDownUIManager scdUI;
+public class MultiCountdownManager : MonoBehaviour {
+    
+    [SerializeField] private MultiCountdownUIManager mcdUI;
 
     // 秒数
     public double countSec;
@@ -23,6 +20,6 @@ public class SoloCountDownManager : MonoBehaviour {
     public void CountDown() {
 
         countSec -= Time.deltaTime;
-        scdUI.SoloCountDownUI();
+        mcdUI.CountdownUI();
     }
 }

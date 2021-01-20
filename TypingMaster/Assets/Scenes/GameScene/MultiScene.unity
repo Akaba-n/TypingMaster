@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 192334392}
   - component: {fileID: 192334391}
   m_Layer: 5
-  m_Name: CountDownUICanvas
+  m_Name: CountdownUICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,7 +416,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 508503569}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1069,7 +1069,7 @@ GameObject:
   m_Component:
   - component: {fileID: 508503569}
   m_Layer: 0
-  m_Name: CountDown
+  m_Name: Countdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1086,6 +1086,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1321273274}
   - {fileID: 192334394}
   m_Father: {fileID: 48910873}
   m_RootOrder: 6
@@ -2180,13 +2181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd5d901616cbf64d801739e597f87b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mm: {fileID: 48910872}
   ptd: {fileID: 1419018896}
   etd: {fileID: 1038322610}
   mnw: {fileID: 1340916791}
   mpa: {fileID: 1569428457}
   mUI: {fileID: 971545713}
-  changeWait: 0
 --- !u!1 &1211737895
 GameObject:
   m_ObjectHideFlags: 0
@@ -2262,6 +2261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ptd: {fileID: 1419018896}
+  mm: {fileID: 0}
 --- !u!1 &1242377970
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,6 +2336,36 @@ Transform:
   - {fileID: 1322760035}
   - {fileID: 1827986250}
   m_Father: {fileID: 1599299779}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1321273273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1321273274}
+  m_Layer: 0
+  m_Name: CountdownScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1321273274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321273273}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 508503569}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1322760034
@@ -2909,6 +2939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   etd: {fileID: 1038322610}
+  mm: {fileID: 0}
 --- !u!1 &1562304431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,6 +2983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a523a7f4bd2ac4abf6019b9d21047c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mm: {fileID: 0}
 --- !u!1 &1566070091
 GameObject:
   m_ObjectHideFlags: 0
@@ -3955,6 +3987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0555b8dd576f52c4a93e04595e10326a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mm: {fileID: 0}
 --- !u!1 &1926122324
 GameObject:
   m_ObjectHideFlags: 0

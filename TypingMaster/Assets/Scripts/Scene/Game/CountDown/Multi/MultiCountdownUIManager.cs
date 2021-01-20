@@ -4,23 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// SoloモードでのCountDown画面でのUI操作管理クラス
+/// MultiモードでのCountDown画面でのUI操作管理クラス
 /// </summary>
-public class SoloCountDownUIManager : MonoBehaviour {
+public class MultiCountdownUIManager : MonoBehaviour {
 
     /*----- Scriptの取得(Inspectorで設定) -----*/
-    [SerializeField] private SoloCountDownManager scd;
+    [SerializeField] private MultiCountdownManager mcd;
 
     /*----- Objectの取得(Inspectorで設定) -----*/
-    [SerializeField] private Text countDownText; 
+    [SerializeField] private Text playerText;
+    [SerializeField] private Text enemyText;
 
     /// <summary>
-    /// SoloモードでのCountDown画面でのUI操作
+    /// MultiモードでのCountdown画面UI処理
     /// </summary>
-    public void SoloCountDownUI() {
+    public void CountdownUI() {
 
         // 表示する数字
-        int countSecI = (int)(scd.countSec / 1.0f) + 1;
+        int countSecI = (int)(mcd.countSec / 1.0f) + 1;
         if (countSecI > 3) {
 
             countSecI = 3;
@@ -30,8 +31,8 @@ public class SoloCountDownUIManager : MonoBehaviour {
             countSecI = 0;
         }
         string countSec = countSecI.ToString();
-
         
-        countDownText.text = countSec;
+        playerText.text = countSec;
+        enemyText.text = countSec;
     }
 }
