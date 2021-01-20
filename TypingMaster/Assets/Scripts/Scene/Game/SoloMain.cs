@@ -51,6 +51,12 @@ public class SoloMain : MainBase {
 
         isChanged = false;
 
+        // ユーザー情報初期化
+        ptd.td.UserId = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_ID, "00000000");
+        ptd.td.UserName = PlayerPrefs.GetString(PlayerPrefsKey.PLAYER_NAME, "");
+        ptd.UserNum = PlayerPrefs.GetInt(PlayerPrefsKey.USER_NUM, 1);
+        ptd.roomId = PlayerPrefs.GetString(PlayerPrefsKey.ROOM_ID, "0000");
+
         // エフェクトのロード
         //effectManager.Load("ef001");
 
@@ -82,7 +88,7 @@ public class SoloMain : MainBase {
 
             // シーン中動作
             case SCENE_STATE.PLAY:
-
+                
                 switch (gState) {
 
                     // 初期化処理
