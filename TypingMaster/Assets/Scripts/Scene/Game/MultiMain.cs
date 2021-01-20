@@ -133,6 +133,11 @@ public class MultiMain : MainBase {
                         ///// カウントダウン処理 /////
                         countdownManager.CountDown();
 
+                        ///// サーバにPlayerTypingDataの送信 /////
+                        ptd.UploadPlayerTypingData(ptd.UserNum, ptd.roomId);
+                        ///// サーバから敵データの取得 /////
+                        etd.DownloadEnemyTypingData();
+
                         if (countdownManager.countSec < 0) {
 
                             // 遷移処理
