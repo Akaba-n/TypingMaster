@@ -15,6 +15,7 @@ public class SoloMain : MainBase {
     [SerializeField] private SoloPlayerTypingDataManager ptd;   // データの操作
     [SerializeField] private SoloPlayerTypingUiManager tUI;     // UIに対する挙動
     [SerializeField] private ConsoleUIManager cUI;              // 記録関連UIの挙動
+    [SerializeField] private SoloResultManager rm;              // Result画面一括管理
 
     // ゲームシーンの状態
     public enum GAME_STATE {
@@ -35,6 +36,7 @@ public class SoloMain : MainBase {
     public TYPING_STATE tState;
 
     public bool isChanged;  // 画面遷移済み判定
+    public string nextScene;    // 遷移先のシーン名
 
     //// Scene遷移時動作 ////
     protected override void Start(){
@@ -168,7 +170,7 @@ public class SoloMain : MainBase {
                         break;
                     case GAME_STATE.RESULT:
 
-                        status = SCENE_STATE.CLEAR;
+                        rm.SoloResult();
                         break;
                 }
                 break;
@@ -192,7 +194,7 @@ public class SoloMain : MainBase {
                     // GameScene用サウンドの破棄
                     Release();
                     // Scene遷移
-                    //SceneManager.LoadScene("ResultScene");
+                    SceneManager.LoadScene(nextScene);
                 }
                 break;
         }

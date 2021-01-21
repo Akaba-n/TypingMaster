@@ -14,6 +14,7 @@ public class ConsoleUIManager : MonoBehaviour {
     [SerializeField] private Text TotalTimeText;
     [SerializeField] private Text KpmText;
     [SerializeField] private Text TaskText;
+    [SerializeField] private Text TotalTaskText;
     [SerializeField] private SoloPlayerTypingDataManager ptd;
     [SerializeField] private GameConfigClass gc;
 
@@ -22,16 +23,19 @@ public class ConsoleUIManager : MonoBehaviour {
     /// </summary>
     public void DisplayConsoleText() {
 
-        CorrectTypeNumText.text = "正解数 : " + ptd.td.CorrectTypeNum.ToString();
-        MisTypeNumText.text     = "ミスタイプ数 : " + ptd.td.MisTypeNum.ToString();
-        KpmText.text = "KPM : " + ptd.td.Kpm.ToString("f1");
-        TaskText.text = "問題数 : " + ptd.td.CorrectTaskNum.ToString() + " / " + gc.gc.Tasks.ToString();
+        CorrectTypeNumText.text = ptd.td.CorrectTypeNum.ToString();
+        MisTypeNumText.text     = ptd.td.MisTypeNum.ToString();
+        KpmText.text            = ptd.td.Kpm.ToString("f1");
+        TaskText.text           = (ptd.td.CorrectTaskNum + 1).ToString();
+        TotalTaskText.text      = "/ " + gc.gc.Tasks.ToString();
     }
     /// <summary>
     /// 時間UI表示処理
     /// </summary>
     public void DisplayTimeText() {
-        
-        TotalTimeText.text = "経過時間 : " + ptd.td.TotalTypingTime.ToString("f2");
+
+        var sec = ptd.td.TotalTypingTime % 60.0f;
+        var min = (int)(ptd.td.TotalTypingTime / 60f);
+        TotalTimeText.text =  min + "分 " + sec.ToString("f2");
     }
 }
