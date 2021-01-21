@@ -46,7 +46,7 @@ public class CsvImport : MonoBehaviour {
 
         var tmpList = new List<(string jp, string h)>();
 
-        // "\n" で分割
+        // "\n"(不安があったので"|パイプ"に変更) で分割
         var line = csvText.Split('|');
         for(var i = 0; i < line.Length; i++) {
 

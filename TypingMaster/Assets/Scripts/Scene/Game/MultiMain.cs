@@ -76,6 +76,7 @@ public class MultiMain : MainBase {
     void Update() {
 
         Debug.Log(etd.td.UserName);
+        cUI.TaskPanelText();
 
         switch (status) {
 

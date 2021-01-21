@@ -11,6 +11,7 @@ public class CommonUIManager : MonoBehaviour {
     [SerializeField] private PlayerNameTextController pn;
     [SerializeField] private EnemyNameTextController en;
     [SerializeField] private RoomIdTextController ri;
+    [SerializeField] private TypingTaskPanelController ttp;
 
     /// <summary>
     /// 共通UI操作(全て)
@@ -41,5 +42,9 @@ public class CommonUIManager : MonoBehaviour {
     public void RoomIdText() {
 
         ri.RoomIdText();
+    }
+    public void TaskPanelText() {
+
+        ttp.TypingTaskPanel();
     }
 }
