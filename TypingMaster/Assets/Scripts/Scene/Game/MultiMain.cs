@@ -18,7 +18,7 @@ public class MultiMain : MainBase {
     [SerializeField] private MultiPlayerTypingUiManager tUI;           // UIに対する挙動
     [SerializeField] private EnemyTypingDataManager etd;          // 敵データの操作
     [SerializeField] private EnemyTypingUIManager eUI;           // UIに対する挙動
-
+    [SerializeField] private MultiResultManager rm;
     // ゲームシーンの状態
     public enum GAME_STATE {
 
@@ -246,7 +246,7 @@ public class MultiMain : MainBase {
                         break;
                     case GAME_STATE.RESULT:
 
-                        status = SCENE_STATE.CLEAR;
+                        rm.MultiResult();
                         break;
                 }
                 break;
