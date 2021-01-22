@@ -31,7 +31,7 @@ public class GameConfigClass : MonoBehaviour {
 
         ///// デバッグ用 /////
         gMode = GAME_MODE.MULTI;
-        gc.Tasks = 50;
+        gc.Tasks = 1;
         gc.DatasetName = "sample";
     }
 }

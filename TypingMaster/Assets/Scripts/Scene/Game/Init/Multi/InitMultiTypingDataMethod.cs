@@ -19,5 +19,6 @@ public class InitMultiTypingDataMethod : MonoBehaviour {
         ptd.SectionTypingTime = new double[gc.gc.Tasks];
         ptd.SectionCorrectNum = new int[gc.gc.Tasks];
         ptd.SectionKpm = new double[gc.gc.Tasks];
+        ptd.td.retrySelect = 0;
     }
 }

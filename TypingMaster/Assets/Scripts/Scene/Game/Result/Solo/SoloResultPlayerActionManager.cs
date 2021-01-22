@@ -40,19 +40,19 @@ public class SoloResultPlayerActionManager : MonoBehaviour {
                     break;
 
                 case SoloResultManager.RESUTL_STATE.STATE2:
-                    sr.rState = SoloResultManager.RESUTL_STATE.STATE2;
+                    sr.rState = SoloResultManager.RESUTL_STATE.STATE3;
                     sr.time = 0f;
                     sr.isChange = false;
                     break;
 
                 case SoloResultManager.RESUTL_STATE.STATE3:
-                    sr.rState = SoloResultManager.RESUTL_STATE.STATE2;
+                    sr.rState = SoloResultManager.RESUTL_STATE.STATE4;
                     sr.time = 0f;
                     sr.isChange = false;
                     break;
 
                 case SoloResultManager.RESUTL_STATE.STATE4:
-                    sr.rState = SoloResultManager.RESUTL_STATE.STATE2;
+                    sr.rState = SoloResultManager.RESUTL_STATE.RETRY_WAIT;
                     sr.time = 0f;
                     sr.isChange = false;
                     break;

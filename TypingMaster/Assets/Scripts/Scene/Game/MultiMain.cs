@@ -40,6 +40,8 @@ public class MultiMain : MainBase {
 
     private bool gameCanvasChanged;    // 画面変更済み判定(true: 変更済み)
 
+    public string nextScene;           // 遷移先シーン名
+
     //// Scene遷移時動作 ////
     protected override void Start(){
 
@@ -268,7 +270,7 @@ public class MultiMain : MainBase {
                     // GameScene用サウンドの破棄
                     Release();
                     // Scene遷移
-                    //SceneManager.LoadScene("ResultScene");
+                    SceneManager.LoadScene(nextScene);
                 }
                 break;
         }

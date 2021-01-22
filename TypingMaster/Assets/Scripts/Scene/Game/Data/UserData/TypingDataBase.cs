@@ -34,6 +34,7 @@ public class TypingDataBase : MonoBehaviour {
         public double Kpm;              // KPM
         public double Accuracy;         // 正答率
         public bool isFinishedGame;     // ゲーム終了判定
+        public int retrySelect;         // リトライ選択(0:未選択, 1:リトライ, 2:やめる)
     }
 
     // TypingDataのインスタンス化
