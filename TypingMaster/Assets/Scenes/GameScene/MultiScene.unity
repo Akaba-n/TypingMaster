@@ -3377,7 +3377,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042"
+  m_Text: 
 --- !u!222 &800906180
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5714,7 +5714,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 
 --- !u!222 &1279881963
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7229,7 +7229,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Room:9691
+  m_Text: 
 --- !u!222 &1566070094
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8523,7 +8523,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: aaaaaaaaaaaaaaaa
+  m_Text: 
 --- !u!222 &1826859506
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9791,7 +9791,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 
 --- !u!222 &2041378511
 CanvasRenderer:
   m_ObjectHideFlags: 0

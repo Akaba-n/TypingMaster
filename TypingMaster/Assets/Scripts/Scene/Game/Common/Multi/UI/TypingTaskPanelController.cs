@@ -27,6 +27,6 @@ public class TypingTaskPanelController : MonoBehaviour {
             playerTaskText.text = "--";
             enemyTaskText.text  = "--";
         }
-        totalTaskText.text = "―――/" + gc.gc.Tasks.ToString();
+        totalTaskText.text = "――/" + gc.gc.Tasks.ToString();
     }
 }
