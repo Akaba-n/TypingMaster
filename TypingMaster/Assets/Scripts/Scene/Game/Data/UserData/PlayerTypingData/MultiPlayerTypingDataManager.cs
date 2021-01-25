@@ -68,6 +68,7 @@ public class MultiPlayerTypingDataManager : TypingDataBase {
         rc.CorrectAnswerRate();
         rc.TotalTime();
         rc.KeyPerMinute();
+        rc.Score();
     }
     /// <summary>
     /// タイピング終了時の各記録の計算を纏めて行うメソッド

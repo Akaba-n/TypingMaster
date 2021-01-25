@@ -18,6 +18,8 @@ public class MultiResultManager : MonoBehaviour {
         STATE2,         // 結果表示1
         STATE3,         // 結果表示1
         STATE4,         // 結果表示1
+        STATE5,         // 結果表示1
+        WL_WAIT,        // 画面遷移待機
         WL_JUDGE,       // 勝敗表示
         SELECT_WAIT,    // リトライ選択待機(入力ミス回避用)
         RETRY_SELECT,   // リトライ選択
@@ -84,6 +86,11 @@ public class MultiResultManager : MonoBehaviour {
 
             switch (rState) {
 
+                case RESUTL_STATE.NONE:
+                    rState = RESUTL_STATE.STATE1;
+                    isChange = false;
+                    break;
+
                 case RESUTL_STATE.STATE1:       
                     rState = RESUTL_STATE.STATE2;
                     isChange = false;
@@ -100,8 +107,14 @@ public class MultiResultManager : MonoBehaviour {
                     break;
 
                 case RESUTL_STATE.STATE4:
+                    rState = RESUTL_STATE.STATE5;
+                    isChange = false;
+                    break;
+
+                case RESUTL_STATE.WL_WAIT:
                     rState = RESUTL_STATE.WL_JUDGE;
                     isChange = false;
+                    isInputValid = true;
                     break;
 
                 case RESUTL_STATE.SELECT_WAIT:
@@ -114,15 +127,20 @@ public class MultiResultManager : MonoBehaviour {
                     break;
             }
         }
-        // 勝敗判定の所からの遷移は溜めを少し長くする
-        if (time > 1f) {
+        // 勝敗判定の所からの遷移は溜めを少し長いやつ
+        if (time > 0.6f) {
 
-            if(rState == RESUTL_STATE.WL_JUDGE) {
-
-                rState = RESUTL_STATE.SELECT_WAIT;
+            if(rState == RESUTL_STATE.STATE5) {
+                
+                rState = RESUTL_STATE.WL_WAIT;
                 isChange = false;
                 isInputValid = false;
-            }
+            } 
+        }
+        // 対戦相手が連戦を希望した時再度Multi
+        if(rState == RESUTL_STATE.ENEMY_WAIT && etd.td.retrySelect == 1) {
+
+            mm.status = AppDefine.SCENE_STATE.CHANGE_WAIT;
         }
         // 対戦相手が破棄した時Menuに戻る
         if (rState == RESUTL_STATE.ENEMY_WAIT && etd.td.retrySelect == 2) {

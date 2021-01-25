@@ -18,21 +18,37 @@ public class MultiResultUIManager : MonoBehaviour {
     [SerializeField] GameObject noIcon;
 
     // 順番に表示する用の括り
-    [SerializeField] GameObject correctCnt;
-    [SerializeField] GameObject missCnt;
-    [SerializeField] GameObject totalTime;
-    [SerializeField] GameObject kpm;
+    [SerializeField] GameObject playerCorrectNum;
+    [SerializeField] GameObject playerMisNum;
+    [SerializeField] GameObject playerCorrectRate;
+    [SerializeField] GameObject playerTotalTime;
+    [SerializeField] GameObject playerKpm;
+    [SerializeField] GameObject playerScore;
+    [SerializeField] GameObject enemyCorrectNum;
+    [SerializeField] GameObject enemyMisNum;
+    [SerializeField] GameObject enemyCorrectRate;
+    [SerializeField] GameObject enemyTotalTime;
+    [SerializeField] GameObject enemyKpm;
+    [SerializeField] GameObject enemyScore;
+    [SerializeField] GameObject winText;
+    [SerializeField] GameObject loseText;
+    [SerializeField] GameObject drawText;
+    [SerializeField] GameObject nextText;
     [SerializeField] GameObject retrySelect;
     // Playerの結果表示Text
     [SerializeField] Text playerCorrectNumText;
     [SerializeField] Text playerMissNumText;
+    [SerializeField] Text playerCorrectRateText;
     [SerializeField] Text playerTotalTimeText;
     [SerializeField] Text playerKpmText;
+    [SerializeField] Text playerScoreText;
     // Enemyの結果表示Text
     [SerializeField] Text enemyCorrectNumText;
     [SerializeField] Text enemyMissNumText;
+    [SerializeField] Text enemyCorrectRateText;
     [SerializeField] Text enemyTotalTimeText;
     [SerializeField] Text enemyKpmText;
+    [SerializeField] Text enemyScoreText;
 
     /// <summary>
     /// SoloResult画面UI一括管理処理
@@ -40,7 +56,10 @@ public class MultiResultUIManager : MonoBehaviour {
     public void SoloResultUI() {
 
         RetrySelect();
-        DisplayResult();
+        if(mr.rState == MultiResultManager.RESUTL_STATE.NONE || mr.rState == MultiResultManager.RESUTL_STATE.STATE1 || mr.rState == MultiResultManager.RESUTL_STATE.STATE2 || mr.rState == MultiResultManager.RESUTL_STATE.STATE3 || mr.rState == MultiResultManager.RESUTL_STATE.STATE4 || mr.rState == MultiResultManager.RESUTL_STATE.STATE5 || mr.rState == MultiResultManager.RESUTL_STATE.WL_WAIT) {
+
+            DisplayResult();
+        }
     }
 
     /// <summary>
@@ -51,51 +70,211 @@ public class MultiResultUIManager : MonoBehaviour {
         switch (mr.rState) {
 
             case MultiResultManager.RESUTL_STATE.NONE:
-                correctCnt.SetActive(false);
-                missCnt.SetActive(false);
-                totalTime.SetActive(false);
-                kpm.SetActive(false);
+                playerCorrectNum.SetActive(false);
+                enemyCorrectNum.SetActive(false);
+                playerMisNum.SetActive(false);
+                enemyMisNum.SetActive(false);
+                playerCorrectRate.SetActive(false);
+                enemyCorrectRate.SetActive(false);
+                playerTotalTime.SetActive(false);
+                enemyTotalTime.SetActive(false);
+                playerKpm.SetActive(false);
+                enemyKpm.SetActive(false);
+                playerScore.SetActive(false);
+                enemyScore.SetActive(false);
+                winText.SetActive(false);
+                loseText.SetActive(false);
+                drawText.SetActive(false);
+                nextText.SetActive(false);
                 retrySelect.SetActive(false);
                 break;
 
             case MultiResultManager.RESUTL_STATE.STATE1:
-                correctCnt.SetActive(true);
-                missCnt.SetActive(false);
-                totalTime.SetActive(false);
-                kpm.SetActive(false);
+                playerCorrectNum.SetActive(true);
+                enemyCorrectNum.SetActive(true);
+                playerMisNum.SetActive(false);
+                enemyMisNum.SetActive(false);
+                playerCorrectRate.SetActive(false);
+                enemyCorrectRate.SetActive(false);
+                playerTotalTime.SetActive(false);
+                enemyTotalTime.SetActive(false);
+                playerKpm.SetActive(false);
+                enemyKpm.SetActive(false);
+                playerScore.SetActive(false);
+                enemyScore.SetActive(false);
+                winText.SetActive(false);
+                loseText.SetActive(false);
+                drawText.SetActive(false);
+                nextText.SetActive(false);
                 retrySelect.SetActive(false);
                 break;
 
             case MultiResultManager.RESUTL_STATE.STATE2:
-                correctCnt.SetActive(true);
-                missCnt.SetActive(true);
-                totalTime.SetActive(false);
-                kpm.SetActive(false);
+                playerCorrectNum.SetActive(true);
+                enemyCorrectNum.SetActive(true);
+                playerMisNum.SetActive(true);
+                enemyMisNum.SetActive(true);
+                playerCorrectRate.SetActive(false);
+                enemyCorrectRate.SetActive(false);
+                playerTotalTime.SetActive(false);
+                enemyTotalTime.SetActive(false);
+                playerKpm.SetActive(false);
+                enemyKpm.SetActive(false);
+                playerScore.SetActive(false);
+                enemyScore.SetActive(false);
+                winText.SetActive(false);
+                loseText.SetActive(false);
+                drawText.SetActive(false);
+                nextText.SetActive(false);
                 retrySelect.SetActive(false);
                 break;
 
             case MultiResultManager.RESUTL_STATE.STATE3:
-                correctCnt.SetActive(true);
-                missCnt.SetActive(true);
-                totalTime.SetActive(true);
-                kpm.SetActive(false);
+                playerCorrectNum.SetActive(true);
+                enemyCorrectNum.SetActive(true);
+                playerMisNum.SetActive(true);
+                enemyMisNum.SetActive(true);
+                playerCorrectRate.SetActive(true);
+                enemyCorrectRate.SetActive(true);
+                playerTotalTime.SetActive(false);
+                enemyTotalTime.SetActive(false);
+                playerKpm.SetActive(false);
+                enemyKpm.SetActive(false);
+                playerScore.SetActive(false);
+                enemyScore.SetActive(false);
+                winText.SetActive(false);
+                loseText.SetActive(false);
+                drawText.SetActive(false);
+                nextText.SetActive(false);
                 retrySelect.SetActive(false);
                 break;
 
             case MultiResultManager.RESUTL_STATE.STATE4:
-                correctCnt.SetActive(true);
-                missCnt.SetActive(true);
-                totalTime.SetActive(true);
-                kpm.SetActive(true);
+                playerCorrectNum.SetActive(true);
+                enemyCorrectNum.SetActive(true);
+                playerMisNum.SetActive(true);
+                enemyMisNum.SetActive(true);
+                playerCorrectRate.SetActive(true);
+                enemyCorrectRate.SetActive(true);
+                playerTotalTime.SetActive(true);
+                enemyTotalTime.SetActive(true);
+                playerKpm.SetActive(false);
+                enemyKpm.SetActive(false);
+                playerScore.SetActive(false);
+                enemyScore.SetActive(false);
+                winText.SetActive(false);
+                loseText.SetActive(false);
+                drawText.SetActive(false);
+                nextText.SetActive(false);
                 retrySelect.SetActive(false);
                 break;
 
-            case MultiResultManager.RESUTL_STATE.SELECT_WAIT:
+            case MultiResultManager.RESUTL_STATE.STATE5:
+                playerCorrectNum.SetActive(true);
+                enemyCorrectNum.SetActive(true);
+                playerMisNum.SetActive(true);
+                enemyMisNum.SetActive(true);
+                playerCorrectRate.SetActive(true);
+                enemyCorrectRate.SetActive(true);
+                playerTotalTime.SetActive(true);
+                enemyTotalTime.SetActive(true);
+                playerKpm.SetActive(true);
+                enemyKpm.SetActive(true);
+                playerScore.SetActive(false);
+                enemyScore.SetActive(false);
+                winText.SetActive(false);
+                loseText.SetActive(false);
+                drawText.SetActive(false);
+                nextText.SetActive(false);
+                retrySelect.SetActive(false);
+                break;
+            case MultiResultManager.RESUTL_STATE.WL_WAIT:
+                playerCorrectNum.SetActive(true);
+                enemyCorrectNum.SetActive(true);
+                playerMisNum.SetActive(true);
+                enemyMisNum.SetActive(true);
+                playerCorrectRate.SetActive(true);
+                enemyCorrectRate.SetActive(true);
+                playerTotalTime.SetActive(true);
+                enemyTotalTime.SetActive(true);
+                playerKpm.SetActive(true);
+                enemyKpm.SetActive(true);
+                playerScore.SetActive(true);
+                enemyScore.SetActive(true);
+                // 勝利時
+                if(ptd.td.Score > etd.td.Score) {
+
+                    winText.SetActive(true);
+                    loseText.SetActive(false);
+                    drawText.SetActive(false);
+                }
+                else if (ptd.td.Score < etd.td.Score) {
+
+                    winText.SetActive(false);
+                    loseText.SetActive(true);
+                    drawText.SetActive(false);
+                }
+                else if (ptd.td.Score == etd.td.Score) {
+
+                    winText.SetActive(false);
+                    loseText.SetActive(false);
+                    drawText.SetActive(true);
+                }
+                nextText.SetActive(false);
+                retrySelect.SetActive(false);
+                break;
+            case MultiResultManager.RESUTL_STATE.WL_JUDGE:
+                playerCorrectNum.SetActive(true);
+                enemyCorrectNum.SetActive(true);
+                playerMisNum.SetActive(true);
+                enemyMisNum.SetActive(true);
+                playerCorrectRate.SetActive(true);
+                enemyCorrectRate.SetActive(true);
+                playerTotalTime.SetActive(true);
+                enemyTotalTime.SetActive(true);
+                playerKpm.SetActive(true);
+                enemyKpm.SetActive(true);
+                playerScore.SetActive(true);
+                enemyScore.SetActive(true);
+                // 勝利時
+                if(ptd.td.Score > etd.td.Score) {
+
+                    winText.SetActive(true);
+                    loseText.SetActive(false);
+                    drawText.SetActive(false);
+                }
+                else if (ptd.td.Score < etd.td.Score) {
+
+                    winText.SetActive(false);
+                    loseText.SetActive(true);
+                    drawText.SetActive(false);
+                }
+                else if (ptd.td.Score == etd.td.Score) {
+
+                    winText.SetActive(false);
+                    loseText.SetActive(false);
+                    drawText.SetActive(true);
+                }
+                nextText.SetActive(true);
+                retrySelect.SetActive(false);
+                break;
             case MultiResultManager.RESUTL_STATE.RETRY_SELECT:
-                correctCnt.SetActive(true);
-                missCnt.SetActive(true);
-                totalTime.SetActive(true);
-                kpm.SetActive(true);
+                playerCorrectNum.SetActive(true);
+                enemyCorrectNum.SetActive(true);
+                playerMisNum.SetActive(true);
+                enemyMisNum.SetActive(true);
+                playerCorrectRate.SetActive(true);
+                enemyCorrectRate.SetActive(true);
+                playerTotalTime.SetActive(true);
+                enemyTotalTime.SetActive(true);
+                playerKpm.SetActive(true);
+                enemyKpm.SetActive(true);
+                playerScore.SetActive(true);
+                enemyScore.SetActive(true);
+                winText.SetActive(false);
+                loseText.SetActive(false);
+                drawText.SetActive(false);
+                nextText.SetActive(false);
                 retrySelect.SetActive(true);
                 break;
         }
@@ -126,19 +305,23 @@ public class MultiResultUIManager : MonoBehaviour {
     private void DisplayResult() {
 
         // PlayerのResult表示
-        playerCorrectNumText.text = ptd.td.CorrectTypeNum.ToString();
-        playerMissNumText.text    = ptd.td.MisTypeNum.ToString();
+        playerCorrectNumText.text  = ptd.td.CorrectTypeNum.ToString();
+        playerMissNumText.text     = ptd.td.MisTypeNum.ToString();
+        playerCorrectRateText.text = ptd.td.Accuracy.ToString("f2"); 
         var sec = ptd.td.TotalTypingTime % 60.0f;
         var min = (int)(ptd.td.TotalTypingTime / 60.0f);
-        playerTotalTimeText.text = min.ToString() + " 分  " + sec.ToString("f2");
-        playerKpmText.text = ptd.td.Kpm.ToString("f2");
+        playerTotalTimeText.text   = min.ToString() + ":" + sec.ToString("f2");
+        playerKpmText.text         = ptd.td.Kpm.ToString("f2");
+        playerScoreText.text       = ptd.td.Score.ToString();
 
         // EnemyのResult表示
-        enemyCorrectNumText.text = ptd.td.CorrectTypeNum.ToString();
-        enemyMissNumText.text = ptd.td.MisTypeNum.ToString();
-        var esec = ptd.td.TotalTypingTime % 60.0f;
-        var emin = (int)(ptd.td.TotalTypingTime / 60.0f);
-        enemyTotalTimeText.text = emin.ToString() + " 分  " + esec.ToString("f2");
-        enemyKpmText.text = ptd.td.Kpm.ToString("f2");
+        enemyCorrectNumText.text  = etd.td.CorrectTypeNum.ToString();
+        enemyMissNumText.text     = etd.td.MisTypeNum.ToString();
+        enemyCorrectRateText.text = etd.td.Accuracy.ToString("f2");
+        var esec = etd.td.TotalTypingTime % 60.0f;
+        var emin = (int)(etd.td.TotalTypingTime / 60.0f);
+        enemyTotalTimeText.text   = emin.ToString() + ":" + esec.ToString("f2");
+        enemyKpmText.text         = etd.td.Kpm.ToString("f2");
+        enemyScoreText.text       = etd.td.Score.ToString();
     }
 }

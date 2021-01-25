@@ -49,4 +49,12 @@ public class MultiRecordCalculator : MonoBehaviour {
             ptd.SectionKpm[i] = (ptd.SectionCorrectNum[i] * 1.0f) / (ptd.SectionTypingTime[i] * 1.0f) * 60f;
         }
     }
+
+    /// <summary>
+    /// Scoreの検査員メソッド
+    /// </summary>
+    public void Score() {
+
+        ptd.td.Score = (int)(ptd.td.Kpm * ptd.td.Accuracy);
+    }
 }

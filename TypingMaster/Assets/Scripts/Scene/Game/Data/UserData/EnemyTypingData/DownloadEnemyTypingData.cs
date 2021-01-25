@@ -43,7 +43,10 @@ public class DownloadEnemyTypingData : MonoBehaviour {
                 // 通信成功時処理
                 Debug.Log(webRequest.downloadHandler.text);
                 var jsonstr = webRequest.downloadHandler.text;
-                etd.td = JsonUtility.FromJson<EnemyTypingDataManager.TypingData>(jsonstr);
+                if(JsonUtility.FromJson<EnemyTypingDataManager.TypingData>(jsonstr).nowTime > etd.td.nowTime) {
+
+                    etd.td = JsonUtility.FromJson<EnemyTypingDataManager.TypingData>(jsonstr);
+                }
             }
         }
     }

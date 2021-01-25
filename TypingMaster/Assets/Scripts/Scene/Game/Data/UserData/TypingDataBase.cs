@@ -33,8 +33,10 @@ public class TypingDataBase : MonoBehaviour {
         public double TotalTypingTime;  // 総合経過時間
         public double Kpm;              // KPM
         public double Accuracy;         // 正答率
+        public int Score;            // スコア
         public bool isFinishedGame;     // ゲーム終了判定
         public int retrySelect;         // リトライ選択(0:未選択, 1:リトライ, 2:やめる)
+        public float nowTime;           // サーバ整合性確認用
     }
 
     // TypingDataのインスタンス化
@@ -51,5 +53,10 @@ public class TypingDataBase : MonoBehaviour {
         Debug.Log("TypingDataBase："+ret);
 
         return ret;
+    }
+
+    private void Update() {
+
+        td.nowTime = Time.time;
     }
 }

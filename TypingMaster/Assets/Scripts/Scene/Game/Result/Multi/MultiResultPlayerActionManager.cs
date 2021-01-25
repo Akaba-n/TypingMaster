@@ -53,12 +53,6 @@ public class MultiResultPlayerActionManager : MonoBehaviour {
                     mr.isChange = false;
                     break;
 
-                case MultiResultManager.RESUTL_STATE.STATE4:
-                    mr.rState = MultiResultManager.RESUTL_STATE.STATE2;
-                    mr.time = 0f;
-                    mr.isChange = false;
-                    break;
-
                 case MultiResultManager.RESUTL_STATE.RETRY_SELECT:
                     if(mr.rSelect == MultiResultManager.RESULT_SELECT.YES) {
                         ///// サーバ：Player情報初期化処理 /////
@@ -68,6 +62,7 @@ public class MultiResultPlayerActionManager : MonoBehaviour {
 
                         // MultiSceneへ遷移
                         mm.nextScene = "MultiScene";
+                        // 対戦相手の選択を待機
                         mr.rState = MultiResultManager.RESUTL_STATE.ENEMY_WAIT;
                     }
                     else if(mr.rSelect == MultiResultManager.RESULT_SELECT.NO) {
