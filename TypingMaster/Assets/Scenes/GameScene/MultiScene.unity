@@ -8394,11 +8394,11 @@ MonoBehaviour:
   playerKpmText: {fileID: 705663848}
   playerScoreText: {fileID: 2063488194}
   enemyCorrectNumText: {fileID: 495737501}
-  enemyMissNumText: {fileID: 1312529479}
-  enemyCorrectRateText: {fileID: 2066506815}
-  enemyTotalTimeText: {fileID: 883333657}
-  enemyKpmText: {fileID: 705663848}
-  enemyScoreText: {fileID: 2063488194}
+  enemyMissNumText: {fileID: 171012927}
+  enemyCorrectRateText: {fileID: 296895245}
+  enemyTotalTimeText: {fileID: 2018429528}
+  enemyKpmText: {fileID: 27413794}
+  enemyScoreText: {fileID: 1460260032}
 --- !u!1 &1774140646
 GameObject:
   m_ObjectHideFlags: 0
