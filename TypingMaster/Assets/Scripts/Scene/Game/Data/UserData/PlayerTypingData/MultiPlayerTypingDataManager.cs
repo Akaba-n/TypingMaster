@@ -28,6 +28,12 @@ public class MultiPlayerTypingDataManager : TypingDataBase {
         //UploadPlayerTypingData(playerUserId, roomId);
     }
 
+    private void Update() {
+
+        // 時間更新
+        td.nowTime = Time.time;
+    }
+
     /*----- GamePlayerActionManagerとの同期 -----*/
     /// <summary>
     /// GamePlayerActionManagerとの同期処理

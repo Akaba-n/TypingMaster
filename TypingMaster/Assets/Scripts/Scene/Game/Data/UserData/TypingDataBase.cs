@@ -54,9 +54,4 @@ public class TypingDataBase : MonoBehaviour {
 
         return ret;
     }
-
-    private void Update() {
-
-        td.nowTime = Time.time;
-    }
 }
