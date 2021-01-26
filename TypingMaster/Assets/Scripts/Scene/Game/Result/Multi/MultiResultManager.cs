@@ -25,7 +25,8 @@ public class MultiResultManager : MonoBehaviour {
         SELECT_WAIT,    // リトライ選択待機(入力ミス回避用)
         RETRY_SELECT,   // リトライ選択
         ENEMY_WAIT,     // 対戦相手リトライ選択待機 
-        RETRY_FAILED    // 対戦相手リトライ破棄時
+        RETRY_FAILED,   // 対戦相手リトライ破棄時
+        CONNECTING      // 通信中処理
     }
     public RESUTL_STATE rState;
 

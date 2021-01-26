@@ -9,6 +9,7 @@ public class MultiResultPlayerActionManager : MonoBehaviour {
     [SerializeField] private MultiMain mm;
     [SerializeField] private MultiPlayerTypingDataManager ptd;
     [SerializeField] private UploadPlayerTypingData uploadPtd;
+    [SerializeField] private MultiResultNetworkManager rnm;
 
     /// <summary>
     /// SoloResult画面でのPlayerのアクションに対する処理
@@ -74,11 +75,9 @@ public class MultiResultPlayerActionManager : MonoBehaviour {
                     else if(mr.rSelect == MultiResultManager.RESULT_SELECT.NO) {
                         ///// サーバ：Player情報初期化処理 /////
                         ptd.td.retrySelect = 2;
-                        StartCoroutine(uploadPtd.UploadPTD(PlayerPrefs.GetInt(PlayerPrefsKey.USER_NUM, 1), PlayerPrefs.GetString(PlayerPrefs.GetString(PlayerPrefsKey.ROOM_ID, "0000"))));
+                        StartCoroutine(rnm.UploadRetryData());
 
-                        // ModeSceneへ遷移
-                        mm.nextScene = "MenuScene";
-                        mm.status = AppDefine.SCENE_STATE.CHANGE_WAIT;
+                        mr.rState = MultiResultManager.RESUTL_STATE.CONNECTING;
                     }
                     break;
             }
@@ -109,6 +108,18 @@ public class MultiResultPlayerActionManager : MonoBehaviour {
             if(mr.rState == MultiResultManager.RESUTL_STATE.RETRY_SELECT) {
 
                 mr.rSelect = MultiResultManager.RESULT_SELECT.YES;
+            }
+        }
+    }
+
+    private void EscAction() {
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+
+            if(mr.rState == MultiResultManager.RESUTL_STATE.ENEMY_WAIT) {
+
+                mr.rState = MultiResultManager.RESUTL_STATE.RETRY_SELECT;
+                ptd.td.retrySelect = 0;
             }
         }
     }
