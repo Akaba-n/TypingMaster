@@ -46,7 +46,6 @@ public class MultiResultNetworkManager : MonoBehaviour {
         var url = ServerUrl.PLAYERDATA_INIT_URL + "?roomId=" + roomId + "&playerNum=" + playerNum + "&playerId=" + playerId + "&playerName=" + playerName;
         // URLをPOSTで用意
         UnityWebRequest webRequest = new UnityWebRequest(url, "POST");
-        webRequest.uploadHandler = (UploadHandler)new UploadHandlerRaw(postData);
         webRequest.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
         webRequest.SetRequestHeader("Content-Type", "application/json");
         // URLに接続して結果が戻ってくるまで待機
