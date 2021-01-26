@@ -8681,6 +8681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rUI: {fileID: 1766543031}
   rpa: {fileID: 457910}
+  rnw: {fileID: 0}
   mm: {fileID: 48910872}
   etd: {fileID: 1038322610}
   rState: 0
@@ -9515,7 +9516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1969310699
 RectTransform:
   m_ObjectHideFlags: 0
