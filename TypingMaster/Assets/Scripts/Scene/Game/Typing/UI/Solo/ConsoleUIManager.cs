@@ -26,7 +26,14 @@ public class ConsoleUIManager : MonoBehaviour {
         CorrectTypeNumText.text = ptd.td.CorrectTypeNum.ToString();
         MisTypeNumText.text     = ptd.td.MisTypeNum.ToString();
         KpmText.text            = ptd.td.Kpm.ToString("f1");
-        TaskText.text           = (ptd.td.CorrectTaskNum + 1).ToString();
+        if(ptd.td.CorrectTaskNum < gc.gc.Tasks) {
+
+            TaskText.text = (ptd.td.CorrectTaskNum + 1).ToString();
+        }
+        else {
+
+            TaskText.text = ptd.td.CorrectTaskNum.ToString();
+        }
         TotalTaskText.text      = "/ " + gc.gc.Tasks.ToString();
     }
     /// <summary>
