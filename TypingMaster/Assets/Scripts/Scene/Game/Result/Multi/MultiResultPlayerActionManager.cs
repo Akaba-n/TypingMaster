@@ -53,6 +53,12 @@ public class MultiResultPlayerActionManager : MonoBehaviour {
                     mr.isChange = false;
                     break;
 
+                case MultiResultManager.RESUTL_STATE.WL_JUDGE:
+                    mr.rState = MultiResultManager.RESUTL_STATE.SELECT_WAIT;
+                    mr.time = 0f;
+                    mr.isChange = false;
+                    break;
+
                 case MultiResultManager.RESUTL_STATE.RETRY_SELECT:
                     if(mr.rSelect == MultiResultManager.RESULT_SELECT.YES) {
                         ///// サーバ：Player情報初期化処理 /////

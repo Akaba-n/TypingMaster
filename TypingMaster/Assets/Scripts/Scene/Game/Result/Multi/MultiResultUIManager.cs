@@ -35,6 +35,8 @@ public class MultiResultUIManager : MonoBehaviour {
     [SerializeField] GameObject drawText;
     [SerializeField] GameObject nextText;
     [SerializeField] GameObject retrySelect;
+    [SerializeField] GameObject retryEnemyWait;
+    
     // Playerの結果表示Text
     [SerializeField] Text playerCorrectNumText;
     [SerializeField] Text playerMissNumText;
@@ -258,7 +260,9 @@ public class MultiResultUIManager : MonoBehaviour {
                 nextText.SetActive(true);
                 retrySelect.SetActive(false);
                 break;
+            case MultiResultManager.RESUTL_STATE.SELECT_WAIT:
             case MultiResultManager.RESUTL_STATE.RETRY_SELECT:
+            case MultiResultManager.RESUTL_STATE.ENEMY_WAIT:
                 playerCorrectNum.SetActive(true);
                 enemyCorrectNum.SetActive(true);
                 playerMisNum.SetActive(true);
@@ -296,6 +300,22 @@ public class MultiResultUIManager : MonoBehaviour {
 
             yesIcon.SetActive(false);
             noIcon.SetActive(true);
+        }
+    }
+    /// <summary>
+    /// 対戦相手リトライ選択待機表示
+    /// </summary>
+    private void RetryEnemyWait() {
+
+        if(mr.rState == MultiResultManager.RESUTL_STATE.ENEMY_WAIT) {
+
+            retrySelect.SetActive(false);
+            retryEnemyWait.SetActive(true);
+        }
+        else if (mr.rState == MultiResultManager.RESUTL_STATE.SELECT_WAIT) {
+
+            retrySelect.SetActive(true);
+            retryEnemyWait.SetActive(false);
         }
     }
 

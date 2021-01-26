@@ -19,8 +19,16 @@ public class TypingTaskPanelController : MonoBehaviour {
 
         if(mm.gState == MultiMain.GAME_STATE.TYPING) {
 
-            playerTaskText.text = (ptd.td.CorrectTaskNum + 1).ToString();
-            enemyTaskText.text  = (etd.td.CorrectTaskNum + 1).ToString();
+            if(ptd.td.CorrectTaskNum < gc.gc.Tasks) {
+
+                playerTaskText.text = (ptd.td.CorrectTaskNum + 1).ToString();
+                enemyTaskText.text = (etd.td.CorrectTaskNum + 1).ToString();
+            }
+            else {
+
+                playerTaskText.text = (ptd.td.CorrectTaskNum).ToString();
+                enemyTaskText.text = (etd.td.CorrectTaskNum).ToString();
+            }
         }
         else {
 
