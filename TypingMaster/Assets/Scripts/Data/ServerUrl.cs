@@ -27,5 +27,6 @@ public static class ServerUrl {
     public const string ENEMY_SYNC_URL        = BASE_URL + "REALTIME/sendTypingData.php";           // 対戦相手のタイピングデータ取得
     public const string PLAYER_TYPINGDATA_URL = BASE_URL + "REALTIME/uploadPlayerData.php";         // 自身のタイピングデータの送信
     public const string PLAYER_RESULT_URL     = BASE_URL + "";
+    public const string PLAYERDATA_INIT_URL   = BASE_URL + "REALTIME/initPlayerData.php";           // 連戦の際にプレイヤーデータを初期化する処理
     //*----- ランキング用 -----*//
 }

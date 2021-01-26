@@ -7,6 +7,7 @@ public class MultiResultManager : MonoBehaviour {
     /*----- Script取得(Inspectorで設定) -----*/
     [SerializeField] private MultiResultUIManager rUI;
     [SerializeField] private MultiResultPlayerActionManager rpa;
+    [SerializeField] private MultiResultNetworkManager rnw;
     [SerializeField] private MultiMain mm;
     [SerializeField] private EnemyTypingDataManager etd;
 
@@ -74,7 +75,7 @@ public class MultiResultManager : MonoBehaviour {
         }
 
         ///// UI管理 /////
-        rUI.SoloResultUI();
+        rUI.MultiResultUI();
     }
 
     /// <summary>
@@ -140,6 +141,7 @@ public class MultiResultManager : MonoBehaviour {
         // 対戦相手が連戦を希望した時再度Multi
         if(rState == RESUTL_STATE.ENEMY_WAIT && etd.td.retrySelect == 1) {
 
+            StartCoroutine(rnw.UploadInitData());
             mm.status = AppDefine.SCENE_STATE.CHANGE_WAIT;
         }
         // 対戦相手が破棄した時Menuに戻る

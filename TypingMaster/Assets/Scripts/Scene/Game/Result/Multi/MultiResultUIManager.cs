@@ -55,10 +55,11 @@ public class MultiResultUIManager : MonoBehaviour {
     /// <summary>
     /// SoloResult画面UI一括管理処理
     /// </summary>
-    public void SoloResultUI() {
+    public void MultiResultUI() {
 
         RetrySelect();
-        if(mr.rState == MultiResultManager.RESUTL_STATE.NONE || mr.rState == MultiResultManager.RESUTL_STATE.STATE1 || mr.rState == MultiResultManager.RESUTL_STATE.STATE2 || mr.rState == MultiResultManager.RESUTL_STATE.STATE3 || mr.rState == MultiResultManager.RESUTL_STATE.STATE4 || mr.rState == MultiResultManager.RESUTL_STATE.STATE5 || mr.rState == MultiResultManager.RESUTL_STATE.WL_WAIT) {
+        RetryEnemyWait();
+        if (mr.rState == MultiResultManager.RESUTL_STATE.NONE || mr.rState == MultiResultManager.RESUTL_STATE.STATE1 || mr.rState == MultiResultManager.RESUTL_STATE.STATE2 || mr.rState == MultiResultManager.RESUTL_STATE.STATE3 || mr.rState == MultiResultManager.RESUTL_STATE.STATE4 || mr.rState == MultiResultManager.RESUTL_STATE.STATE5 || mr.rState == MultiResultManager.RESUTL_STATE.WL_WAIT) {
 
             DisplayResult();
         }
