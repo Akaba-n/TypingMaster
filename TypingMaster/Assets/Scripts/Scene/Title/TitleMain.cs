@@ -27,14 +27,14 @@ public class TitleMain : MainBase {
     [SerializeField] private PlayerData pd;
 
     ///// for Debug /////
-    
+    /*
     private void Awake() {
 
         PlayerPrefs.DeleteKey(PlayerPrefsKey.PLAYER_ID);
         PlayerPrefs.DeleteKey(PlayerPrefsKey.PLAYER_NAME);
         PlayerPrefs.DeleteKey(PlayerPrefsKey.PLAYER_MAIL);
         PlayerPrefs.DeleteKey(PlayerPrefsKey.PLAYER_PASS);
-    }
+    }*/
 
     /*----- クラス内変数の定義 -----*/
     // TitleScene内での状態変化
