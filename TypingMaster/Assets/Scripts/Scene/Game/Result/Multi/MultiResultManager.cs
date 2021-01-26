@@ -75,10 +75,7 @@ public class MultiResultManager : MonoBehaviour {
         }
 
         ///// Network処理 /////
-        if (rState == MultiResultManager.RESUTL_STATE.SELECT_WAIT || rState == MultiResultManager.RESUTL_STATE.RETRY_SELECT || rState == MultiResultManager.RESUTL_STATE.ENEMY_WAIT) {
-
-            StartCoroutine(rnw.DownloadEnemyData());
-        }
+        rnw.ResultNetwork();
 
         ///// UI管理 /////
         rUI.MultiResultUI();

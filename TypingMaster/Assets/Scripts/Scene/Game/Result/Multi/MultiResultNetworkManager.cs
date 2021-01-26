@@ -8,6 +8,7 @@ public class MultiResultNetworkManager : MonoBehaviour {
 
     [SerializeField] private MultiResultManager rm;
     [SerializeField] private DownloadEnemyTypingData dletd;
+    [SerializeField] private UploadPlayerTypingData ulptd;
 
     /// <summary>
     /// MultiシーンでのResult画面でのネットワーク処理
@@ -19,6 +20,12 @@ public class MultiResultNetworkManager : MonoBehaviour {
             // 対戦相手のデータ取得
             StartCoroutine(DownloadEnemyData());
         }
+
+        if (rm.rState == MultiResultManager.RESUTL_STATE.ENEMY_WAIT) {
+
+            // 自分のリトライ判定送信
+            StartCoroutine(UploadPlayerDate());
+        }
     }
 
     /// <summary>
@@ -29,7 +36,14 @@ public class MultiResultNetworkManager : MonoBehaviour {
         // 対戦相手のデータ取得
         yield return StartCoroutine(dletd.DownloadETD(PlayerPrefs.GetInt(PlayerPrefsKey.USER_NUM, 1), PlayerPrefs.GetString(PlayerPrefsKey.ROOM_ID, "0000")));
 
+    }
+    /// <summary>
+    /// Playerのデータ送信(リトライ判定用)
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator UploadPlayerDate() {
 
+        yield return StartCoroutine(ulptd.UploadPTD(PlayerPrefs.GetInt(PlayerPrefsKey.USER_NUM, 0), PlayerPrefs.GetString(PlayerPrefsKey.ROOM_ID, "0000")));
     }
 
     /// <summary>
