@@ -22,11 +22,17 @@ public class TypingTaskPanelController : MonoBehaviour {
             if(ptd.td.CorrectTaskNum < gc.gc.Tasks) {
 
                 playerTaskText.text = (ptd.td.CorrectTaskNum + 1).ToString();
-                enemyTaskText.text = (etd.td.CorrectTaskNum + 1).ToString();
             }
             else {
 
                 playerTaskText.text = (ptd.td.CorrectTaskNum).ToString();
+            }
+            if(etd.td.CorrectTaskNum < gc.gc.Tasks) {
+
+                enemyTaskText.text = (etd.td.CorrectTaskNum + 1).ToString();
+            }
+            else {
+
                 enemyTaskText.text = (etd.td.CorrectTaskNum).ToString();
             }
         }
@@ -35,6 +41,6 @@ public class TypingTaskPanelController : MonoBehaviour {
             playerTaskText.text = "--";
             enemyTaskText.text  = "--";
         }
-        totalTaskText.text = "――/" + gc.gc.Tasks.ToString();
+        totalTaskText.text = "/" + gc.gc.Tasks.ToString();
     }
 }
