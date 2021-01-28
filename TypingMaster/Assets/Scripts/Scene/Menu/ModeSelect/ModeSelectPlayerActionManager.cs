@@ -65,7 +65,7 @@ public class ModeSelectPlayerActionManager : MonoBehaviour {
             }
             else {
                 
-                mm.mState = MenuMain.MENU_STATE.MULTI_MODE_SELECT;
+                mm.mState = MenuMain.MENU_STATE.MULTI_HOST_SELECT;
                 mm.isChanged = false;
             }
         }
