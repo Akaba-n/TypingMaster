@@ -160,7 +160,7 @@ public class MultiMain : MainBase {
                                 ///// データ正規化 /////
                                 ptd.SyncAllGamePlayerActionManager();
                                 ///// サーバにPlayerTypingDataの送信 /////
-                                ptd.UploadPlayerTypingData(ptd.UserNum, ptd.roomId);
+                                StartCoroutine(ptd.UploadPlayerTypingData(ptd.UserNum, ptd.roomId));
 
                                 ///// UIへの表示 /////
                                 tUI.DisplayPlayerText();
@@ -196,7 +196,7 @@ public class MultiMain : MainBase {
                                         tState = TYPING_STATE.FINISH;
                                     }
                                     ///// サーバにPlayerTypingDataの送信 /////
-                                    ptd.UploadPlayerTypingData(ptd.UserNum, ptd.roomId);
+                                    StartCoroutine(ptd.UploadPlayerTypingData(ptd.UserNum, ptd.roomId));
                                 }
                                 ///// サーバから敵データの取得 /////
                                 StartCoroutine(etd.DownloadEnemyTypingData(ptd.UserNum, ptd.roomId));
