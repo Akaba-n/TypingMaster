@@ -86,8 +86,8 @@ public class MultiPlayerTypingDataManager : TypingDataBase {
 
 
     /*----- サーバー通信関連 -----*/
-    public void UploadPlayerTypingData(int userNum, string roomId) {
+    public IEnumerator UploadPlayerTypingData(int userNum, string roomId) {
 
-        StartCoroutine(uploadPTD.UploadPTD(userNum, roomId));
+        yield return StartCoroutine(uploadPTD.UploadPTD(userNum, roomId));
     }
 }

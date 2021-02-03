@@ -137,7 +137,7 @@ public class MultiMain : MainBase {
                         countdownManager.CountDown();
 
                         ///// サーバにPlayerTypingDataの送信 /////
-                        ptd.UploadPlayerTypingData(ptd.UserNum, ptd.roomId);
+                        StartCoroutine(ptd.UploadPlayerTypingData(ptd.UserNum, ptd.roomId));
                         ///// サーバから敵データの取得 /////
                         StartCoroutine(etd.DownloadEnemyTypingData(ptd.UserNum, ptd.roomId));
 
