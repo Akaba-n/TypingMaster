@@ -101,7 +101,7 @@ public class TitleMain : MainBase {
                     // push any key時の処理
                     case TITLE_STATE.WAIT:
                         // キー入力が確認されたとき
-                        if (Input.anyKeyDown) {
+                        if (Input.GetKeyDown(KeyCode.Return)) {
 
                             ///// サーバ接続確認処理 /////
                             // サーバ接続確認中はtState.CONNECTINGへ
